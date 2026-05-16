@@ -50,10 +50,16 @@
   --lh-snug:          1.25;
   --lh-normal:        1.7;
   --lh-relaxed:       1.85;
+  --lh-prose:         1.85;
 
   --tracking-tight:   -0.02em;
   --tracking-normal:  0;
   --tracking-wide:    0.05em;
+
+  --text-strong:      #1a1a1a;
+  --text-emphasis:    #4a4a4a;
+  --color-success:    #4d8520;
+  --color-success-soft: rgba(126, 211, 33, 0.15);
 
   --space-1:          0.25rem;
   --space-2:          0.5rem;
@@ -128,7 +134,7 @@ p {
 
 p.lede {
   font-size: var(--fs-lede);
-  color: var(--text-secondary);
+  color: var(--text-emphasis);
   line-height: var(--lh-relaxed);
   max-width: 60ch;
 }
