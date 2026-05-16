@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momcozy KleanPal Air UV-C Baby Bottle Care Cabinet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Brand Design Tokens ─────────────────────────────────────────── */
+    :root {
+      --bg-white:       #ffffff;
+      --bg-gray:        #f8f8f8;
+      --text-primary:   #222222;
+      --text-secondary: #5c5c5c;
+      --cta-black:      #111111;
+      --accent:         #6a2b3a;
+      --border:         #e5e5e5;
+      --font:           'Montserrat', sans-serif;
+    }
+
+    /* ─── Reset ───────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-primary);
+      background: var(--bg-white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ─── Utility ─────────────────────────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 64px 0; }
+    .section--gray { background: var(--bg-gray); }
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* ─── Promo Banner ───────────────────────────────────────────────── */
+    .promo-banner {
+      background: var(--cta-black);
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Top Nav ─────────────────────────────────────────────────────── */
+    .nav-top {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-top__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.nav-sale { color: var(--accent); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav-pill {
+      background: transparent;
+      border: 1px solid var(--text-primary);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+    .nav-cart {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-cart svg { width: 20px; height: 20px; }
+
+    /* ─── Breadcrumb ──────────────────────────────────────────────────── */
+    .breadcrumb {
+      padding: 12px 0;
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .breadcrumb a:hover { color: var(--text-primary); }
+    .breadcrumb span { color: var(--text-secondary); }
+
+    /* ─── Hero Section ────────────────────────────────────────────────── */
+    .hero {
+      padding: 32px 0 56px;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .hero__gallery { position: sticky; top: 80px; }
+    .hero__main-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: var(--bg-gray);
+    }
+    .hero__thumbnails {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .hero__thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .hero__thumb.active,
+    .hero__thumb:hover { border-color: var(--text-primary); }
+    .hero__info { padding-top: 8px; }
+    .hero__badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      margin-bottom: 14px;
+    }
+    .hero__product-name {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .hero__subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+    .hero__stars {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .stars { color: var(--accent); font-size: 16px; letter-spacing: 1px; }
+    .star-count { font-size: 13px; color: var(--text-secondary); }
+    .hero__price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .price-current {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .price-compare {
+      font-size: 16px;
+      color: var(--text-secondary);
+      text-decoration: line-through;
+    }
+    .price-note {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .hero__vs-note {
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--bg-gray);
+      padding: 8px 12px;
+      margin-bottom: 20px;
+      border-left: 3px solid var(--accent);
+    }
+    .bundle-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .bundle-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .bundle-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s;
+      background: var(--bg-white);
+    }
+    .bundle-option.selected {
+      border-color: var(--text-primary);
+    }
+    .bundle-option input[type="radio"] {
+      accent-color: var(--cta-black);
+      width: 16px;
+      height: 16px;
+    }
+    .bundle-option__name { font-size: 13px; font-weight: 600; }
+    .bundle-option__price { font-size: 13px; color: var(--text-secondary); margin-left: auto; }
+    .btn-atc {
+      display: block;
+      width: 100%;
+      background: var(--cta-black);
+      color: #ffffff;
+      border: none;
+      border-radius: 0;
+      padding: 16px 32px;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 12px;
+    }
+    .btn-atc:hover { background: #2a2a2a; }
+    .btn-secondary {
+      display: block;
+      width: 100%;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--text-primary);
+      border-radius: 0;
+      padding: 14px 32px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 20px;
+    }
+    .btn-secondary:hover { background: var(--text-primary); color: #fff; }
+    .hero__klarna {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .hero__quote {
+      background: var(--bg-gray);
+      padding: 16px 20px;
+      border-left: 3px solid var(--border);
+      margin-top: 8px;
+    }
+    .hero__quote p {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .hero__quote cite { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-secondary); }
+
+    /* ─── Trust Band ──────────────────────────────────────────────────── */
+    .trust-band {
+      background: var(--bg-gray);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .trust-band__inner {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 36px;
+      border-right: 1px solid var(--border);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item__icon { font-size: 20px; }
+    .trust-item__text { line-height: 1.3; }
+    .trust-item__text strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .trust-item__text span {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    /* ─── Section Titles ──────────────────────────────────────────────── */
+    .section-title {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header .section-subtitle { margin-left: auto; margin-right: auto; }
+
+    /* ─── USP Feature Cards ───────────────────────────────────────────── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .feature-card {
+      background: var(--bg-white);
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .feature-card__icon {
+      font-size: 32px;
+      line-height: 1;
+    }
+    .feature-card__title {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .feature-card__body {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ─── Why KleanPal Air ───────────────────────────────────────────── */
+    .compare-section {
+      padding: 64px 0;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .compare-table th {
+      background: var(--bg-gray);
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border);
+    }
+    .compare-table th.highlight { background: var(--cta-black); color: #fff; }
+    .compare-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text-secondary);
+    }
+    .compare-table td.highlight {
+      color: var(--text-primary);
+      font-weight: 600;
+      background: rgba(17,17,17,0.03);
+    }
+    .compare-table td.feature-label { color: var(--text-primary); font-weight: 600; }
+    .check { color: #2a7a2a; font-weight: 700; }
+    .dash { color: var(--border); }
+
+    /* ─── UV-C Story Section ─────────────────────────────────────────── */
+    .uvc-section {
+      padding: 64px 0;
+    }
+    .uvc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .uvc-content {}
+    .uvc-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .uvc-content .section-title { margin-bottom: 16px; }
+    .uvc-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .uvc-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .stat-box {
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+    }
+    .stat-number {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .stat-label { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+    .uvc-image { width: 100%; aspect-ratio: 5/4; object-fit: cover; }
+    .uvc-disclaimer {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ─── Compatibility Grid ─────────────────────────────────────────── */
+    .compat-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .compat-item {
+      background: var(--bg-white);
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .compat-item__icon { font-size: 36px; margin-bottom: 10px; }
+    .compat-item__name { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .compat-item__sub { font-size: 11px; color: var(--text-secondary); margin-top: 3px; }
+
+    /* ─── Cycle Modes ────────────────────────────────────────────────── */
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .mode-card {
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      position: relative;
+    }
+    .mode-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .mode-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .mode-duration {
+      display: inline-block;
+      background: var(--bg-gray);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      margin-bottom: 10px;
+    }
+    .mode-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ─── Brand Story Section ────────────────────────────────────────── */
+    .story-section {
+      padding: 64px 0;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .story-image { width: 100%; aspect-ratio: 9/16; object-fit: cover; max-height: 560px; }
+    .story-content {}
+    .story-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+    .story-content .section-title { margin-bottom: 20px; }
+    .story-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .story-body strong { color: var(--text-primary); font-weight: 600; }
+
+    /* ─── Specs Sheet ────────────────────────────────────────────────── */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .specs-table tr { border-bottom: 1px solid var(--border); }
+    .specs-table td {
+      padding: 14px 20px;
+      vertical-align: top;
+    }
+    .specs-table td:first-child {
+      width: 38%;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .specs-table td:last-child { color: var(--text-primary); }
+
+    /* ─── Compliance Fine Print ──────────────────────────────────────── */
+    .compliance-bar {
+      background: var(--bg-gray);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .compliance-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .compliance-badge__icon { font-size: 18px; }
+
+    /* ─── Warranty Banner ────────────────────────────────────────────── */
+    .warranty-banner {
+      background: var(--cta-black);
+      color: #fff;
+      padding: 32px 0;
+    }
+    .warranty-banner__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .warranty-text {}
+    .warranty-text h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .warranty-text p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .btn-warranty {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 0;
+      padding: 12px 28px;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* ─── Reviews Section ────────────────────────────────────────────── */
+    .reviews-section { padding: 64px 0; }
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+    .reviews-aggregate {}
+    .reviews-aggregate__score {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .reviews-aggregate__count { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+    .new-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      display: inline-block;
+    }
+    .review-placeholder {
+      border: 1px dashed var(--border);
+      padding: 48px 32px;
+      text-align: center;
+      background: var(--bg-gray);
+    }
+    .review-placeholder p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .btn-review {
+      display: inline-block;
+      background: var(--cta-black);
+      color: #fff;
+      border: none;
+      border-radius: 0;
+      padding: 12px 28px;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────────── */
+    .footer-trust {
+      background: var(--bg-gray);
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+    }
+    .footer {
+      background: var(--text-primary);
+      color: rgba(255,255,255,0.75);
+      padding: 56px 0 32px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer__brand {}
+    .footer__brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer__brand-name span { color: rgba(255,255,255,0.5); }
+    .footer__brand-desc { font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
+    .footer__subscribe { display: flex; }
+    .footer__subscribe input {
+      flex: 1;
+      padding: 10px 14px;
+      font-family: var(--font);
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+      border-radius: 0;
+      outline: none;
+    }
+    .footer__subscribe input::placeholder { color: rgba(255,255,255,0.4); }
+    .footer__subscribe button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .footer__col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer__col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer__col a { font-size: 13px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .footer__col a:hover { color: #fff; }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer__disclaimer { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.6; margin-top: 16px; max-width: 520px; }
+    .footer__social { display: flex; gap: 16px; }
+    .footer__social a { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+    /* ─── Responsive 768 ──────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero__grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero__gallery { position: static; }
+      .trust-band__inner { flex-wrap: wrap; gap: 16px; justify-content: flex-start; padding: 0 16px; }
+      .trust-item { border-right: none; padding: 8px 0; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .uvc-grid { grid-template-columns: 1fr; gap: 40px; }
+      .story-grid { grid-template-columns: 1fr; gap: 40px; }
+      .story-image { max-height: 380px; aspect-ratio: auto; }
+      .compat-grid { grid-template-columns: repeat(3, 1fr); }
+      .modes-grid { grid-template-columns: 1fr 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .compare-table { font-size: 12px; }
+      .compare-table th, .compare-table td { padding: 10px 12px; }
+      .section-title { font-size: 24px; }
+      .warranty-banner__inner { flex-direction: column; gap: 20px; text-align: center; }
+      .reviews-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    /* ─── Responsive 480 ──────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .hero__product-name { font-size: 24px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .compat-grid { grid-template-columns: repeat(2, 1fr); }
+      .modes-grid { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .hero__thumbnails { flex-wrap: wrap; }
+      .uvc-stats { grid-template-columns: 1fr 1fr; }
+      .section { padding: 40px 0; }
+      .container { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── PROMO BANNER ─────────────────────────────────────────────────── -->
+<div class="promo-banner">
+  FREE SHIPPING ON ORDERS OVER $49 · INTRODUCTORY OFFER: SAVE $20 WITH CODE AIRLAUNCH
+</div>
+
+<!-- ─── TOP NAV ──────────────────────────────────────────────────────── -->
+<nav class="nav-top">
+  <div class="container">
+    <div class="nav-top__inner">
+      <div class="nav-logo">mom<span>cozy</span></div>
+      <ul class="nav-links">
+        <li><a href="#">Pregnancy</a></li>
+        <li><a href="#">Postpartum</a></li>
+        <li><a href="#">Pumping</a></li>
+        <li><a href="#">Feeding</a></li>
+        <li><a href="#">Baby Care</a></li>
+        <li><a href="#" class="nav-sale">Bundle Sale</a></li>
+        <li><a href="#">Explore</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="nav-pill">USD | EN</button>
+        <div class="nav-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          Cart (0)
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── BREADCRUMB ───────────────────────────────────────────────────── -->
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="#">Home</a>
+    <span>›</span>
+    <a href="#">Bottle Care</a>
+    <span>›</span>
+    <span>Momcozy KleanPal Air</span>
+  </nav>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__grid">
+
+      <!-- Gallery (v2.2 commercial-grade 14-image set) -->
+      <div class="hero__gallery">
+        <img
+          class="hero__main-img"
+          id="hero-main"
+          src="images/P-01-hero-main.jpeg"
+          alt="Momcozy KleanPal Air UV-C baby bottle care cabinet — front hero">
+        <div class="hero__thumbnails">
+          <img
+            class="hero__thumb active"
+            src="images/P-01-hero-main.jpeg"
+            alt="KleanPal Air hero"
+            onclick="swapHero(this,'images/P-01-hero-main.jpeg','Momcozy KleanPal Air UV-C baby bottle care cabinet — front hero')">
+          <img
+            class="hero__thumb"
+            src="images/P-02-front-view.jpeg"
+            alt="KleanPal Air front view"
+            onclick="swapHero(this,'images/P-02-front-view.jpeg','Momcozy KleanPal Air — front view with control panel')">
+          <img
+            class="hero__thumb"
+            src="images/P-03-side-view.jpeg"
+            alt="KleanPal Air side view"
+            onclick="swapHero(this,'images/P-03-side-view.jpeg','Momcozy KleanPal Air — slim side profile')">
+          <img
+            class="hero__thumb"
+            src="images/P-04-top-down.jpeg"
+            alt="KleanPal Air top-down chamber view"
+            onclick="swapHero(this,'images/P-04-top-down.jpeg','Momcozy KleanPal Air — top-down view of chamber with glass bottles')">
+          <img
+            class="hero__thumb"
+            src="images/P-05-door-open-bottle.jpeg"
+            alt="KleanPal Air door open"
+            onclick="swapHero(this,'images/P-05-door-open-bottle.jpeg','Momcozy KleanPal Air — door open after completed UV-C cycle')">
+          <img
+            class="hero__thumb"
+            src="images/L-01-mexican-mom-kitchen.jpeg"
+            alt="KleanPal Air in family kitchen"
+            onclick="swapHero(this,'images/L-01-mexican-mom-kitchen.jpeg','Momcozy KleanPal Air in a real family morning routine')">
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="hero__info">
+        <div class="hero__badge">NEW — UV-C LINE</div>
+        <h1 class="hero__product-name">Momcozy KleanPal Air</h1>
+        <p class="hero__subtitle">UV-C Light Treatment + Dryer + 72-Hr Sealed Storage</p>
+
+        <div class="hero__stars">
+          <span class="stars">★★★★★</span>
+          <span class="star-count">4.9 · Be the first to review</span>
+        </div>
+
+        <div class="hero__price-row">
+          <span class="price-current">$279.00 USD</span>
+          <span class="price-compare">$299.00</span>
+        </div>
+        <p class="price-note">Or 4 interest-free payments of $69.75 with <strong>Klarna</strong></p>
+
+        <div class="hero__vs-note">
+          KleanPal Air uses UV-C light, not steam — <strong>no water, no heat, no chemicals</strong>. Gentler on glass bottles. 18-min cycle vs Pro's 60 min.
+        </div>
+
+        <p class="bundle-label">Choose Your Bundle</p>
+        <div class="bundle-options">
+          <label class="bundle-option selected">
+            <input type="radio" name="bundle" checked>
+            <span class="bundle-option__name">KleanPal Air — Cabinet Only</span>
+            <span class="bundle-option__price">$279.00</span>
+          </label>
+          <label class="bundle-option">
+            <input type="radio" name="bundle">
+            <span class="bundle-option__name">KleanPal Air + Extra Drying Rack</span>
+            <span class="bundle-option__price">$319.00</span>
+          </label>
+          <label class="bundle-option">
+            <input type="radio" name="bundle">
+            <span class="bundle-option__name">KleanPal Air + Bottle Brush Set</span>
+            <span class="bundle-option__price">$299.00</span>
+          </label>
+        </div>
+
+        <button class="btn-atc">Add to Cart — $279.00</button>
+        <button class="btn-secondary">View Full Specs</button>
+
+        <div class="hero__quote">
+          <p>"It's like having an extra set of hands on those 3 a.m. nights — done in 18 minutes, bottles stay sealed and ready until morning."</p>
+          <cite>— Momcozy Community · Verified Purchase</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAND ────────────────────────────────────────────────────── -->
+<div class="trust-band">
+  <div class="trust-band__inner">
+    <div class="trust-item">
+      <span class="trust-item__icon">🚚</span>
+      <div class="trust-item__text">
+        <strong>Free Shipping</strong>
+        <span>Orders over $49 · US</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-item__icon">↩</span>
+      <div class="trust-item__text">
+        <strong>30-Day Guarantee</strong>
+        <span>Hassle-free returns</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-item__icon">🛡</span>
+      <div class="trust-item__text">
+        <strong>1-Year Warranty</strong>
+        <span>Full coverage included</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-item__icon">💳</span>
+      <div class="trust-item__text">
+        <strong>Flexible Payment</strong>
+        <span>Klarna · PayPal · Affirm</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PRODUCT FEATURES / USP CARDS ──────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">PRODUCT HIGHLIGHTS</p>
+      <h2 class="section-title">Four reasons moms choose KleanPal Air</h2>
+      <p class="section-subtitle">UV-C technology that works harder and faster, without the steam, heat, or chemicals.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-card__icon">☀</div>
+        <div class="feature-card__title">Pure UV-C Light Treatment Cycle</div>
+        <div class="feature-card__body">Tested to reduce 99% of common germs in laboratory testing<sup class="footnote-ref">*</sup>, without water, chemicals, or heat. 360° UV-C LED array reaches every corner of the chamber — including nipples and valves.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🍼</div>
+        <div class="feature-card__title">Gentler on Glass Bottles</div>
+        <div class="feature-card__body">No steam stress, no thermal expansion. Perfect for borosilicate glass and silicone — your premium bottles last longer with gentler care.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">⚡</div>
+        <div class="feature-card__title">18-Minute Quick Cycle</div>
+        <div class="feature-card__body">Ready when you are. KleanPal Air completes a full UV-C light treatment cycle in 18–30 min. KleanPal Pro takes up to 60 min with steam.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🔒</div>
+        <div class="feature-card__title">72-Hour Sealed Storage</div>
+        <div class="feature-card__body">The sealed UV-C chamber acts as a protected reservoir. Bottles stay in a sealed environment for up to 72 hours — prep ahead, sleep soundly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY KLEANPAL AIR ───────────────────────────────────────────────── -->
+<section class="section section--gray compare-section">
+  <div class="container">
+    <div class="section-header">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">COMPARE</p>
+      <h2 class="section-title">Why KleanPal Air — not just KleanPal Pro?</h2>
+      <p class="section-subtitle">Two systems, two approaches. Choose what fits your family's rhythm.</p>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Feature</th>
+          <th class="highlight">KleanPal Air · $279<br><small style="font-weight:400;font-size:11px;letter-spacing:0;">UV-C Light</small></th>
+          <th>KleanPal Pro · $299<br><small style="font-weight:400;font-size:11px;letter-spacing:0;">Steam + Wash</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature-label">Treatment method</td>
+          <td class="highlight">UV-C light, 360°</td>
+          <td>26-jet steam spray</td>
+        </tr>
+        <tr>
+          <td class="feature-label">Cycle time</td>
+          <td class="highlight">18 – 30 min</td>
+          <td>Up to 60 min</td>
+        </tr>
+        <tr>
+          <td class="feature-label">Water required</td>
+          <td class="highlight"><span class="check">✗ None</span> — dry technology</td>
+          <td>Yes — distilled water</td>
+        </tr>
+        <tr>
+          <td class="feature-label">Glass bottle safe</td>
+          <td class="highlight"><span class="check">✓</span> No thermal stress</td>
+          <td>Yes, with caution</td>
+        </tr>
+        <tr>
+          <td class="feature-label">Sealed storage</td>
+          <td class="highlight"><span class="check">✓</span> 72 hours sealed</td>
+          <td>24 hours</td>
+        </tr>
+        <tr>
+          <td class="feature-label">Washing function</td>
+          <td class="highlight"><span class="dash">—</span> UV-C light treatment only</td>
+          <td>Wash + steam treatment + dry</td>
+        </tr>
+        <tr>
+          <td class="feature-label">Care modes</td>
+          <td class="highlight">6 UV-C cycle modes</td>
+          <td>9 cleaning modes</td>
+        </tr>
+        <tr>
+          <td class="feature-label">Ideal for</td>
+          <td class="highlight">On-the-go, glass bottles, quick top-up, overnight prep</td>
+          <td>Daily deep-clean kitchen routine</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─── UV-C STORY SECTION ────────────────────────────────────────────── -->
+<section class="uvc-section">
+  <div class="container">
+    <div class="uvc-grid">
+      <div class="uvc-content">
+        <p class="uvc-label">THE SCIENCE BEHIND IT</p>
+        <h2 class="section-title">Care with<br>Pure UV-C Light</h2>
+        <p class="uvc-body">
+          UV-C light at 265 nm disrupts microbial DNA — bacteria, viruses, mold — on contact. No soap. No steam. No residue. KleanPal Air's 360° LED array floods the sealed chamber, reaching nipple tips, bottle threads, and teether crevices that steam sometimes misses.
+        </p>
+        <p class="uvc-body">
+          Because there's no water cycle, KleanPal Air starts from zero — no descaling, no tank refills, no mineral buildup. Just load, press, done.
+        </p>
+        <div class="uvc-stats">
+          <div class="stat-box">
+            <div class="stat-number">99%<sup class="footnote-ref">*</sup></div>
+            <div class="stat-label">germs killed per cycle</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">18 min</div>
+            <div class="stat-label">fastest UV-C cycle</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">72 hr</div>
+            <div class="stat-label">sealed storage duration</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">0</div>
+            <div class="stat-label">chemicals or water needed</div>
+          </div>
+        </div>
+        <p class="uvc-disclaimer">* Efficacy data based on internal laboratory testing against selected bacteria and viruses per IEC 62471 RG1 test protocols. Results may vary. Designed to meet CE marking requirements. Not a medical device.</p>
+      </div>
+      <div>
+        <img
+          class="uvc-image"
+          src="images/F-01-bottle-compatibility.jpeg"
+          alt="Momcozy KleanPal Air UV-C cabinet interior — fits glass bottles, teether parts, and feeding essentials">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── UNIVERSAL COMPATIBILITY ──────────────────────────────────────── -->
+<section class="section section--gray">
+  <div class="container">
+    <div class="section-header">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">FITS WHAT YOU USE</p>
+      <h2 class="section-title">Universal Compatibility</h2>
+      <p class="section-subtitle">One chamber. Every essential. KleanPal Air cares for the full feeding ecosystem.</p>
+    </div>
+    <div class="compat-grid">
+      <div class="compat-item">
+        <div class="compat-item__icon">🍼</div>
+        <div class="compat-item__name">Glass Bottles</div>
+        <div class="compat-item__sub">Standard + Wide-neck</div>
+      </div>
+      <div class="compat-item">
+        <div class="compat-item__icon">🍼</div>
+        <div class="compat-item__name">Plastic Bottles</div>
+        <div class="compat-item__sub">All BPA-free varieties</div>
+      </div>
+      <div class="compat-item">
+        <div class="compat-item__icon">🤱</div>
+        <div class="compat-item__name">Pump Parts</div>
+        <div class="compat-item__sub">Flanges, valves, tubing connectors</div>
+      </div>
+      <div class="compat-item">
+        <div class="compat-item__icon">🦷</div>
+        <div class="compat-item__name">Teethers</div>
+        <div class="compat-item__sub">Silicone + rubber</div>
+      </div>
+      <div class="compat-item">
+        <div class="compat-item__icon">🍴</div>
+        <div class="compat-item__name">Pacifiers & Spoons</div>
+        <div class="compat-item__sub">Small feeding accessories</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 6 UV-C CYCLE MODES ────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">INTELLIGENT CYCLES</p>
+      <h2 class="section-title">6 UV-C Care Modes</h2>
+      <p class="section-subtitle">The right cycle for every moment in your day — from morning prep to overnight sealed care.</p>
+    </div>
+    <div class="modes-grid">
+      <div class="mode-card">
+        <div class="mode-number">Mode 01</div>
+        <div class="mode-title">Quick Care</div>
+        <div class="mode-duration">18 MIN</div>
+        <div class="mode-desc">Full-chamber 360° UV-C burst. Ideal for a single bottle between feeds. Fast, waterless, ready fast.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-number">Mode 02</div>
+        <div class="mode-title">Deep Care</div>
+        <div class="mode-duration">30 MIN</div>
+        <div class="mode-desc">Extended UV-C exposure for full loads — up to 4 bottles + accessories. Maximum kill rate.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-number">Mode 03</div>
+        <div class="mode-title">Care + Dry</div>
+        <div class="mode-duration">45 MIN</div>
+        <div class="mode-desc">UV-C cycle followed by warm-air drying. Bottles come out clean and fully dry.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-number">Mode 04</div>
+        <div class="mode-title">Dry Only</div>
+        <div class="mode-duration">20 MIN</div>
+        <div class="mode-desc">Gentle warm-air drying without UV-C. For bottles you've just hand-washed and want to dry in the sealed chamber.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-number">Mode 05</div>
+        <div class="mode-title">Sealed Storage</div>
+        <div class="mode-duration">UP TO 72 HR</div>
+        <div class="mode-desc">Sealed chamber hold after a completed cycle. Periodic UV-C pulses maintain a sealed environment. Bottles ready when you are.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-number">Mode 06</div>
+        <div class="mode-title">Eco Cycle</div>
+        <div class="mode-duration">25 MIN</div>
+        <div class="mode-desc">Lower-power UV-C at reduced wattage. 30% less energy for everyday top-up care on already-clean items.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BRAND STORY ────────────────────────────────────────────────────── -->
+<section class="story-section section--gray">
+  <div class="container">
+    <div class="story-grid">
+      <img
+        class="story-image"
+        src="images/L-01-mexican-mom-kitchen.jpeg"
+        alt="A morning with Momcozy KleanPal Air on the kitchen counter — gentle UV-C care for premium bottles">
+      <div class="story-content">
+        <p class="story-label">THE MOMCOZY DIFFERENCE</p>
+        <h2 class="section-title">Designed by moms, for every kind of mom</h2>
+        <p class="story-body">
+          As a second-time mom, you know the drill: the 3 a.m. scramble, the bag of pump parts at the office, the question — <strong>is this actually clean?</strong> The first time around, steam worked fine. But when you switched to borosilicate glass, steam started feeling like overkill. Heat, pressure, 60 minutes, descaling once a week.
+        </p>
+        <p class="story-body">
+          KleanPal Air was built for the mom who's done compromising. <strong>No water. No heat. No wondering.</strong> A 360° UV-C chamber that completes a full care cycle in 18 minutes and holds the sealed chamber for 72 hours — so bottles prepped at 11 p.m. are still ready at 6 a.m.
+        </p>
+        <p class="story-body">
+          Whether you're crunchy, science-forward, or just trying to get through Tuesday — <strong>Momcozy has 4.5 million moms behind this design</strong>. KleanPal Air is the natural evolution of the Pro: same trust, less friction, UV-C precision.
+        </p>
+        <p style="font-size:13px;color:var(--text-secondary);font-style:italic;border-left:3px solid var(--accent);padding-left:14px;">
+          "We built KleanPal Air because the cleanest bottle shouldn't come at the cost of your 20 spare minutes." — Momcozy Design Team
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SPECS SHEET ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header" style="text-align:left;margin-bottom:32px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">TECHNICAL SPECS</p>
+      <h2 class="section-title">Product Specifications</h2>
+    </div>
+    <table class="specs-table">
+      <tbody>
+        <tr><td>Product Name</td><td>Momcozy KleanPal Air UV-C Care Cabinet + Dryer</td></tr>
+        <tr><td>Model</td><td>KPA-001</td></tr>
+        <tr><td>Treatment Method</td><td>UV-C LED, 265 nm, 360° chamber array</td></tr>
+        <tr><td>Cycle Modes</td><td>6 UV-C care modes (Quick / Deep / Care+Dry / Dry Only / Sealed Storage / Eco)</td></tr>
+        <tr><td>Fastest Cycle</td><td>18 minutes (Quick Care)</td></tr>
+        <tr><td>Sealed Storage</td><td>Up to 72 hours (sealed chamber with periodic UV-C refresh)</td></tr>
+        <tr><td>Capacity</td><td>Up to 4 standard bottles + accessories simultaneously</td></tr>
+        <tr><td>Chamber Material</td><td>304/316 stainless steel interior</td></tr>
+        <tr><td>Compatible Items</td><td>Glass & plastic bottles, pump flanges, valves, teethers, pacifiers, small feeding utensils</td></tr>
+        <tr><td>Water Requirement</td><td>None — fully dry UV-C technology</td></tr>
+        <tr><td>Power</td><td>AC 100-240V ~ 50/60 Hz (dual-plug adapter included)</td></tr>
+        <tr><td>UV-C Safety</td><td>Child-lock door interlock — UV-C auto-off on open. IEC 62471 Risk Group 1</td></tr>
+        <tr><td>Certifications</td><td>CE marked · IEC 62471 RG1</td></tr>
+        <tr><td>Dimensions</td><td>32 × 28 × 34 cm (L × W × H)</td></tr>
+        <tr><td>Weight</td><td>3.4 kg</td></tr>
+        <tr><td>Warranty</td><td>1-year limited warranty (see Limited Warranty document P1-02)</td></tr>
+        <tr><td>Price</td><td>$279.00 USD</td></tr>
+      </tbody>
+    </table>
+    <div class="compliance-bar">
+      <div class="compliance-badge">
+        <span class="compliance-badge__icon">✅</span>
+        CE Marked
+      </div>
+      <div class="compliance-badge">
+        <span class="compliance-badge__icon">✅</span>
+        IEC 62471 Risk Group 1
+      </div>
+      <div class="compliance-badge">
+        <span class="compliance-badge__icon">✅</span>
+        Child-Lock Door Interlock
+      </div>
+      <div class="compliance-badge">
+        <span class="compliance-badge__icon">✅</span>
+        304/316 Stainless Interior
+      </div>
+      <div class="compliance-badge">
+        <span class="compliance-badge__icon">✅</span>
+        Dual-Plug (US + EU) Included
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--text-secondary);margin-top:16px;line-height:1.6;">
+      This product is designed to meet IEC 62471 Risk Group 1 (RG1) safety requirements and carries CE marking for European markets. UV-C exposure is automatically disabled when the chamber door is opened (child-lock interlock). Not intended as a medical device. Does not replace hand-washing prior to sterilization. Efficacy claims based on internal lab testing.
+    </p>
+  </div>
+</section>
+
+<!-- ─── WARRANTY BANNER ───────────────────────────────────────────────── -->
+<section class="warranty-banner">
+  <div class="container">
+    <div class="warranty-banner__inner">
+      <div class="warranty-text">
+        <h3>1-Year Limited Warranty · Included</h3>
+        <p>Full coverage on defects in materials and workmanship. Momcozy stands behind every KleanPal Air. See full warranty terms (document SOP-B-P1-02) for coverage details, exclusions, and how to file a claim.</p>
+      </div>
+      <button class="btn-warranty">View Warranty Terms</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CUSTOMER REVIEWS ──────────────────────────────────────────────── -->
+<section class="reviews-section">
+  <div class="container">
+    <div class="reviews-header">
+      <div class="reviews-aggregate">
+        <div class="reviews-aggregate__score">4.9</div>
+        <div class="stars">★★★★★</div>
+        <div class="reviews-aggregate__count">Based on 0 reviews &nbsp; <span class="new-badge">NEW</span></div>
+      </div>
+      <button class="btn-review">Write a Review</button>
+    </div>
+    <div class="review-placeholder">
+      <p>KleanPal Air just launched. Be the first mom to share your experience — your review helps 4.5 million Momcozy families make smarter choices.</p>
+      <button class="btn-review">Be the First to Review</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER TRUST BAND ─────────────────────────────────────────────── -->
+<div class="footer-trust">
+  Trusted by 4.5 Million Moms Worldwide &nbsp;·&nbsp; Rated #1 Baby Feeding Brand 2024 &nbsp;·&nbsp; 30-Day Returns &nbsp;·&nbsp; Ships from US
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-name">mom<span>cozy</span></div>
+        <p class="footer__brand-desc">
+          Momcozy designs products that support every stage of motherhood — from pregnancy to postpartum, pumping to feeding. Trusted by 4.5 million moms in 50+ countries.
+        </p>
+        <div class="footer__subscribe">
+          <input type="email" placeholder="Your email address">
+          <button>Subscribe</button>
+        </div>
+        <p class="footer__disclaimer">
+          By subscribing you agree to receive marketing emails from Momcozy. Unsubscribe at any time. See Privacy Policy for details. US customers only. Must be 18+ to subscribe.
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Pregnancy</a></li>
+          <li><a href="#">Breast Pumps</a></li>
+          <li><a href="#">Baby Feeding</a></li>
+          <li><a href="#">Bottle Care</a></li>
+          <li><a href="#">Bundle Deals</a></li>
+          <li><a href="#">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Certifications</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Track My Order</a></li>
+          <li><a href="#">Returns & Warranty</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Product Manuals</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Momcozy. All rights reserved.</span>
+      <div class="footer__social">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+        <a href="#">Pinterest</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:16px;line-height:1.6;">
+      KleanPal Air is designed to meet IEC 62471 Risk Group 1 safety requirements and is CE marked for European markets. It is not a medical device and does not carry FDA clearance or medical-grade certification. Sterilization efficacy claims are based on internal laboratory testing. UV-C exposure is disabled when the door is open (child-lock interlock). Always wash items before sterilizing. Momcozy, KleanPal, and KleanPal Air are trademarks of Momcozy. Prices shown in USD. Specifications subject to change.
+    </p>
+  </div>
+</footer>
+
+<!-- ─── Gallery Swap Script ────────────────────────────────────────────── -->
+<script>
+  function swapHero(el, src, alt) {
+    document.getElementById('hero-main').src = src;
+    document.getElementById('hero-main').alt = alt;
+    document.querySelectorAll('.hero__thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

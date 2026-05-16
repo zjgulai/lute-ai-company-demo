@@ -1,0 +1,15 @@
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Build artifacts (无 build 流程，但保留以防 M5 加 esbuild)
+node_modules/
+dist/
+build/
+
+# Local
+.env
+.env.local

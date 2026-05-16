@@ -1,0 +1,1513 @@
+{
+  "entities": [
+    {
+      "name": "agent_sisyphus",
+      "entityType": "agent",
+      "observations": [
+        "路特 AI 公司 COO，OpenCode 主编排者",
+        "2026-05-14 完成全量 184 agent 部署"
+      ]
+    },
+    {
+      "name": "eng_20260514_org-setup",
+      "entityType": "engagement",
+      "observations": [
+        "与路特一起完成 路特AI公司 v0.1 组织设计与部署",
+        "Phase 1-5 全部跑通；未做任何 git commit"
+      ]
+    },
+    {
+      "name": "lesson_explicit-no-deletion",
+      "entityType": "lesson",
+      "observations": [
+        "上游仓库已经精炼，不要为了删而删；通过分层部署而非物理删除实现精简",
+        "路特 决策时选择保留原貌"
+      ]
+    },
+    {
+      "name": "dec_20260514_pick-knowledge-graph",
+      "entityType": "decision",
+      "observations": [
+        "从 server-memory / mcp-knowledge-graph / 自建三选一",
+        "路特 选 mcp-knowledge-graph@1.3.2 因 entity-relation 模型更适合组织演化"
+      ]
+    },
+    {
+      "name": "project_baby-sterilizer",
+      "entityType": "project",
+      "observations": [
+        "母婴跨境 DTC 第一个真实试验场项目",
+        "北美 + 欧洲",
+        "全 5 细分品类扫描",
+        "2026-05-15 路特 启动 SOP-A",
+        "2026-05-15 路特 正式升格为 v0.2 上线后首个真实业务 = 路特 AI 公司 v0.2 首业务里程碑",
+        "SOP-A 选品阶段完结：GO 机会 #1 高端密闭 UV-C 消毒柜（sku_concept_uvc-premium）",
+        "2026-05-15 进入 SOP-B 上架阶段（7-14 天节奏），起点：Brand Guardian 品牌包装 + 故事线 brief",
+        "当前状态：SOP-B Step 1 in_progress（品牌包装起草中）",
+        "后续 Step 2-6：多族裔模特图 prompt → 图片生成 → Shopify 上架 → 合规扫描 → 上线评测"
+      ]
+    },
+    {
+      "name": "eng_20260515_baby-sterilizer-selection",
+      "entityType": "engagement",
+      "observations": [
+        "v0.2 上线后第一次跑完整 SOP-A 选品上新流程",
+        "实际产出：5 大数据点 + 3 个机会推荐 + 1 个强 GO 建议（机会 #1：高端密闭 UV-C）",
+        "状态：completed",
+        "持续时间：~30 min wall-clock（含 librarian 7x 失败重试）",
+        "数据完整度：4/5（Reddit 维度被 Exa 限流，用替代源覆盖）"
+      ]
+    },
+    {
+      "name": "sku_concept_uvc-premium",
+      "entityType": "sku",
+      "observations": [
+        "概念SKU：高端密闭 UV-C 消毒柜",
+        "建议零售 $129-149",
+        "FOB ~$30-40",
+        "目标毛利 55-65%",
+        "需 IEC 62471 RG1 + UL + CE",
+        "USP：无毒/食品级不锈钢/兼容玻璃奶瓶/童锁/双标插头",
+        "目标人群：crunchy moms 二胎升级用户"
+      ]
+    },
+    {
+      "name": "sku_concept_steam-hepa",
+      "entityType": "sku",
+      "observations": [
+        "概念SKU：蒸汽+HEPA 烘干一体",
+        "建议零售 $79-99",
+        "进入难度中",
+        "red ocean — Baby Brezza/Papablic/Momcozy 已成熟",
+        "建议：v2 阶段做品牌延伸而非首发"
+      ]
+    },
+    {
+      "name": "region_us",
+      "entityType": "region",
+      "observations": [
+        "占全球婴儿消毒器市场 31.6%（2024）= $47.7M",
+        "CAGR 5.2%",
+        "UV-C 子赛道增速冠军",
+        "FDA 监管 21 CFR 1000-1004：UV 产品强制 IEC 62471",
+        "CPSIA 强制儿童产品检测",
+        "UL/ETL 认证强制"
+      ]
+    },
+    {
+      "name": "region_eu",
+      "entityType": "region",
+      "observations": [
+        "占全球 ~26%",
+        "CE + EN 60335-2-65 家电附条款 + EN 62471 UV 安全",
+        "REACH/RoHS 化学限制",
+        "GDPR 仅当带 IoT 触发",
+        "欧洲市场规模数据公开口径混乱待二次验证"
+      ]
+    },
+    {
+      "name": "lesson_uv-handheld-trap",
+      "entityType": "lesson",
+      "observations": [
+        "手持 UV 棒/便携 UV 是召回重灾区",
+        "2025-08 BigTree、2026-04 Uvlizer 480K 台均被 FDA Class 2 召回",
+        "结论：婴儿消毒器赛道里手持 UV 一律不做",
+        "密闭式 UV-C + IEC 62471 RG1 才是合规生意"
+      ]
+    },
+    {
+      "name": "lesson_compliance-as-moat",
+      "entityType": "lesson",
+      "observations": [
+        "UV-C 类目认证投入 $15-25K，劝退小白卖家",
+        "但同时是护城河",
+        "Top 10 BSR 里 UV 真选手只有 Papablic 一家做对",
+        "合规即心智"
+      ]
+    },
+    {
+      "name": "lesson_pain-point-water-droplet",
+      "entityType": "lesson",
+      "observations": [
+        "妈妈论坛最高频抱怨：烘干后底部水珠（Baby Brezza 标准款典型）",
+        "解决路径：HEPA 过滤 + 强风循环",
+        "可作为 hero feature 切入红海蒸汽赛道"
+      ]
+    },
+    {
+      "name": "lesson_librarian-model-chain-broken",
+      "entityType": "lesson",
+      "observations": [
+        "oh-my-openagent.json 把 11 个 OMO subagent 全配成 opencode/gpt-5-nano 但该 model id 不存在",
+        "fallback chain 7 个模型连续 6 个失败，最后落到 nano 但返回空响应",
+        "影响：本次 SOP-A 4 个 background librarian 全部失败，被迫主 agent 自己抓数据",
+        "v0.3 修复：把 librarian/explore/oracle/metis/momus 的 model 改为 cliproxy/claude-sonnet-4.6 或类似可用 model id",
+        "[CROSS-DEPT-LESSON-CANDIDATE] 涉及组织级配置，待 Sisyphus 升格为正式 cross-dept lesson"
+      ]
+    },
+    {
+      "name": "dec_20260515_recommend-uvc-premium",
+      "entityType": "decision",
+      "observations": [
+        "建议路特 GO 机会 #1（高端密闭 UV-C $129-149）",
+        "理由：UV 子赛道真空带 + 合规护城河 + crunchy moms 心智未饱和",
+        "本决策为方向性 GO，最终 GO/NO-GO 留给路特 在 6 周后看完工厂打样+合规预审+brand brief 后拍板",
+        "alternative considered：机会 #2 蒸汽+HEPA red ocean，劝退；机会 #3 便携 UV 召回风险高，劝退"
+      ]
+    },
+    {
+      "name": "agent_omo-config_v0",
+      "entityType": "agent",
+      "observations": [
+        "OMO subagent 配置文件 ~/.config/opencode/oh-my-openagent.json",
+        "创建于初始部署时（2026-05-13 之前）",
+        "10 个 agent + 8 个 category 全配为 opencode/gpt-5-nano",
+        "缺陷：provider prefix 错配（应为 cliproxy/）+ gpt-5-nano 在 cliproxy 注册但 OMO 用 opencode/ 前缀路由失败",
+        "影响：所有 background subagent 调用全部失败 7 次重试落到 nano 返回空响应",
+        "已退役 2026-05-15"
+      ]
+    },
+    {
+      "name": "agent_omo-config_v1",
+      "entityType": "agent",
+      "observations": [
+        "OMO subagent 配置文件 v1",
+        "落地日 2026-05-15",
+        "10 agent + 8 category 全部改为 cliproxy/claude-sonnet-4.6",
+        "理由：路特 APPROVED 简单统一方案；sonnet-4.6 质量足够；后续可一键替换",
+        "验证：cliproxy 端点 curl 测试 claude-haiku-4.5 返回正常 → cliproxy 路由活的",
+        "备份：~/.config/opencode/oh-my-openagent.json.bak.v0.1778831122"
+      ]
+    },
+    {
+      "name": "dec_20260515_omo-config-fix",
+      "entityType": "decision",
+      "observations": [
+        "决策：OMO 全部 18 entry 改 cliproxy/claude-sonnet-4.6",
+        "Sisyphus 提案 3 级分层 vs 全 sonnet vs 全 haiku vs 路特指定",
+        "路特 选 全 sonnet（简单、质量够、便于一键调优）",
+        "覆盖：lesson_librarian-model-chain-broken"
+      ]
+    },
+    {
+      "name": "eng_20260515_omo-model-chain-fix",
+      "entityType": "engagement",
+      "observations": [
+        "engagement 日期：2026-05-15",
+        "engagement 类型：基础设施修复（v0.2 自进化机制首次端到端跑通）",
+        "起因：选品 SOP-A 跑 baby-sterilizer-selection 时 4 个 librarian 全部超时 / 落 nano",
+        "5 步执行：① 诊断 ② 路特 APPROVED ③ 改 18 处 model id + 装 plugin ④ bg_a1f5f76f 验证 10s pass ⑤ _PENDING_UPGRADES PROPOSED→APPLIED + commit + push",
+        "跨会话：诊断+落地在 ses_1d6855dedffeKQPYz1Gr9yiKWr，验证+APPLIED 在 ses_1d4cbe986ffeOMQkwb0ddYzCw2",
+        "意义：v0.2 _PENDING_UPGRADES.md 状态机首次完整跑通 PROPOSED→APPROVED→APPLIED"
+      ]
+    },
+    {
+      "name": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "entityType": "engagement",
+      "observations": [
+        "engagement 日期：2026-05-15",
+        "主题：v0.2 自进化机制首次端到端跑通之后的首次正式 /retro",
+        "任务目标：把 v0.2 部署期间所有未沉淀的元决策补上；验证 /retro 命令本身能跑通",
+        "状态：completed",
+        "调用者：Sisyphus（C-Suite 全权）",
+        "本次 retro 覆盖三个会话：ses_1d6855dedffeKQPYz1Gr9yiKWr + ses_1d4cbe986ffeOMQkwb0ddYzCw2 + 当前会话",
+        "产出：补 4 个 v0.2 设计决策 entity + 2 个元 lesson + 1 个 retro 本体 engagement"
+      ]
+    },
+    {
+      "name": "dec_20260514_org-12-dept-rerank-for-baby-dtc",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-14（v0.2 设计阶段）",
+        "决策内容：v0.1 是通用 SaaS 架构，v0.2 重新按母婴跨境 DTC 业务本质重选 12 个部门负责人（7 个换人）",
+        "业务三轴：内容营销 Growth Hacker · 付费投放 Paid Social Strategist · 跨境·专业 Cross-Border E-Commerce Specialist · 支持 Legal Compliance Checker",
+        "未选探主要换人：CMO->Growth Hacker、PPC->Paid Social、Project Coordinator->Project Shepherd、Test Lead->Reality Checker、Lead Designer->Brand Guardian、Lead PM->Trend Researcher、R&D Lead->Inclusive Visuals Specialist",
+        "决策人：路特（CEO）APPROVED、Sisyphus（COO）提案",
+        "备份：v0.1 负责人在 AGENTS.v0.1.md",
+        "影响面：184 员工、未来所有 SOP 调度、memory 默认写入主管"
+      ]
+    },
+    {
+      "name": "dec_20260514_memory-acl-gated-by-namespace",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-14",
+        "决策内容：v0.1 memory 全开放 → v0.2 改为守门式 ACL（按 namespace + 角色）",
+        "ACL 三层：C-Suite 全权 · 部门负责人任意写但不能 forget/unlink/remove_facts · 普通员工只能写自己 namespace",
+        "补充机制：普通员工如需写跨部门 lesson/dec → 改用 [CROSS-DEPT-LESSON-CANDIDATE] 标记塑进 engagement observations，由 Sisyphus 下次 retro 升格",
+        "技术实现：opencode 本身没有 tool 级别 ACL，靠 AGENTS.md + /retro prompt 强制，违反在下次 retro 提示路特",
+        "决策人：路特 APPROVED"
+      ]
+    },
+    {
+      "name": "dec_20260514_sisyphus-active-retro-suggestion",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-14",
+        "决策内容：Sisyphus 在每个 session 最后一个 turn 自检 5 个信号，任一命中则追加一行 💡 提示可跱 /retro",
+        "5 个信号：①文件落盘 ②git 操作 ③调用≥3 个不同 agent ④用户说 done/finished/完成/下班/该睡了 ⑤跑完 SOP",
+        "防作弊：单 session 最多 1 次提示，用户说 先不 后本 session 不再提",
+        "验证接入点：本 session 产生了多文件落盘 + git push + ≥3 个 aim-memory 调用 + 路特手动跱 /retro → 本决策验证兴起"
+      ]
+    },
+    {
+      "name": "dec_20260514_agents-git-to-private-remote",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-14",
+        "决策内容：~/.config/opencode/agents/ 单独 git 化，远端推到私有仓 zjgulai/AI_Company_Person",
+        "与上游 msitarzewski/agency-agents 完全解耦：不 push、不 PR、不 sync",
+        "commit 记事件规范：init / agent(<slug>) / org / meta",
+        "落地动作：Sisyphus 在 [APPROVED]->[APPLIED] 时自动 commit + push",
+        "本次 retro 跳变：f6f9016 是本决策的本体演示，已 push",
+        "决策人：路特 APPROVED"
+      ]
+    },
+    {
+      "name": "lesson_retro-itself-as-engagement",
+      "entityType": "lesson",
+      "observations": [
+        "retro 本身必须作为 engagement 写入 memory",
+        "原因：/retro 是 Sisyphus 进行的「元作业」，但同样是可验证、可查询、可复制的决策点",
+        "不写会造成：retro 本身的质量不可追溯；后来 audit /retro 跳了哪些 step 干了哪些事都丢",
+        "发现时机：本次执行 /retro 时 Sisyphus 发现 v0.2 部署与 v0.1→v0.2 跳变本身在会话历史里，从未入 memory，被迫补补补",
+        "可复产艰难：一个 engagement 写入不同会话 → 跟踪难 → 下次跱 /retro 必须考虑全记走序列",
+        "适用场景：SOP-F 重大事故复盘、季度 OKR 复盘等全部 retro 场景"
+      ]
+    },
+    {
+      "name": "lesson_blast-radius-bypass-3-engagement-threshold",
+      "entityType": "lesson",
+      "observations": [
+        "_PENDING_UPGRADES.md 默认阈值 ≥3 engagement 才能升格到 PROPOSED",
+        "但某些 lesson 的影响面足够大（如 OMO model chain broken 影响 10 个 subagent + 多个 SOP），不能等 ≥3 才修，需发严重性站着破例",
+        "破例触发条件 v0.2 补充：single lesson 影响 ≥10 个 downstream entity OR 引发 P0/P1 OR 阻塞主 SOP",
+        "本 lesson 被验证：lesson_librarian-model-chain-broken 在只有 1 个 engagement 时被破例推到 PROPOSED、随后 APPLIED，验证破例规则能跰",
+        "动作项：下次更新 _PENDING_UPGRADES.md 时把该破例规则写进文件头部说明"
+      ]
+    },
+    {
+      "name": "dec_20260515_region-context-lazy-split-policy",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-15",
+        "决策内容：v0.2 上线不启 --context us/eu 区域分库，续用 master 库（memory.jsonl）。仅当出现首次「区域规则冲突」事件时才启用 lazy split。",
+        "冲突识别标准（3 个可操作信号）：① 同一 SKU/业务在 region_us 和 region_eu 上规则相反（如一个 FDA 允许、一个 CE 禁止）② lesson 在合规子项上被写三次跨区域以上③ 路特明确说「合规能提醒冲突了」",
+        "启用动作：Sisyphus 主动跱 aim_memory_store 多版本，把现有 master 中 region_us / region_eu 以及区域依赖的 SKU/lesson 快照另存到 memory-us.jsonl / memory-eu.jsonl。master 保留跨区域查询能力。",
+        "拒绝 alternative #1：v0.2 上线就启 us/eu。理由：现阶段只有 1 个 project（baby-sterilizer），区域规则不冲突。过早 split 会制造跨库 query 复杂度，负担 > 收益。",
+        "拒绝 alternative #2：三库同写（master+us+eu）。理由：写入多路维护贵。",
+        "决策人：路特（CEO）APPROVED 在 2026-05-15 turn",
+        "提案人：Sisyphus（COO）",
+        "验证动作：本决策本身写进 master 库 → 未来如果 split 启动，本决策在 master 作为跨区域决策保留"
+      ]
+    },
+    {
+      "name": "dec_20260515_rd-no-split-keep-31",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-15",
+        "决策内容：R&D 实验室不拆，保持 31 人（academic 5 + game-development 20 + spatial-computing 6）、部门主管 Inclusive Visuals Specialist 不变",
+        "拒绝 alternative：拆 Game Studio 为第 13 部门。理由：现阶段母婴 DTC 业务 SOP-A/B/C/D/E/F 都不需要 game-dev；拆出增加组织管理开销但不提高交付能力",
+        "R&D 定位调整：从 v0.2 「能力储备」加上明确「上台触发条件」：如未来 1) AR 试穿 / AR 拼图 / 小游戏裂变被 Growth Hacker 验证为 P0；2) 学龄前儿童内容 IP 被路特 立项；任一条件成立再重评拆分",
+        "负面担忧：R&D 31 人看起来 inflated 但下可调用方式是 @ 单 agent，不产生多余联动成本",
+        "决策人：路特（CEO）需衡认（本决策为 Sisyphus 推荐 + 路特 需在下次对话明确说「同意不拆」才算最终 APPROVED）",
+        "提案人：Sisyphus（COO）",
+        "补充动作：AGENTS.md §六 第 3 条待决以本决策应答后则跨除，同时§2.2 R&D 行可补一句「上台触发条件」",
+        "2026-05-15 路特在对话中明确表达「同意」 → 决策状态从 Sisyphus 推荐推进为路特 APPROVED",
+        "上台触发条件依然生效：仅当 AR 试穿 / AR 拼图 / 小游戏裂变被 Growth Hacker 验证为 P0 OR 学龄前儿童内容 IP 被路特 立项 任一成立才重评拆分",
+        "后续动作：AGENTS.md §六 第 3 条「R&D 实验室 31 人是否拆」样本已应答，可从 v0.2 §六 跨除"
+      ]
+    },
+    {
+      "name": "lesson_brand-name-must-clear-fda-claim-zone",
+      "entityType": "lesson",
+      "observations": [
+        "品牌名选型、品牌承诺、首图脚本都不得勾引 FDA/EPA 合规雷区",
+        "5 个高频雷区词汇：sterilization、sanitize、kills 99.9%、medical-grade、FDA certified（未走 510K）",
+        "替代安全词汇：UV purification · inactivate pathogens · IEC 62471 RG1 tested · designed under FDA 21 CFR 1000 framework",
+        "适用：未来一切母婴 / 录仪 × 类 UV-C、紫外、法学产品品牌品名及 Hero Shot 脚本都需过本 lesson 检查",
+        "产出： SOP-B Step 1 Brand Guardian brief 5 组 ToV 对照表（详见 项目交付文件）"
+      ]
+    },
+    {
+      "name": "dec_20260515_sop-b-step1-brand-uvc-premium",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-15",
+        "决策内容：SOP-B Step 1 Brand Guardian 交付主推 Seren 品牌名（威尔士语「星星」+ serene 谐音），品牌承诺「密闭的光，开放的安心」",
+        "选型逻辑：Seren 在 crunchy moms 共鸣度最高、serenbaby.com 可注册、跨语言零雷",
+        "未选 alternative：Luma（luma.com 被占，需 lumababy/lumapure）、Verdel（发音在 TikTok 口播有阻力）",
+        "下一棒：Inclusive Visuals Specialist 接三张 Hero Shot 脚本（A 清晨仪式 / B 双胎家庭台面 / C 递交前一秒）转多族裔模特图 prompt",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/【SOP-B-Step1】品牌包装brief-UVC-Premium.md",
+        "质量：1m 53s 后台跰通，2400+ 字 × 7 节、ToV 对照 5 组含 FDA 法规依据、Hero Shot 3 个脚本含多族裔覆盖要求"
+      ]
+    },
+    {
+      "name": "dec_20260515_t5-nurtureloop-launch-approved",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-15",
+        "决策内容：T5 母婴跨境经营分析 + 归因 Agent 产品立项 APPROVED",
+        "产品名：NurtureLoop（哺育闭环） - 路特从两个备选（LutroMetric vs NurtureLoop）中拍板",
+        "路特 拍板四问：① 成本指标 MVP Day 1 优先接入 ② 产品名 NurtureLoop ③ 考虑 SaaS 化（v2.0 / M8）④ MVP 给精美 dashboard（不是纯对话 Agent）",
+        "架构调整：双前端（对话 UI + 精美 Dashboard）、执行层从 5 个 sub-agent 加到 6 个（新增 CostAttributionAgent）",
+        "资源调整：原 1 BE+1 DE+1 AI+Sisyphus 加上 1 Frontend Developer + UI Designer（dashboard 新需）",
+        "里程碑调整：M2 涵盖 FOB+物流+退货+平台费全套成本·M3 出 Dashboard v0·M5 出 Dashboard v1 + 动作建议卡片流·M8 SaaS 化启动",
+        "Dashboard UI 风格：与 Brand Guardian Seren 品牌色系延续（Warm Porcelain + Sage Dust + Deep Amber + Mist Blue + Warm Charcoal），避免 UV 紫色",
+        "下一步：Sisyphus 启动独立 session 跑 M1（PRD + 系统方案 + Dashboard mockup）",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/plans/【技术方案】母婴跨境经营分析与归因Agent.md（从 DRAFT v0 推进到 APPROVED v1）"
+      ]
+    },
+    {
+      "name": "project_nurtureloop",
+      "entityType": "project",
+      "observations": [
+        "v0.2 上线后第二个真实业务",
+        "定位：母婴跨境 DTC 业务经营分析 + 归因分析 Agent + 精美 Dashboard",
+        "状态：立项 APPROVED 2026-05-15，进入 M1 PRD 阶段",
+        "首个 dogfood 服务对象：project_baby-sterilizer",
+        "路径：M1->M8 SaaS 化"
+      ]
+    },
+    {
+      "name": "dec_20260515_sop-b-step2-hero-shot-ethnicity-allocation",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-15",
+        "SOP-B Step 2 Inclusive Visuals Specialist 交付：Hero Shot 三张图的族裔分配决定",
+        "Hero A：增加释 = 増西哥裔美国人第二代移民（30-35 岁）。选择理由：加州/德州/伊利诺伊州城市中产是有机育儿购买力最强拉丁裔细分群体；二代同时持「融入主流」与「家庭传统」双重身份；不选中南美（哥伦比亚/秘鲁）因点达效率低；不选欧洲背景拉丁裔因主战场是北美",
+        "Hero B：无模特纯产品。选择理由：欧洲市场（德/法/北欧）审美侧重品质感，「无模特=客观/诚实」信任度高",
+        "Hero C：越南裔美国人 1.5 代（32-38 岁）。选择理由：越南裔 = 北美增速最快高净值东南亚母婴消费群 + TikTok/Instagram 母婴 micro-influencer 生态成熟；暖橄榄色肤与 Warm Porcelain+Sage Dust 品牌色互补；不选中大陆裔（偏好权威背书调不合 lifestyle TikTok）；不选韩裔（K-beauty 过度使用运动）；不选日裔（总量小）",
+        "族裔覆盖验证：拉丁裔·东南亚裔·无模特 = 三者口互不同，满足 Brand Guardian 三句覆盖要求",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/【SOP-B-Step2】Hero-Shot-Prompts-UVC-Premium.md",
+        "下一棒：Image Prompt Engineer 接根据§5 模型分配表跑 Imagen 4 / FLUX.1 / MJ v7 / SDXL 生图；batch 后走 6 项合规自查清单 → 转 Brand Guardian + Legal Compliance Checker 双审"
+      ]
+    },
+    {
+      "name": "lesson_ethnicity-specificity-beats-generic-labels",
+      "entityType": "lesson",
+      "observations": [
+        "AI 默认对「Asian/Latina/Black」这类泛族裔标签输出创足刻板印象（拉丁裔=深色黄色剧妆容·亚裔=千篇一律平脸）",
+        "解决方法：提示词必须具体到「世代 + 地区 + 肤色 undertone + 发质 + 穿着 + 生活习惯」级别，例：mestiza complexion warm golden-tan undertone · second-generation Mexican-American · 1.5-generation Vietnamese-American warm olive cool undertone",
+        "反例：「Asian woman」生成必被默认护身「肤色偏白深棕双眼皮」；改「Vietnamese 1.5-gen warm olive」后质量跱变",
+        "适用：所有未来母婴 / Lifestyle / DTC 产品 hero shot 生成；不仅 Inclusive Visuals 需要，Brand Guardian / Image Prompt Engineer 都按本习体检查提示",
+        "产出：SOP-B Step 2 交付中三个族裔选型都含「世代 + 地区 + 肤色 undertone + 发质」多维度描述，是本习体的实例化"
+      ]
+    },
+    {
+      "name": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-15",
+        "SOP-B Step 3 Image Prompt Engineer 实际生图交付",
+        "调用模型：gemini-3.1-flash-image-preview（via cliproxy /v1/chat/completions），cliproxy 后端实为 Google Gemini 3.1 Flash Image",
+        "生图总数：6 张（3 Hero Shot × 2 candidates），并行 6 worker，总耗时 31 秒",
+        "首轮 GO 率：3/6 = 50%，但每张 Hero 都能找到至少一张 GO",
+        "最终推荐：A-c2 （墔西哥裔妈妈 4:5 生活方式） + B-c2（产品俰拍 5:4） + C-c1（越南裔双手 9:16）",
+        "NEEDS_RETRY：A-c1 机身光泽偏镜面；B-c1 仰角 ~40°（要 15°）+ 书名可读+琉珀罐 label 可读；C-c2 产品错误（玻璃罐+烤箱替代消毒柜）",
+        "比例可控验证：prompt 中明确指定「vertical 4:5 / horizontal 5:4 / vertical 9:16」误差 < 0.5%",
+        "族裔详这准确度验证：Specific to generation/region/skin undertone/hair texture 描述都能准确渲染（验证 lesson_ethnicity-specificity-beats-generic-labels）",
+        "品牌色系还原度：HEX描述（Warm Porcelain #F5F0E8 / Sage Dust #8FA68C）渲染准确",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/【SOP-B-Step3】Hero-Shot-Generated-UVC-Premium.md · 6 张 jpeg 在 sop-b/images/",
+        "下一棒：Brand Guardian + Legal Compliance Checker 双审 → UI Designer + Frontend Developer Shopify 上架"
+      ]
+    },
+    {
+      "name": "lesson_cliproxy-image-routing-discovery",
+      "entityType": "lesson",
+      "observations": [
+        "OpenCode 本身未注册图像模型（~/.config/opencode/opencode.json 里 17 个模型全是 LLM、output 只有 text）",
+        "但 cliproxy /v1/models endpoint 有两个图像模型：gpt-image-2（openai）与 gemini-3.1-flash-image-preview（google）",
+        "调用方式：直接 curl POST cliproxy /v1/chat/completions，传递 model + prompt，返回中 msg.images[0].image_url.url 包含 data:image/jpeg;base64,... ",
+        "重要发现：request model=gpt-image-2 cliproxy 实际 routing 到 Gemini（返回 model字段为 gemini.gemini-3.1-flash-image-preview）；推荐直接指名 gemini-3.1-flash-image-preview",
+        "Output 默认是 JPEG（不是 PNG），默认 16:9 横版；但 prompt 中明确表达「vertical 4:5 / horizontal 5:4 / vertical 9:16」可准确控制比例误差<0.5%",
+        "并行调用 6 任务 31 秒完成，单任务 13-31 秒、图像 500-700KB",
+        "适用：未来所有需要生图的 SOP，不需 Midjourney/FLUX/SDXL 外部帐号，cliproxy + Gemini Flash 已足够",
+        "产出：SOP-B Step 3 6 张 hero 生图验证 + Python gen.py 脚本可以復用"
+      ]
+    },
+    {
+      "name": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "entityType": "engagement",
+      "observations": [
+        "engagement 日期：2026-05-15 PT",
+        "主题：v0.2 上线首日 SOP-B Step 3 实际生图跰通，路特设计释「4 决策拍板 + 同意实际生图」不需外部 Midjourney/FLUX/SDXL 账号",
+        "任务目标：验证 OpenCode + cliproxy 是否能跰通生图路径；实际生出 3 张 Hero Shot 并逐张过 6 项合规自查",
+        "状态：completed",
+        "调用者：Sisyphus（C-Suite 全权）代 Image Prompt Engineer 人格",
+        "发现路径：① opencode models 查看 17 个模型全是 LLM（output text）② curl cliproxy /v1/models 发现后端有 gpt-image-2 + gemini-3.1-flash-image-preview ③ 直接 POST /v1/chat/completions 验证 API 到 ④ 并行 6 调用 31 秒出 6 张",
+        "限制发现：OpenCode subagent 架构本身不能直接走「生图作为 tool」，只能主 agent 手动 curl；未来可以考虑包 wrap 为 MCP server",
+        "合规验证：逐张用 look_at Vision LM 二次审查·每张 6 项合规自查代面人·首轮 GO 率 50%·每张 Hero 都能找到一张 GO",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/【SOP-B-Step3】Hero-Shot-Generated-UVC-Premium.md + sop-b/images/ 下 6 张 jpeg",
+        "git：scommit 72afa53 push 到 lute-private@lute/baby-dtc-project",
+        "本会话另集成 4 个决策拍板：T3 不拆 R&D + T5 NurtureLoop 立项 + T5 四问拍板 + SOP-B Step 2/3 连跰",
+        "重大意义：路特 AI 公司实现了「从业务选品 → 品牌 brief → 多族裔 prompt → 实际生图」全链跰通，全部在 OpenCode 会话内部完成"
+      ]
+    },
+    {
+      "name": "lesson_opencode-tool-discovery-via-api-probe",
+      "entityType": "lesson",
+      "observations": [
+        "原则：当 OpenCode 仅 list 出一套已注册能力时，不要以为这就是全部可用能力。后端代理（如 cliproxy）可能还有未注册的模型/endpoint。",
+        "验证方法：直接 curl /v1/models 查后端完整 model catalog，与 opencode.json 对比 → 差集 = 未注册但可用能力",
+        "另一个例证：v0.2 部署期间 cliproxy backend 有 gpt-image-2 + gemini-3.1-flash-image-preview 但 opencode.json 中未配。其他可能同样存在的。",
+        "凑合发现：request model 名可以 routing 到不同后端模型（gpt-image-2 请求被路由到 Gemini）。说明 cliproxy 是 routing 代理、不是透传。",
+        "适用：未来遇到「这个能力 OpenCode 不支持」类押断时，必须先 curl /v1/models 验证后端是否有、不要直接信 OpenCode 的 list",
+        "产出：SOP-B Step 3 生图验证、Python gen.py 脚本可复用"
+      ]
+    },
+    {
+      "name": "dec_20260515_sop-b-step5-legal-audit-approved-with-conditions",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-15",
+        "SOP-B Step 5 Legal Compliance Checker 交付法规终审",
+        "总评：⚠️ APPROVED WITH CONDITIONS（有条件通过）— 上线前必须完成所有 P0 修改",
+        "累计 4 P0 / 6 P1 / 5 P2 = 15 项修改动作",
+        "4 P0 致命问题：① 品牌承诺 考Zero worry考 触发 FTC §5 · ② ToV 字典 考UV purification考 触发 EPA FIFRA · ③ 考食品级不锈钢考 无认证体系·④ IEC/UL/CE 认证未取得实证前不能谎称",
+        "重大发现：Brand Guardian Step 1 原始建议的 考UV purification考 为「质量安全」替代词，但 EPA-HQ-OPP-2021-0466 明确列为 antimicrobial claim 触发词 — 原以为是安全区、实际是雷区、交叉验证后发现",
+        "主要灯口修改：UV purification → UV-C light cycle / sealed UV-C chamber / IEC 62471 RG1 validated",
+        "品牌承诺需改：Pure light. Zero worry. → Pure light. Thoughtful design. 或 Sealed light. Trusted care.",
+        "Hero C-c1 帺制修改：腽体内部可能蘸在的蓝紫色 UV 光响在 Photoshop 中移除，否则不能上架",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/【SOP-B-Step5】Legal-Compliance-Audit-UVC-Premium.md",
+        "下一棒：UI Designer 执行 P0 修改 → Reality Checker SOP-B Step 6 按 14 项清单全绿证打人需上线 GO/NO-GO 签字",
+        "报告有效期：90 天（2026-08-15 前）",
+        "2026-05-16 Sisyphus 执行 SOP-B Step 5.5：Hero C-c1 腽体 UV 紫光像素级审查出 GO",
+        "5 区域全 PASS：腽体内部、腽门内侧、奶瓶高光、手部肤色边缘、整体环境光",
+        "结论：不需 Photoshop、不需重生、可直接上架",
+        "ALT TEXT 推荐：Seren UV-C baby cabinet - removing glass bottle after completed care cycle / Seren UV-C 消毒柜 - 周期结束后取出玻璃奶瓶",
+        "P0-05 状态：RESOLVED（从 BLOCKED 推进）",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/【SOP-B-Step5.5】Hero-C-c1-UV-Light-Review.md",
+        "剩余阻塞上线 P0：P0-01/02/03/04/06 都是文档 find-and-replace 动作，可在 Step 4 上 Shopify 时一并执行"
+      ]
+    },
+    {
+      "name": "lesson_brand-tov-must-cross-validate-with-multi-regulator",
+      "entityType": "lesson",
+      "observations": [
+        "上游部门（Brand Guardian/Marketing）自以为是「安全词表」的替代词，在下游 Legal 终审中仍可能是雷区",
+        "本例：Brand Guardian 推荐「UV purification」代替「UV-C sterilization」、出发点是避免 FDA 21 CFR 801 医疗器械声明。但 EPA-HQ-OPP-2021-0466 明确列「UV purification」作为 antimicrobial claim 触发词，触发 FIFRA §3 注册义务",
+        "根本原因：Brand Guardian 只看了一个监管机构（FDA），未交叉验证另一个监管机构（EPA）亦可能有门面原则",
+        "修复机制增补：SOP-B Step 1 以后，Brand Guardian 交付 ToV 字典后·不能直接进入 Step 2/3，必须增加 Step 1.5：Legal Compliance Checker 对 ToV 交叉验证后才能转下游",
+        "适用：所有 v0.2 母婴 / UV · 健康 · 颜颜 · IoT 类产品品牌调研（股多个监管机构带着答的品名/术语金果是叭东区）",
+        "产出：SOP-B Step 5 交付报告 P0-02；v0.2 升级提议：Brand Guardian agent prompt 中加「某产品类触发多个监管部门时 ToV 字典交付前必须调 Legal Compliance Checker 应答发现隐重」",
+        "2026-05-16 路特 口头授权破例升格为 _PENDING_UPGRADES PROPOSED #2",
+        "破例依据：v0.2.1 §0 破例条件 #1 - 影响 ≥10 downstream entity（未来所有母婴/UV/健康/IoT/食品接触类品牌调研 SKU）",
+        "落地状态：agents repo commit 69024bb push 到 zjgulai/AI_Company_Person@main",
+        "下一步：路特 需在后续会话明确 PROPOSED #2 的 [APPROVED] 决议（才能走 [APPLIED] 落地修改 Brand Guardian agent prompt）",
+        "2026-05-16 被第三个 engagement/decision 引用 (dec_20260516_brand-guardian-multi-regulator-cross-validation 落地)",
+        "状态：已 APPLIED (Brand Guardian v1 → v2)，不需要再走 PROPOSED 状态机",
+        "验证 v0.2.1 §0 破例规则有效：事后 ≥3 engagement 归集使 lesson 从「破例」转「达阈」但 action already taken"
+      ]
+    },
+    {
+      "name": "dec_20260516_sop-b-step4-shopify-mockup-delivered",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16",
+        "SOP-B Step 4 UI Designer 交付 Shopify 静态 mockup（bg_8bc3b10e · 3m 50s）",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/【SOP-B-Step4】Shopify-Mockup.html (35KB · 910行)",
+        "8 section：Top Nav / Hero / Product / Story / Specs / Compliance / Warranty / Footer",
+        "P0 合规验证 ✅：'Pure light. Thoughtful design.' 出现 3 次，无 'Zero worry'；唯一 medical-grade 命中是品牌故事的否定性引用，合规",
+        "色值 ✅ 严格 5 个品牌色，零紫色；Cormorant Garamond + DM Sans；768px 响应式"
+      ]
+    },
+    {
+      "name": "dec_20260516_sop-b-p1-02-warranty-delivered",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16",
+        "SOP-B P1-02 Limited Warranty 条款交付（bg_aeb983f5 · 56s最快后台任务）",
+        "交付物：【SOP-B-P1-02】Limited-Warranty-Seren.md",
+        "保修期：2 年 Limited Warranty + 30 天 Satisfaction Guarantee（高端定位）",
+        "9 section：Warrantor/Coverage/Period/Claim/Remedies/State-Specific/Limitation/EU Consumer Rights/Contact",
+        "法规：Magnuson-Moss 15 U.S.C. §2302 + FTC 16 CFR 701 + EU CRD 2011/83/EU + EU Sale of Goods 2019/771/EU",
+        "Warrantor / 联系 / EU entity 信息都标 [TO BE FILLED BY 路特]"
+      ]
+    },
+    {
+      "name": "dec_20260516_sop-b-step6-reality-check-hold",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16",
+        "SOP-B Step 6 Reality Checker 决议：🔴 HOLD（bg_463b9e1b 后台同步跰，322 行）",
+        "HOLD 理由：3 个外部认证（IEC 62471 RG1 / CPSC CPC / EU CE DoC）未取得，Sisyphus 无法补完",
+        "5 项核查通过率 20%（1 PASS Hero C-c1、三个认证 FAIL、P0-01-06 部分完成）",
+        "预估补完时间 6-8 周，链路瑕颈是 CPSC CPC 检测周期",
+        "推荐行动：Intertek $6-12K IEC+CPC 套餐、Bureau Veritas EU €1.5-3K RP+CE DoC、USPTO Seren 商标",
+        "5 周里程碑：W0 路特 GO + 送检 / W2 美国 Shopify designed-to-meet 上线 / W3-4 EU Shopify / W7-8 报告到手 / W9-10 全渠道激活"
+      ]
+    },
+    {
+      "name": "dec_20260516_momcozy-brand-recon-pivot-discovered",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16",
+        "路特 在 Day 2 mockup review 后明确品牌真名 = Momcozy (www.momcozy.com)，不是先前假设的新建 Seren",
+        "Sisyphus 用 Playwright 实地侦查 momcozy.com 3 页（首页 + sterilizer collection + KleanPal Pro PDP）",
+        "侦查发现：Momcozy = 4.5M+ moms 已知品牌·Montserrat 字体·白/黑/灰主色·NYFW Lifestyle 调性·已有 sterilizer SKU 矩阵 (KleanPal Pro $299 + 三款 $65-120)",
+        "最大冲突点：Momcozy 现行站上实际使用 'sterilize' 31 次 / '99.9% germs' / 'kills 99%' / 'sanitize' / 'Sterile Storage'—与 Day 1-Day 2 Seren brief v2 Legal Audit P0 全部禁用词直接冲突",
+        "商业现实：Momcozy 运营至今未被 FDA/EPA 警告→ 家用消毒柜（蒸气类）执法门槛 < Legal Audit 保守评估",
+        "但 UV-C 他是特殊监管类（21 CFR Part 1000 强制 IEC 62471）不能直接套用 Momcozy 现行蒸气线 ToV",
+        "价位发现：之前 Seren brief 定价 $129-149 与 Momcozy 现行 $99/119 蒸气线内卷，需重定到 $250-329 区间（与 KleanPal Pro $299 同档差异化）",
+        "等路特 拍板 A/B/C 三选一：A 完全对齐 Momcozy(推荐) / B 子品牌路线 / C 独立高端产品线",
+        "交付物：【Momcozy-Brand-Recon-and-Strategic-Pivot】.md + 6 个侦查产出（3 PNG + 3 JSON）在 momcozy-recon/",
+        "如选 A：Day 1-Day 2 可复用 60-70%（Hero shots / Magnuson-Moss / 80%+ Legal Audit 法规框架），Seren brief v2 + Day 2 mockup 废"
+      ]
+    },
+    {
+      "name": "lesson_brand-recon-before-design-existing-vs-greenfield",
+      "entityType": "lesson",
+      "observations": [
+        "重大教训：收到「为某品牌设计产品」类请求时，必须首先确认该品牌是「已存在」还是「新建」",
+        "本例：路特 从 Day 1 到 Day 2 mockup review 后才明确品牌是 Momcozy，Sisyphus 在中间整个 SOP-B 流程以为是新建 Seren、干了 7 个 step 都是错的",
+        "根源：Sisyphus 在 Day 1 SOP-A 选品后 チ Brand Guardian Step 1 时默认了「新建品牌」，未问「品牌名是什么」",
+        "修复机制增补：SOP-B Step 0 必须增加「品牌身份项」问题：是新建品牌 / 现有品牌新 SKU / 现有品牌子品牌 / 颃扌牌产品？如重现有品牌，必须先侦查 .com 官网抽取品牌资产、不得凭推测设计",
+        "跨部门影响：本 lesson 影响所有未来产品上架类 SOP-B 走位，会使 Brand Guardian / UI Designer / Inclusive Visuals / Legal Compliance 四个部门年环节错位",
+        "补充理论：Brand Identity = Either Greenfield OR Existing。两个路径的 Day 1 Step 1 交付完全不同：",
+        "  · Greenfield: Brand Guardian 出名同/品牌承诺/色系/字体（全新建）",
+        "  · Existing: Sisyphus 跱 Playwright 侦查现行品牌 .com 抽取资产 → 交 Brand Guardian 做“新 SKU 如何撞入现行品牌调性”而不是“创建新品牌”",
+        "适用：未来所有 v0.2 产品上架 SOP-B / SOP-C 营销战役 都必须首先明确品牌身份项",
+        "最大损失量：Day 1-Day 2 之前 50 个决策软老中约 30% 需重评（8 个 SOP-B step 都是错误品牌上下文下产生的）"
+      ]
+    },
+    {
+      "name": "dec_20260516_legal-re-audit-uvc-vs-steam-not-transferable",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16",
+        "SOP-B Step 5 v2 Legal 二审 (bg_688eeaa7 · 2m 49s) 核心裁定：Momcozy 蒸气线用了不代表 UV-C 线可以用 - 两者法规豁免结构完全不同，先例不通行",
+        "3 档措辞裁定：可沿用 3 个 (Sterile Storage / 18-min cycle / 99.X% Sanitized 需略告号) + 灰区 3 个 (Kills 99% germs 需 FIFRA 注册 / Sterilize 仅限内部 / 72h Sterile Storage 需报告) + 禁用 4 个 (UV purification / Sterilize with UV-C / Kills 99.9% 无报告 / Zero worry)",
+        "Day 1 Audit 关系：维持 P0-01/02/03/06 禁用决议，P0-04 措辞微调 'designed to meet IEC 62471 RG1 standards' 更精确，P1-05 品牌故事 sterilize 松绑一条 (内部页可保留、PDP/广告续禁)",
+        "mockup v2 (bg_440c1161 跰中) prompt 中给了 'kleanpal-air 可使用 sterilize/99.9%/kills' 指令—与二审裁定冲突，完成后需 v2.1 修订",
+        "交付物：【SOP-B-Step5-v2】Legal-Re-Audit-MOMCOZY-KleanPal-Air.md (200 行·15KB)",
+        "并修订 brief v3 §5 ToV 字典 v3.1 包含三档裁定 + KleanPal Pro vs Air 措辞差异化对照表 + mockup v2 4 USP 合规调整表",
+        "重大教训：A 路径 != 直接 copy Momcozy 现行措辞，UV-C 是独立监管实体"
+      ]
+    },
+    {
+      "name": "lesson_regulatory-precedent-non-transferability-across-tech",
+      "entityType": "lesson",
+      "observations": [
+        "重大教训：一个品牌在 Tech A 类产品上使用某措辞未被监管警告，**不代表**同品牌 Tech B 类产品可以使用同措辞",
+        "本例：Momcozy 蒸气线 KleanPal Pro 用 'Sterilize / Kills 99% germs / Sterile Storage' 运营多年未被 FDA/EPA 警告。Sisyphus Day 1 brief v3 错误推论 'A 路径可直接沿用'，Legal 二审推翻该推论",
+        "根本原因：不同技术类型面对的监管豁免结构完全不同。蒙狹：蒸气 (FDA 21 CFR 1040 家电一般类 + FIFRA 豁免) vs UV-C (FDA 21 CFR Part 1000-1004 强制 IEC 62471 + EPA-HQ-OPP-2021-0466 明确列 antimicrobial claim)",
+        "判例：Momcozy 现行 'UV purification' 未出现，但即使出现也会被 EPA-HQ-OPP-2021-0466 列名触发；同理 'Sterilize with UV-C light' 也不能由蒸气线「Sterilize with Steam」合规推出",
+        "修复机制增补：未来所有「现有品牌 + 新技术类 SKU」请求，Brand Guardian 交付 ToV 字典后必须走 Step 1.7 'Tech-Specific Regulatory Re-Audit' ：即使同品牌其他 SKU 用了，新技术类仍需独立证",
+        "跨部门影响：本 lesson 与 Day 1 lesson_brand-tov-must-cross-validate-with-multi-regulator 互补（那个是「同产品跨多个监管机构需交叉验」，这个是「同品牌跨不同技术需交叉验」）",
+        "适用：未来 v0.2 所有现有品牌推新技术类 SKU 请求 (母婴 IoT / AR 试穿 / 智能眼镜 等) 都适用"
+      ]
+    },
+    {
+      "name": "dec_20260516_commercial-image-plan-drafted",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16",
+        "路特反馈：Day 1 生图与 momcozy.com 差距大，要重做商业级生图计划",
+        "Sisyphus 4 phase 调查：① cliproxy 能力侦查 ② momcozy.com benchmark 拼图 ③ Vision LM 诊断差距 ④ 起草 plan",
+        "关键能力解锁：image-to-image reference 可用，Day 1 未用此能力是质量不足主因",
+        "Momcozy KleanPal Pro PDP benchmark：12,809 px 高 + 10 个 HD 1080p 视频 + 13 个 feature blocks + commercial 棚拍主图 (纯灰底 #f2f2f2 + 85mm + Photoshop 后期)",
+        "计划范围：14 张新生图 + 1 张 Day 1 保留 = 15 张总。分三类：产品主图 5 + 使用说明图 6 + 场景图 4",
+        "预估资源：Sisyphus batch 生图 30-60 min + 路特拍板 15 min + 设计师 Photoshop 后期 5-9 小时 (路特 in-house 省外包) = 总 6-11 小时",
+        "计划提供三选一：A 完整 14 张 (推荐) / B 缩减 8 张 / C 仅 5 张",
+        "交付物：【Commercial-Image-Plan】Momcozy-KleanPal-Air-Generation-Plan.md (9 节) + momcozy-image-benchmark/ 11 张参考图",
+        "状态：计划交路特审中、未起实际生图任务"
+      ]
+    },
+    {
+      "name": "lesson_image-to-image-reference-must-use-for-commercial-grade",
+      "entityType": "lesson",
+      "observations": [
+        "重大技术升级发现：gemini-3.1-flash-image-preview 支持多模态输入 (text + image_url) 走 image-to-image reference 生图。Day 1 唯文本 prompt 是生图质量不足商业级的最大原因之一",
+        "技术调用方式：POST /v1/chat/completions 传 messages 数组含 [{type:'text',text:...},{type:'image_url',image_url:{url:'https://...'}}]、返回中 msg.images[0].image_url.url 含 base64 图",
+        "商业级生图必需要素：① 真实品牌 reference image 传入 ② prompt 含 lens/lighting/background/color grading 参数 ③ batch 生图 + Vision LM 选优 ④ Photoshop 后期",
+        "纯文本 prompt 生图 质量上限 = 接近但需后期 · 加 reference 质量上限 = 后期减半即可上架",
+        "适用：未来所有 v0.2 产品上架生图任务 (现有品牌 SKU + 新品牌)。现有品牌必须用 brand reference image、新品牌必须用同位竞品 reference image",
+        "Day 1 失质原因三点：① prompt 仅设 lifestyle/photorealistic 未限定 commercial Amazon 棚拍风 ② 未传 reference 图 ③ 未后期",
+        "产出：商业级生图计划 + 本 lesson 可用作未来所有产品生图 SOP 的 prompt 模板基底"
+      ]
+    },
+    {
+      "name": "dec_20260516_sop-b-step3-v2-commercial-image-delivered",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16 (Day 4)",
+        "Sisyphus 默认 A 路径自驱完成商业级生图 (路特 未明拍张数但推荐全量 14 张)",
+        "Batch 生图：14 shot × 4 candidates = 56 张 · 2分5 · 0 失败 · 8 worker 并行",
+        "Vision LM 选优：14 grids × 1 look_at/grid = 14 次评估 (对比 Day 1 顺序跰需打分 56 次节省75%)",
+        "三类产出：产品主图 5 张 + 使用说明图 6 张 + 场景图 3 张 = 14 张优选 = 总 6.3MB",
+        "平均 Vision LM commercial 评分 8.5/10（vs Day 1 ~6/10）= +42% 质量提升",
+        "关键技术升级：image-to-image reference (4 个 Momcozy 真实产品 ref URL) + commercial Amazon prompt (含 85mm lens / #f2f2f2 bg / 5500K WB / f/8 DOF 8 参数) + batch 并行 + Vision LM 4-up grid 选优",
+        "Day 1 三张 hero (heroA/B/C) 被 supersedes，但 heroC-c1 同时可作 L-03 选留（已 SOP-B Step 5.5 UV 紫光审查 PASS）",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/【SOP-B-Step3-v2】Commercial-Image-Generation-Delivered.md (6 节) + images-v2-final/ 下 14 张 *-WINNER.jpeg + images-v2/ 下 56 张全候选 + momcozy-image-benchmark/ 参考图",
+        "后期需求：5/14 需 Photoshop 后期 (~3-4 小时 in-house) — P-01 背景/P-02 擦违规文字/P-04 调亮背景/F-03 擦文字/L-01 肤色微调",
+        "下游需更新：mockup v2 → v2.2 (替 3 hero 为 14 张 + 修 Legal v3.1 违规) / brief v3 §6 / Legal v2 §7 / Reality Check v2 增加图质审查",
+        "路特下一棒：选 D (设计师后期) > B (mockup v2.2) > A (路特 review) > C (重生指示) "
+      ]
+    },
+    {
+      "name": "BrandAgent_扩容决策v1",
+      "entityType": "decision",
+      "observations": [
+        "项目路径: /Users/lute/project/Agent/Brand_agent",
+        "Q1=C 激进版 30→120 SKU 每品牌+9",
+        "Q2=B 完整下载视频 缩略图+1080p源 30-50GB",
+        "Q3=放弃 Firecrawl/Keepa/Apify 改用 Playwright + yt-dlp + Claude API",
+        "Q4=视频抓取放行 仅内部研究 记录创作者",
+        "Q5=一次性大跑",
+        "K1=B 先抓全集→候选清单→用户勾选",
+        "K2=A 视频存 Brand_Data_Lake/<Brand>/<SKU>/videos/ 加 .gitignore",
+        "K3=稳健 并发2 延迟3-5s 总耗时18h",
+        "API=Claude API 正常用 预估3600次调用"
+      ]
+    },
+    {
+      "name": "dec_20260516_sop-b-step4-v2.2-mockup-legal-compliant",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16 (Day 4 Part 2 - B+A 路径并发)",
+        "路特拍板 B + A 两棒并行。Sisyphus 竟主跰 B (mockup v2.2)、A 为资产路径已 push 路特 macOS Finder 可直接看",
+        "B 交付：【SOP-B-Step4-v2.2】Mockup-MOMCOZY-KleanPal-Air-LegalCompliant.html (1404 行 · 53KB)",
+        "修订起点：mockup v2 (1389 行) 复制后依据 Step 6 v2 逐行补丁清单 修",
+        "文案变更总计 18 处（Reality Checker 表格 20 处除 2 处 disclaimer 豁免）：",
+        "  - title: 'UV-C Baby Bottle Sterilizer' → 'UV-C Baby Bottle Care Cabinet'",
+        "  - breadcrumb 'Bottle Sterilizer' → 'Bottle Care'",
+        "  - hero subtitle 'UV-C Sterilizer' → 'UV-C Light Treatment'",
+        "  - bundle 'Sterilizer Only' → 'Cabinet Only'",
+        "  - USP 'Pure UV-C Light Sterilization' → 'Pure UV-C Light Treatment Cycle'",
+        "  - 'Kills 99.9% of germs' → 'Tested to reduce 99% of common germs in laboratory testing*' (类几为 'tested to reduce' + footnote)",
+        "  - stat '99.9%' → '99%*'",
+        "  - stat label 'sterile storage duration' → 'sealed storage duration'",
+        "  - 6 modes: Quick/Deep/Sterilize+Dry → Quick Care/Deep Care/Care+Dry",
+        "  - section title 'Sterilize with Pure UV-C Light' → 'Care with Pure UV-C Light'",
+        "  - section subtitle 'sterilizes the full feeding ecosystem' → 'cares for the full feeding ecosystem'",
+        "  - mode descs 'sterile vault'/'sterilization on already-clean items' → 'protected reservoir'/'top-up care'",
+        "  - spec table 'Sterilization Method' → 'Treatment Method', 'UV-C Sterilizer + Dryer' → 'UV-C Care Cabinet + Dryer', 'Quick Sterilize' → 'Quick Care'",
+        "  - footer 'Sterilizers' → 'Bottle Care'",
+        "  - 2 处 disclaimer (line 1287/1388) 保留：Reality Checker 明确 ✅ 豁免 作为合规防御性引用",
+        "图片变更总计 7 处：Hero 画廊从 3 张扩到 6 张 (P-01/02/03/04/05 + L-01) + Story 嵌入 F-01 + 品牌故事嵌入 L-01。Day 1 hero 老图引用 0 命中",
+        "Smoke test (Playwright @ 8767): HTTP 200 · 7 张 v2 final 图全 200 · Montserrat woff2 全 200 · 全部 0 严重 console error (仅 favicon 404 无害)",
+        "Screenshots：01-desktop 1440x7476 (2.0MB) + 02-mobile 455x13104 (1.3MB) — 与 v2 高度接近 (v2 7423/12907) 说明内容体量完整保留",
+        "交付物: 【SOP-B-Step4-v2.2】...html + images/ (20 张可访问 jpeg) + review-screenshots-v2.2/ (2 张全页)",
+        "下一棒：路特 review v2.2 mockup (macOS Finder 双击) + 14 张 winner / Reality Checker 复审 v2.2 / 外部认证启动 (B 轨 6-8 周 CPSC CPC 瓶颈)"
+      ]
+    },
+    {
+      "name": "dec_20260516_external-cert-emails-drafted",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16 (Day 4 Part 3 · SOP-B B 轨启动 prep)",
+        "路特 拍板同意后 Sisyphus 默认 C1+C3 并发。C3 交付三封外部认证邮件草稿",
+        "Email-3 工厂询问 (最先发)：不锈钢型号 (304/316) + UV-C 灯管类型 (LED vs 汞灯) + 双标插头认证 + 历史测试报告复用可能 + 样品准备 (3-5 件 2 周内出)",
+        "Email-1 Intertek RFQ：IEC 62471 RG1 + CPSIA CPC 套餐 (合并样品提交省~30%)、预估 $5.5-12K、周期 4-8 周 (CPSC CPC 是瓶颈)",
+        "Email-2 Bureau Veritas EU：EU RP 服务 + EN 60335-2-65 测试 + EN 62471 EU 版 (条件) + CE DoC 模板。关键问题 §4 IEC ⛭ EN 62471 桥接 (决定是否加 €4-6K + 4-6 周)",
+        "合计预算 ~$15-25K 一次性 + €2-4.5K/年 EU RP。关键路径 8-12 周 (CPSC CPC 瓶颈)",
+        "Email-3 应最先发 (Day 0)：后两封 RFQ 需工厂回复 §1-3 规格才能精准报价。Email-1+2 Day 3-7 发",
+        "交付物：/Users/lute/project/Agent/Agent_agents/.sisyphus/projects/baby-sterilizer/sop-b/external-emails-drafts/ 下 4 个文件 (3 邮件 + 1 README)",
+        "Sisyphus 不直接发邮件 — visible-to-others 动作需路特操盘。路特 review + 填空签名 + forward",
+        "C1 Reality Checker v2.2 复审 (bg_3f0108b5) 后台跰中，验证 mockup v2.2 18 处修订 · 14 张图合规 · 18 项最终核查"
+      ]
+    },
+    {
+      "name": "dec_20260516_sop-b-step6-v2.2-reality-check-and-v2.3-fix",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16 (Day 4 Part 4)",
+        "Reality Checker v2.2 复审 (bg_3f0108b5 · 3m 52s) 出 NEEDS_WORK 决议（从 v2.0 HOLD 降一档）",
+        "A 轨通过率 12/14 (从v2.0 4/14 提升50点)；4 个法律硬禁词全清 ✅；14 张图合规 ✅ (P-01 + L-04 抽审 PASS)",
+        "Reality Checker 发现漏改鲁中 4 处 Sterile Storage 在 PDP 段残留 (line 1009 / 1054 / 1194 / 1250)",
+        "Sisyphus 全量仔细 grep 发现额外 2 处 food-grade 违规 Reality Checker 未报（line 1252 / 1279）—以后都需 Sisyphus 独立验证不中心",
+        "v2.3 in-place 修补 6 处 (4 Sterile Storage → Sealed Storage + 2 food-grade → 304/316 stainless steel)",
+        "修补后验证：Sterile (PDP段) = 0 命中；food-grade = 0；disclaimer 1287/1388 保留豁免",
+        "文件名仍 v2.2 (in-place 修补 不新建 v2.3 文件)，内容是 v2.3 等价",
+        "Playwright smoke test: HTTP 200 · 1 favicon 404 无害 · 然后 1440px 全页截图 Playwright timeout (不重试 ≥3 次按规则) — 沿用 v2.2 旧截图",
+        "B 轨仍 HOLD、CPSC CPC + IEC 62471 + EU CE DoC + EU RP 都未取得，Sisyphus C3 3 封邮件草稿已交、等路特 forward",
+        "交付物：【SOP-B-Step6-v2.2】Reality-Check-MOMCOZY-v2.2.md (Reality Checker 报告) + 【SOP-B-Step4-v2.2】 mockup (v2.3 等价)",
+        "重大教训：Reality Checker 二审也会漏 (food-grade 2 处未报)，三轨交叉验证 = Sisyphus grep + Vision LM + Reality Checker subagent 不完全依赖任一个"
+      ]
+    },
+    {
+      "name": "lesson_three-track-cross-validation-no-single-source-of-truth",
+      "entityType": "lesson",
+      "observations": [
+        "重大教训：合规审查不能依赖单一验证者 — Sisyphus grep + Vision LM + Reality Checker subagent 三轨交叉验证都会漏",
+        "本例实证：",
+        "  - Sisyphus v2 初次 grep 漏改 4 处 Sterile Storage (大小写敏感问题)",
+        "  - Reality Checker v2.2 复审抓出 4 处 但漏报 2 处 food-grade",
+        "  - Sisyphus v2.3 补 grep 才全安全清",
+        "根本原因：",
+        "  - grep 大小写敏感设置 错 = 漏",
+        "  - Vision LM 只看表面措辞不全扫 grep",
+        "  - Reality Checker 可能会抣重某些词但不是全量扫描者",
+        "修复机制增补：所有未来 mockup/brief/PDP 合规检查 必须走三轨交叉验证：",
+        "  Track 1: Sisyphus 仔细 grep -niE 含全部大小写变体 + 多个违规词同时扫",
+        "  Track 2: Vision LM Reality Checker 逐处判例",
+        "  Track 3: 三棒交叉 (Reality Checker 报告 v2.2 列 4 处不代表全部 — Sisyphus 补 grep 发现额外 2)",
+        "跨部门影响：Legal Compliance Checker / Reality Checker / Brand Guardian / UI Designer 全部需会跰以上三轨交叉变重",
+        "产出：Reality Checker v2.2 + Sisyphus 补 grep 联合出 v2.3 最终合规版本"
+      ]
+    },
+    {
+      "name": "dec_20260516_sop-b-step6-v2.3-a-trail-pass",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16 (Day 4 · 最终决议)",
+        "Reality Checker v2.3 终审 (bg_820f2696 · 2m 51s)：A 轨 PASS 18/18，B 轨仍 HOLD (4 项外部认证)",
+        "v2.3 in-place 修补 6 处验证全过：Sterile Storage ×4 + food-grade ×2 = 0 PDP 违规残留",
+        "Reality Checker 自认 v2.2 漏报 food-grade 2 处，补 lesson_three-track-cross-validation 验证",
+        "交付物：【SOP-B-Step6-v2.3】Reality-Check-Final.md (153行 7KB) + 【Review-Guide】v2.3-Mockup-Review.md (Sisyphus 作的路特 review 指南)",
+        "Reality Checker 下一棒推荐: 1) 启动 SOP-B Step 7 (上 Shopify) 2) 路特 forward 3 封邮件 3) Shopify 页与 mockup 1:1 对应 4) SEO meta 不用 'sterilizer' 主词 5) 认证到手后 Reality Checker 补单点审核 (30 min)",
+        "v2.3 状态总启: mockup A 轨完全准备好上架 / B 轨唯一阻塞是路特 forward C3 邮件 / 上线总路径 8-12 周 (CPSC CPC 是瓶颈)",
+        "本完成 SOP-B Step 1-3-5-5.5-5-v2-5.5-3-v2-4-v2-4-v2.2-6-6-v2-6-v2.2-6-v2.3 全链跰通反馈。A 轨 PASS 即 SOP-B 全部内部任务闭环"
+      ]
+    },
+    {
+      "name": "BrandAgent_B3_进行中",
+      "entityType": "state",
+      "observations": [
+        "仓库: /Users/lute/project/Agent/Brand_agent",
+        "启动时间: 2026-05-16 01:10",
+        "预计完成: 5-6 小时后 (约 06:00-07:00)",
+        "Frida 后台 PID 28739 跑 12 SKU",
+        "Orchestrator PID 28946 串行跑 9 品牌后上锁索引",
+        "总记录: 120 SKU (10品牌×12)",
+        "总估计产出: 图~1200张 视频~360个 3-5GB AI调用~1200次",
+        "监控: tail -f /tmp/b3_orchestrator.log",
+        "各品牌日志: /tmp/b3_logs/<Brand>.log",
+        "Frida日志: /tmp/b3_frida.log",
+        "完成后自动跑 build_index.py",
+        "如果调中断: cd scripts && bash run_b3_all.sh 重跑剩余品牌",
+        "上一轮验证: SKU 1 PDP10图 + 03_usps、 04_specs均已写入、视频下载中",
+        "Phase A11: cliproxy 打通 sonnet-4.6 主力 haiku-4.5 处理VOC",
+        "Phase B1: 10品牌1515产品全集存 _candidates/",
+        "Phase B2: auto_select_skus 选了12 SKU/品牌写入 sku_registry.json (原30备份 .bak_30sku)",
+        "Phase D2: GLOBAL_INDEX 重建 原30 SKU 质量劆0.668",
+        "C阶段守护 PID 29724 已启动 等B3完后自动跑 C2 retailer + build_index",
+        "B3实测节奏: 2 SKU/分钟并袄两进程 预计总耗6-58分钟剩余量",
+        "Frida SKU1质量验证: 10图 + USPs/Specs/3视频 89MB 全质量",
+        "C阶段脚本: scripts/run_c_phase.sh 会轮询pgrep main_pipeline 退出后自动跑10品牌×retailer",
+        "C2 日志: /tmp/c_logs/c2_<Brand>.log",
+        "进度: 14/120 SKU 预计还要 ~50min",
+        "Bug 修复: sku_id 下划线导致YouTube search 妓0 修为 product_name_official",
+        "refill_videos.py 已创建 加入 run_c_phase.sh 自动跑",
+        "C阶段最新流: C2 retailer → 视频补抓 → C3a variants → C3b compliance → D2 build_index",
+        "compliance 验证过: Medela FDA 拿到1010k",
+        "variants 验证过: Frida 6 SKU 已写 09_variants.json"
+      ]
+    },
+    {
+      "name": "dec_20260516_employee-subdir-feasibility-analysis-blocked-on-luter",
+      "entityType": "decision",
+      "observations": [
+        "决策日期：2026-05-16 (Day 4 末尾)",
+        "路特提供 GitHub 凭证 (仓=现有 zjgulai/AI_Company_Person) + 提出「員工需要单独放在一个文件夹」需求",
+        "Sisyphus analyze-mode 4 phase 调查: 两仓状态 + 路特仓验证 + OpenCode agent 加载机制 + 可行性分析",
+        "重大发现：oh-my-openagent plugin 源码 loadAgentsFromDir 不递归扫描子目录。直接把 185 员工塑进部门子目录 = OpenCode 加载不到 = 185 员工全失效。",
+        "这是 Day 1 init 时 install.sh 强制扣平員工文件的根因",
+        "4 个可行方案交路特拍板：A 维持现状·B git 仓 source/+deploy/ 双轨·C 文件名加深前缀·D 等 OMO 上游升级",
+        "Sisyphus 推荐：A (现状文件名前缀已实现 namespace) 或 B.2 (git 仓里东部门分组 + smart push flatten)",
+        "两仓 git 状态核查：agents@main 69024bb (本地 == 远端) + Agent_agents@lute/baby-dtc-project ab4d4e3 (本地 == 远端)。无 unpushed 内容",
+        "路特 'commit and push' 原话 + '員工需单独文件夹' 新需求 = 需先决策重组方案、再 push 重组 commit",
+        "交付物：【可行性分析】员工目录重组-2026-05-16.md (.sisyphus/plans/) 4 方案 × 6 节 · 含代码证据",
+        "状态：BLOCKED 等路特 X1-X5 决策。由于 git 重命名 185 文件 = 不可逆、必须亲人给决策",
+        "本决策本身不涉員工文件变动、仅分析文档落盘 + commit"
+      ]
+    },
+    {
+      "name": "dec_20260516_x3-c-full-dept-prefix-finalized",
+      "entityType": "decision",
+      "observations": [
+        "路特 拍板日期：2026-05-16 PT",
+        "上下文：上一会话产出 [可行性分析] 给出 X1-X5 5 选项；路特 选 X3=方案 C 文件名加 dept- 前缀。但调查发现 X3 已被部分执行（commit 77a3d1a, 157/184 单连- 方案部分落地）。重新拍板 → C-Full 双连 dept- 方案",
+        "决策内容：所有 184 员工统一为 `dept-<部门>--<原名>.md` 双连双 dash 格式",
+        "为什么不选 C-Slim（仅补 27 specialized- 单连）：路特 偏好 dept- 显式 namespace + 与上游 agency-agents 子目录命名直观对应",
+        "为什么不选 C-Switch（保持单连- 不动 157）：单连- 与上游 namespace 风格不完全对齐，新增 27 个 specialized 也会形成混合格式 inconsistency",
+        "为什么不选 A 维持现状：路特 已审一次可行性分析，明确选 C 不选 A",
+        "为什么不选 B.2 git source/分组：smart-push 工作流复杂度 vs 单次 mv 30 分钟 = 性价比反过来",
+        "落地证据：commit b724363158c585d2a0d6a8db622e225369b16821 已 push 到 zjgulai/AI_Company_Person@main",
+        "14 部门覆盖：academic(5) design(8) engineering(29) finance(5) game-development(20) marketing(30) paid-media(7) product(5) project-management(6) sales(8) spatial-computing(6) specialized(41) support(6) testing(8) = 184",
+        "27 个原裸名 specialized 类全归入 dept-specialized--<名>（如 customer-service.md → dept-specialized--customer-service.md）",
+        "@agent-slug 召唤不受影响：agent name 来自 frontmatter name 字段不来自文件名（loadAgentsFromDir 代码证据）",
+        "supersedes commit 77a3d1a (\"org(X3): 单连- 127 git mv + README\")",
+        "依赖：lesson_brand-recon-before-design + 上一 [可行性分析] 文件"
+      ]
+    },
+    {
+      "name": "lesson_check-actual-state-before-replanning",
+      "entityType": "lesson",
+      "observations": [
+        "教训：在 [可行性分析] 文档说『等路特 X1-X5 决定』之后，绝不能假设状态没变。必须 git log + ls 验证当前状态再让用户拍板",
+        "本案：上会话 commit e1f7be7 (5/16 01:41) 写 [可行性分析]，1h09min 后 commit 77a3d1a (5/16 02:50) 已经被某并行会话部分执行了 X3。本次 Sisyphus 第一时间检查 git log 才发现，否则会跑出 184 错乱命名",
+        "适用：所有跨会话续做、所有『等用户决策』gate、所有共享仓库工作流",
+        "解决方案：每次 continue 任务前必跑 git log -10 + git status 校 actual state vs documented state mismatch",
+        "落地：本次会话已演示 - 检查 X3 现状 → 报告冲突 → 重新拍板 → 一气跑通 C-Full",
+        "2026-05-16 路特口头授权破例升格为 _PENDING_UPGRADES #3 PROPOSED",
+        "破例依据：v0.2.1 §0 破例条件 #1 - 影响 ≥10 downstream entity（所有跨会话续做、所有『等用户决策』gate、所有共享仓库工作流、涵盖 12 部门 + 6 SOP A-F）",
+        "PROPOSED 内容：Sisyphus prompt 增加「跨会话 actual-state 校验门」 - 每次 continue 任务前必跑 git status + git log -10 + .sisyphus/run-continuation 时间戳检查，发现 mismatch 要报告不能静默推测",
+        "下一步：路特 需在后续会话明确 PROPOSED #3 的 [APPROVED] 决议（才能走 [APPLIED] 落地修改 Sisyphus agent prompt）"
+      ]
+    },
+    {
+      "name": "dec_20260516_brand-guardian-multi-regulator-cross-validation",
+      "entityType": "decision",
+      "observations": [
+        "路特 拍板日期：2026-05-16 PT",
+        "决策内容：Brand Guardian agent prompt v1→v2，在 «· Your Workflow Process · Step 1 与 Step 2 之间» 强制插入 Step 1.5 \"Multi-Regulator Cross-Validation\"",
+        "触发类目：母婴 / UV 亲菌 / 健康医疗 / 食品接触 / IoT / 玩具 / 化妆品 / 营养品 / 宠物· 任何同时被 ≥2 个监管机构管辖的品类",
+        "实现：ToV 字典/名称/claim 交付前强制调 @legal-compliance-checker 横跨 FDA · EPA · FTC · CPSC · EMA · CE · REACH · EN71 · Amazon · Meta · TikTok · Google · Shopify 等所有适用监管机构同时审查",
+        "输出格式升级：从「词汇对照表」升级为「该说 / 不该说 / 触发法规」三段式 claim record，含 regulator + 节次 + 罚则 range",
+        "Gate 规则：未通过 Legal 横向 cross-validation 不得进入 Step 2 Foundation Development",
+        "依据 lesson：lesson_brand-tov-must-cross-validate-with-multi-regulator (2026-05-15)",
+        "依据原始案例：Brand Guardian 推荐 \"UV purification\" 避免 FDA 21 CFR 801 医疗器械声明，但 EPA-HQ-OPP-2021-0466 明列该词为 antimicrobial claim 触发词 · 触发 FIFRA §3 注册义务",
+        "破例依据：v0.2.1 §0 破例条件 #1 - 影响 ≥10 downstream entity (未来所有母婴/UV/健康/IoT/食品接触类品牌调研 SKU)",
+        "状态机流转：PROPOSED (2026-05-16 上会话) → APPROVED (2026-05-16 路特本会话口头) → APPLIED (2026-05-16 Sisyphus 本会话落地)",
+        "落地路径：dept-design--brand-guardian.md (Step 1.5 已插入，41 行内容 · 含 14 监管机构表 + claim record 三段式模板 + Gate 规则)",
+        "回滚方法：git checkout HEAD~1 -- dept-design--brand-guardian.md"
+      ]
+    },
+    {
+      "name": "agent_brand-guardian_v1",
+      "entityType": "agent",
+      "observations": [
+        "原始 Brand Guardian prompt",
+        "Workflow Process 只有 Step 1-4 (Discovery / Foundation / System / Implementation)",
+        "ToV 交付格式：词汇对照表",
+        "2026-05-16 被退役"
+      ]
+    },
+    {
+      "name": "agent_brand-guardian_v2",
+      "entityType": "agent",
+      "observations": [
+        "v0.2 Brand Guardian prompt",
+        "Workflow Process 增加 Step 1.5 Multi-Regulator Cross-Validation 强制门姯",
+        "ToV / 名称 / claim 交付前必调 @legal-compliance-checker 横跨 14+ 监管机构交集审查",
+        "输出格式：该说 / 不该说 / 触发法规 三段式",
+        "Gate：未过 Legal cross-validation 不得进 Step 2",
+        "实体创建日期：2026-05-16",
+        "落地 commit 待 push"
+      ]
+    },
+    {
+      "name": "eng_20260516_x3-c-full-rename-execution",
+      "entityType": "engagement",
+      "observations": [
+        "engagement 日期：2026-05-16 PT",
+        "主题：X3-C-Full · 184 员工文件名统一为双连 dept- 前缀",
+        "状态：completed",
+        "调用者：Sisyphus（C-Suite 全权）",
+        "关键发现：本会话“续做”开始时检查 git log 发现上会话产出「可行性分析」后某并行会话已部分执行 X3 单连- 方案（commit 77a3d1a 5/16 02:50）。路特 重拍板 C-Full 双连。Sisyphus 补完 184 全量 git mv",
+        "执行过程：检查现状 → 报告冲突 → question 重拍板 → dry-run v2 脚本适配现状 → 执行 184 mv → 自证 → commit b724363 + push → memory 写 dec + lesson + 3 relations → 补 AGENTS.md §2.2.1 dept- 命名约定 commit e1ab3dc + push → _PENDING_UPGRADES #2 PROPOSED→APPLIED + Brand Guardian Step 1.5 commit 120e6df + push → _PENDING_UPGRADES #3 PROPOSED 入 升格",
+        "交付物：~/.config/opencode/agents 仓 commit b724363 + 120e6df + 本次 (待生) · Agent_agents 仓 commit e1ab3dc",
+        "重大高度：Sisyphus 首次场景化验证了 lesson_check-actual-state-before-replanning 的价值，避免了 184 错乱命名灾难，现场产出本 lesson 后立即被推进 _PENDING_UPGRADES #3"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "agent_sisyphus",
+      "to": "eng_20260514_org-setup",
+      "relationType": "assigned_to"
+    },
+    {
+      "from": "eng_20260514_org-setup",
+      "to": "lesson_explicit-no-deletion",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260514_org-setup",
+      "to": "dec_20260514_pick-knowledge-graph",
+      "relationType": "produced"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "eng_20260515_baby-sterilizer-selection",
+      "relationType": "assigned_to"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "project_baby-sterilizer",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "sku_concept_uvc-premium",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "sku_concept_steam-hepa",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "lesson_uv-handheld-trap",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "lesson_compliance-as-moat",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "lesson_pain-point-water-droplet",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "lesson_librarian-model-chain-broken",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "dec_20260515_recommend-uvc-premium",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "region_us",
+      "relationType": "targets"
+    },
+    {
+      "from": "eng_20260515_baby-sterilizer-selection",
+      "to": "region_eu",
+      "relationType": "targets"
+    },
+    {
+      "from": "sku_concept_uvc-premium",
+      "to": "region_us",
+      "relationType": "sold_in"
+    },
+    {
+      "from": "sku_concept_uvc-premium",
+      "to": "region_eu",
+      "relationType": "sold_in"
+    },
+    {
+      "from": "agent_omo-config_v1",
+      "to": "agent_omo-config_v0",
+      "relationType": "supersedes"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260515_omo-config-fix",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260515_omo-config-fix",
+      "to": "lesson_librarian-model-chain-broken",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "agent_omo-config_v1",
+      "to": "dec_20260515_omo-config-fix",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "eng_20260515_omo-model-chain-fix",
+      "relationType": "assigned_to"
+    },
+    {
+      "from": "eng_20260515_omo-model-chain-fix",
+      "to": "lesson_librarian-model-chain-broken",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "eng_20260515_omo-model-chain-fix",
+      "to": "dec_20260515_omo-config-fix",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_omo-model-chain-fix",
+      "to": "eng_20260515_baby-sterilizer-selection",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "eng_20260515_omo-model-chain-fix",
+      "to": "agent_omo-config_v1",
+      "relationType": "produced"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "relationType": "assigned_to"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "lesson_retro-itself-as-engagement",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "lesson_blast-radius-bypass-3-engagement-threshold",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "dec_20260514_org-12-dept-rerank-for-baby-dtc",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "dec_20260514_memory-acl-gated-by-namespace",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "dec_20260514_sisyphus-active-retro-suggestion",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "dec_20260514_agents-git-to-private-remote",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "eng_20260515_omo-model-chain-fix",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "eng_20260514_org-setup",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "lesson_librarian-model-chain-broken",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "eng_20260515_omo-model-chain-fix",
+      "to": "lesson_blast-radius-bypass-3-engagement-threshold",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260515_region-context-lazy-split-policy",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-self-evolution-first-loop-retro",
+      "to": "dec_20260515_region-context-lazy-split-policy",
+      "relationType": "produced"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260515_sop-b-step1-brand-uvc-premium",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260515_sop-b-step1-brand-uvc-premium",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260515_sop-b-step1-brand-uvc-premium",
+      "to": "lesson_brand-name-must-clear-fda-claim-zone",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "sku_concept_uvc-premium",
+      "to": "lesson_brand-name-must-clear-fda-claim-zone",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "dec_20260515_sop-b-step1-brand-uvc-premium",
+      "to": "dec_20260515_recommend-uvc-premium",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260515_t5-nurtureloop-launch-approved",
+      "relationType": "produced"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "project_nurtureloop",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_nurtureloop",
+      "to": "dec_20260515_t5-nurtureloop-launch-approved",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "project_nurtureloop",
+      "to": "project_baby-sterilizer",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260515_sop-b-step2-hero-shot-ethnicity-allocation",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260515_sop-b-step2-hero-shot-ethnicity-allocation",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260515_sop-b-step2-hero-shot-ethnicity-allocation",
+      "to": "dec_20260515_sop-b-step1-brand-uvc-premium",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "dec_20260515_sop-b-step2-hero-shot-ethnicity-allocation",
+      "to": "lesson_ethnicity-specificity-beats-generic-labels",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "to": "dec_20260515_sop-b-step2-hero-shot-ethnicity-allocation",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "to": "lesson_cliproxy-image-routing-discovery",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "to": "lesson_ethnicity-specificity-beats-generic-labels",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "relationType": "assigned_to"
+    },
+    {
+      "from": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "to": "lesson_opencode-tool-discovery-via-api-probe",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "to": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "to": "lesson_cliproxy-image-routing-discovery",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "to": "lesson_ethnicity-specificity-beats-generic-labels",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "to": "eng_20260515_baby-sterilizer-selection",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260515_sop-b-step5-legal-audit-approved-with-conditions",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260515_sop-b-step5-legal-audit-approved-with-conditions",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260515_sop-b-step5-legal-audit-approved-with-conditions",
+      "to": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "dec_20260515_sop-b-step5-legal-audit-approved-with-conditions",
+      "to": "lesson_brand-tov-must-cross-validate-with-multi-regulator",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "to": "dec_20260515_sop-b-step5-legal-audit-approved-with-conditions",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260515_v0.2-day1-sop-b-step3-real-image-gen",
+      "to": "lesson_brand-tov-must-cross-validate-with-multi-regulator",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_sop-b-step4-shopify-mockup-delivered",
+      "relationType": "produced"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_sop-b-p1-02-warranty-delivered",
+      "relationType": "produced"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_sop-b-step6-reality-check-hold",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_sop-b-step4-shopify-mockup-delivered",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_sop-b-step6-reality-check-hold",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_sop-b-step4-shopify-mockup-delivered",
+      "to": "dec_20260515_sop-b-step5-legal-audit-approved-with-conditions",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "dec_20260516_sop-b-step6-reality-check-hold",
+      "to": "dec_20260516_sop-b-step4-shopify-mockup-delivered",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_momcozy-brand-recon-pivot-discovered",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_momcozy-brand-recon-pivot-discovered",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_momcozy-brand-recon-pivot-discovered",
+      "to": "lesson_brand-recon-before-design-existing-vs-greenfield",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_momcozy-brand-recon-pivot-discovered",
+      "to": "dec_20260515_sop-b-step1-brand-uvc-premium",
+      "relationType": "supersedes"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_legal-re-audit-uvc-vs-steam-not-transferable",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_legal-re-audit-uvc-vs-steam-not-transferable",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_legal-re-audit-uvc-vs-steam-not-transferable",
+      "to": "lesson_regulatory-precedent-non-transferability-across-tech",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_legal-re-audit-uvc-vs-steam-not-transferable",
+      "to": "dec_20260516_momcozy-brand-recon-pivot-discovered",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_commercial-image-plan-drafted",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_commercial-image-plan-drafted",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_commercial-image-plan-drafted",
+      "to": "lesson_image-to-image-reference-must-use-for-commercial-grade",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_commercial-image-plan-drafted",
+      "to": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "relationType": "supersedes"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_sop-b-step3-v2-commercial-image-delivered",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_sop-b-step3-v2-commercial-image-delivered",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_sop-b-step3-v2-commercial-image-delivered",
+      "to": "lesson_image-to-image-reference-must-use-for-commercial-grade",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "dec_20260516_sop-b-step3-v2-commercial-image-delivered",
+      "to": "dec_20260515_sop-b-step3-hero-shots-generated",
+      "relationType": "supersedes"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_sop-b-step4-v2.2-mockup-legal-compliant",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_sop-b-step4-v2.2-mockup-legal-compliant",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_sop-b-step4-v2.2-mockup-legal-compliant",
+      "to": "dec_20260516_sop-b-step3-v2-commercial-image-delivered",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "dec_20260516_sop-b-step4-v2.2-mockup-legal-compliant",
+      "to": "dec_20260516_legal-re-audit-uvc-vs-steam-not-transferable",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "dec_20260516_sop-b-step4-v2.2-mockup-legal-compliant",
+      "to": "dec_20260516_sop-b-step4-shopify-mockup-delivered",
+      "relationType": "supersedes"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_external-cert-emails-drafted",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_external-cert-emails-drafted",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_external-cert-emails-drafted",
+      "to": "dec_20260516_sop-b-step6-reality-check-hold",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_sop-b-step6-v2.2-reality-check-and-v2.3-fix",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_sop-b-step6-v2.2-reality-check-and-v2.3-fix",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_sop-b-step6-v2.2-reality-check-and-v2.3-fix",
+      "to": "lesson_three-track-cross-validation-no-single-source-of-truth",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_sop-b-step6-v2.2-reality-check-and-v2.3-fix",
+      "to": "dec_20260516_sop-b-step4-v2.2-mockup-legal-compliant",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_sop-b-step6-v2.3-a-trail-pass",
+      "relationType": "produced"
+    },
+    {
+      "from": "project_baby-sterilizer",
+      "to": "dec_20260516_sop-b-step6-v2.3-a-trail-pass",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_sop-b-step6-v2.3-a-trail-pass",
+      "to": "dec_20260516_sop-b-step6-v2.2-reality-check-and-v2.3-fix",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "dec_20260516_sop-b-step6-v2.3-a-trail-pass",
+      "to": "lesson_three-track-cross-validation-no-single-source-of-truth",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_employee-subdir-feasibility-analysis-blocked-on-luter",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_employee-subdir-feasibility-analysis-blocked-on-luter",
+      "to": "lesson_brand-recon-before-design-existing-vs-greenfield",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_x3-c-full-dept-prefix-finalized",
+      "relationType": "produced"
+    },
+    {
+      "from": "dec_20260516_x3-c-full-dept-prefix-finalized",
+      "to": "lesson_check-actual-state-before-replanning",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "dec_20260516_x3-c-full-dept-prefix-finalized",
+      "to": "dec_20260514_agents-git-to-private-remote",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "agent_brand-guardian_v2",
+      "to": "agent_brand-guardian_v1",
+      "relationType": "supersedes"
+    },
+    {
+      "from": "agent_brand-guardian_v2",
+      "to": "dec_20260516_brand-guardian-multi-regulator-cross-validation",
+      "relationType": "depended_on"
+    },
+    {
+      "from": "dec_20260516_brand-guardian-multi-regulator-cross-validation",
+      "to": "lesson_brand-tov-must-cross-validate-with-multi-regulator",
+      "relationType": "improved_by"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "dec_20260516_brand-guardian-multi-regulator-cross-validation",
+      "relationType": "produced"
+    },
+    {
+      "from": "agent_sisyphus",
+      "to": "eng_20260516_x3-c-full-rename-execution",
+      "relationType": "assigned_to"
+    },
+    {
+      "from": "eng_20260516_x3-c-full-rename-execution",
+      "to": "dec_20260516_x3-c-full-dept-prefix-finalized",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260516_x3-c-full-rename-execution",
+      "to": "lesson_check-actual-state-before-replanning",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260516_x3-c-full-rename-execution",
+      "to": "dec_20260516_brand-guardian-multi-regulator-cross-validation",
+      "relationType": "produced"
+    },
+    {
+      "from": "eng_20260516_x3-c-full-rename-execution",
+      "to": "lesson_check-actual-state-before-replanning",
+      "relationType": "improved_by"
+    }
+  ]
+}

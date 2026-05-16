@@ -1,0 +1,257 @@
+{
+  "sop_b_steps": [
+    {
+      "id": "step1",
+      "label": "Step 1 · 品牌包装",
+      "agent_dept": "design",
+      "agent_slug": "brand-guardian",
+      "deliverables": [
+        "brief v1 (Seren)",
+        "brief v2 (Seren 修订)",
+        "brief v3 (Momcozy A 路径)",
+        "ToV 字典 v3.1"
+      ]
+    },
+    {
+      "id": "step2",
+      "label": "Step 2 · Hero Shot Prompts",
+      "agent_dept": "design",
+      "agent_slug": "inclusive-visuals-specialist",
+      "deliverables": [
+        "Hero A/B/C 多族裔 prompts",
+        "族裔具体度规范"
+      ]
+    },
+    {
+      "id": "step3",
+      "label": "Step 3 · 实际生图",
+      "agent_dept": "design",
+      "agent_slug": "image-prompt-engineer",
+      "deliverables": [
+        "Day 1: 6 张 hero shots (3 候选)",
+        "Day 4: 14 张 v2 商业级 (56 候选选优)",
+        "技术: image-to-image + Vision LM"
+      ]
+    },
+    {
+      "id": "step4",
+      "label": "Step 4 · Shopify Mockup",
+      "agent_dept": "design",
+      "agent_slug": "ui-designer",
+      "deliverables": [
+        "mockup v1 (Seren · 35KB)",
+        "mockup v2 (Momcozy · 53KB)",
+        "mockup v2.2 LegalCompliant (1404 行)"
+      ]
+    },
+    {
+      "id": "step5",
+      "label": "Step 5 · Legal Audit",
+      "agent_dept": "support",
+      "agent_slug": "legal-compliance-checker",
+      "deliverables": [
+        "Audit v1 (4 P0 / 6 P1 / 5 P2)",
+        "Audit v2 (UV vs Steam 不可传)",
+        "Step 5.5 UV 紫光像素审"
+      ]
+    },
+    {
+      "id": "step6",
+      "label": "Step 6 · Reality Check",
+      "agent_dept": "testing",
+      "agent_slug": "reality-checker",
+      "deliverables": [
+        "v1 HOLD (B 轨外部认证)",
+        "v2 NEEDS_WORK (6 处 grep 违规)",
+        "v2.3 PASS 18/18 A 轨"
+      ]
+    },
+    {
+      "id": "pivot",
+      "label": "Day 2 · 品牌真名 PIVOT",
+      "agent_dept": "specialized",
+      "agent_slug": "agents-orchestrator",
+      "deliverables": [
+        "Playwright 实地侦察 momcozy.com 3 页",
+        "6 个侦察产出 (3 PNG + 3 JSON)",
+        "战略重构 brief v1→v3"
+      ]
+    }
+  ],
+  "departments": [
+    {
+      "id": "design",
+      "label": "设计部",
+      "color": "#d49a6a",
+      "count": 8,
+      "demo_count": 4
+    },
+    {
+      "id": "support",
+      "label": "支持部",
+      "color": "#8fa68c",
+      "count": 6,
+      "demo_count": 1
+    },
+    {
+      "id": "testing",
+      "label": "测试部",
+      "color": "#b97a3f",
+      "count": 8,
+      "demo_count": 1
+    },
+    {
+      "id": "specialized",
+      "label": "战略·专业部",
+      "color": "#7a5e8a",
+      "count": 41,
+      "demo_count": 4
+    },
+    {
+      "id": "engineering",
+      "label": "工程部",
+      "color": "#4a7c8a",
+      "count": 29,
+      "demo_count": 1
+    },
+    {
+      "id": "marketing",
+      "label": "市场部",
+      "color": "#c8553d",
+      "count": 30,
+      "demo_count": 2
+    },
+    {
+      "id": "product",
+      "label": "产品部",
+      "color": "#8b9c5c",
+      "count": 5,
+      "demo_count": 2
+    },
+    {
+      "id": "project-management",
+      "label": "PM 部",
+      "color": "#9c7a5c",
+      "count": 6,
+      "demo_count": 1
+    },
+    {
+      "id": "paid-media",
+      "label": "付费投放",
+      "color": "#5c7a9c",
+      "count": 7,
+      "demo_count": 1
+    },
+    {
+      "id": "finance",
+      "label": "财务部",
+      "color": "#a89884",
+      "count": 5,
+      "demo_count": 0
+    },
+    {
+      "id": "sales",
+      "label": "销售部",
+      "color": "#7a8c5c",
+      "count": 8,
+      "demo_count": 0
+    },
+    {
+      "id": "academic",
+      "label": "学术部",
+      "color": "#5c8a7a",
+      "count": 5,
+      "demo_count": 0
+    },
+    {
+      "id": "game-development",
+      "label": "游戏开发",
+      "color": "#8a5c7a",
+      "count": 20,
+      "demo_count": 0
+    },
+    {
+      "id": "spatial-computing",
+      "label": "空间计算",
+      "color": "#5c5c8a",
+      "count": 6,
+      "demo_count": 0
+    }
+  ],
+  "csuite": [
+    {
+      "slug": "lute",
+      "name": "路特",
+      "role": "CEO (人类)",
+      "color": "#d0021b"
+    },
+    {
+      "slug": "sisyphus",
+      "name": "Sisyphus",
+      "role": "COO",
+      "color": "#9013fe"
+    },
+    {
+      "slug": "agents-orchestrator",
+      "name": "Agents Orchestrator",
+      "role": "项目总监",
+      "color": "#9013fe"
+    },
+    {
+      "slug": "studio-producer",
+      "name": "Studio Producer",
+      "role": "组合总监",
+      "color": "#9013fe"
+    },
+    {
+      "slug": "senior-project-manager",
+      "name": "Senior PM",
+      "role": "项目经理",
+      "color": "#9013fe"
+    }
+  ],
+  "rounds_self_evolution": [
+    {
+      "id": "R1",
+      "date": "2026-05-15",
+      "name": "OMO model chain",
+      "status": "APPLIED",
+      "from_version": "v0",
+      "to_version": "v1",
+      "trigger": "破例条件 #1+#3",
+      "memory": "dec_20260515_omo-config-fix"
+    },
+    {
+      "id": "R2",
+      "date": "2026-05-16",
+      "name": "Brand Guardian Multi-Regulator",
+      "status": "APPLIED",
+      "from_version": "v1",
+      "to_version": "v2",
+      "trigger": "破例条件 #1",
+      "memory": "dec_20260516_brand-guardian-multi-regulator-cross-validation"
+    },
+    {
+      "id": "R3",
+      "date": "2026-05-16",
+      "name": "Sisyphus actual-state check",
+      "status": "PROPOSED",
+      "from_version": "v_current",
+      "to_version": "v_next",
+      "trigger": "破例条件 #1",
+      "memory": "lesson_check-actual-state-before-replanning"
+    }
+  ],
+  "key_lessons": [
+    "lesson_uv-handheld-trap",
+    "lesson_compliance-as-moat",
+    "lesson_pain-point-water-droplet",
+    "lesson_brand-name-must-clear-fda-claim-zone",
+    "lesson_brand-recon-before-design-existing-vs-greenfield",
+    "lesson_brand-tov-must-cross-validate-with-multi-regulator",
+    "lesson_regulatory-precedent-non-transferability-across-tech",
+    "lesson_image-to-image-reference-must-use-for-commercial-grade",
+    "lesson_ethnicity-specificity-beats-generic-labels",
+    "lesson_check-actual-state-before-replanning"
+  ]
+}

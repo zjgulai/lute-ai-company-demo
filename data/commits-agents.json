@@ -1,0 +1,12 @@
+[
+{"hash":"0c0f872","fullhash":"0c0f872ad003be93036eadc64c81819a2bef06e9","date":"2026-05-15T00:02:04-07:00","author":"lute","subject":"init: 路特AI公司员工档案 v0.1 (184 agents + _PENDING_UPGRADES)"},
+{"hash":"d060a06","fullhash":"d060a0630a6e42bd8a18d6f8562c21a726725cda","date":"2026-05-15T00:17:13-07:00","author":"lute","subject":"org: _PENDING_UPGRADES.md v0.1→v0.2"},
+{"hash":"1cb8b1c","fullhash":"1cb8b1c727f6c7a978bd4fdba5321312b7f906c0","date":"2026-05-15T00:39:15-07:00","author":"lute","subject":"org: _PENDING_UPGRADES PROPOSED #1 (OMO model chain broken)"},
+{"hash":"f6f9016","fullhash":"f6f9016a34f255c4d12ba9e2ff2ba7114bc3aced","date":"2026-05-15T03:41:55-07:00","author":"lute","subject":"org: _PENDING_UPGRADES #1 PROPOSED→APPLIED (OMO model chain fixed)"},
+{"hash":"e9c6ea7","fullhash":"e9c6ea7a1719bfd01d2e47aa8de7072e6835fcf1","date":"2026-05-15T04:15:42-07:00","author":"lute","subject":"org: _PENDING_UPGRADES v0.2.1 - 加破例规则说明 §0"},
+{"hash":"69024bb","fullhash":"69024bb13905cadbdb7c8583aa4c8688b2e952ac","date":"2026-05-15T20:42:07-07:00","author":"lute","subject":"org: _PENDING_UPGRADES PROPOSED #2 - Brand Guardian Multi-Regulator Cross-Validation"},
+{"hash":"77a3d1a","fullhash":"77a3d1a4ae83a0a7a2cd4e30591e9dc6bc2ac3a9","date":"2026-05-16T02:50:03-07:00","author":"lute","subject":"org(X3): \u5458\u5de5\u6587\u4ef6\u540d\u52a0\u90e8\u95e8\u524d\u7f00 \u00b7 127 git mv + README"},
+{"hash":"b724363","fullhash":"b724363158c585d2a0d6a8db622e225369b16821","date":"2026-05-16T05:34:31-07:00","author":"lute","subject":"org(X3-C-Full): 184 员工统一双连 dept- 前缀 · namespace 二期定稿"},
+{"hash":"120e6df","fullhash":"120e6df794ebc06f8487753dcf899e615aa02bfc","date":"2026-05-16T05:43:32-07:00","author":"lute","subject":"org(_PENDING_UPGRADES #2 APPLIED): Brand Guardian Multi-Regulator Cross-Validation v1\u2192v2"},
+{"hash":"f2f29c5","fullhash":"f2f29c5aa1d7e34b6e67181005f05e78dd26361b","date":"2026-05-16T05:49:00-07:00","author":"lute","subject":"org(_PENDING_UPGRADES #3 PROPOSED): Sisyphus check-actual-state-before-replanning \u00b7 \u7834\u4f8b\u5347\u683c"}
+]
