@@ -304,7 +304,10 @@ async function loadMemoryGraph(containerId, dataPath = '../data/memory.json') {
 
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('memory-graph')) loadMemoryGraph('memory-graph');
+    const el = document.getElementById('memory-graph');
+    if (!el) return;
+    const customPath = el.dataset.src;
+    loadMemoryGraph('memory-graph', customPath);
   });
 }
 

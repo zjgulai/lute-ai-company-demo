@@ -495,23 +495,15 @@
 
 <section class="section">
   <div class="container container--wide">
-    <div class="eyebrow">§ 1.2 · Sankey 占位</div>
+    <div class="eyebrow">§ 1.2 · 交互亮点 #3</div>
     <h2>184 员工 · 14 部门 · 演示用到 21 人</h2>
     <p class="lede" style="margin: var(--space-4) 0;">
-      Sankey 图左 = 14 部门 · 中 = SOP-B 7 步 · 右 = 19 个交付文件 + 24 张图。
+      Sankey 左 = 14 部门（按业务三轴）· 中 = SOP-B 7 步 · 右 = 19 个交付文件。<strong>红线高亮</strong>本次演示实际用到的 21 个员工。
     </p>
-    <div class="card" style="aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); border-style: dashed; min-height: 480px;">
-      <div style="text-align: center; padding: var(--space-4);">
-        <div class="eyebrow">M4 交付 · 暂位</div>
-        <p style="font-family: var(--font-display); font-size: 1.5rem; color: var(--text-muted); margin: 0;">
-          Sankey 流图<br>
-          <span style="font-family: var(--font-mono); font-size: var(--fs-small); color: var(--text-muted);">
-            14 dept × 7 SOP step × 19 deliverable
-          </span>
-        </p>
-      </div>
+    <div class="card" style="background: var(--bg-card); padding: var(--space-3); min-height: 720px;">
+      <div id="agents-sankey" data-agents-src="data/agents.json" data-flow-src="data/sop-b-flow.json" style="min-height: 700px;"></div>
     </div>
-    <p class="caption">本图将在 M4 用 D3 Sankey + data/agents.json + data/sop-b-flow.json 渲染。</p>
+    <p class="caption">▸ hover 节点看部门 / 员工名 · 灰色线 = 未参与本次演示的员工</p>
   </div>
 </section>
 
@@ -569,6 +561,10 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 </script>
+
+<script src="assets/js/lib/d3.min.js"></script>
+<script src="assets/js/lib/d3-sankey.min.js"></script>
+<script type="module" src="assets/js/sankey.js"></script>
 
 </body>
 </html>

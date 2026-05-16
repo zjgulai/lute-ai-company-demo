@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>§5 生图实验室 · 同模型 6/10 → 8.5/10 · 路特 AI 公司</title>
+  <meta name="description" content="路特 AI 公司 Day 1 vs Day 4 生图技术深度对比：image-to-image reference + Vision LM 4-up grid 选优带来 +42% 质量提升。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🪟%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+
+  <style>
+    .page-header { padding: var(--space-6) var(--space-4) var(--space-4); max-width: var(--container-narrow); margin: 0 auto; }
+    .page-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: var(--tracking-tight); margin-bottom: var(--space-3); }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); background: var(--bg-overlay); border-bottom: 1px solid var(--border-light); }
+    .nav__inner { max-width: var(--container-full); margin: 0 auto; padding: var(--space-2) var(--space-4); display: flex; align-items: center; justify-content: space-between; }
+    .nav__brand { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+    .nav__brand::before { content: "🪟"; margin-right: var(--space-2); }
+    .nav__links { display: flex; gap: var(--space-3); list-style: none; padding: 0; margin: 0; }
+    .nav__link { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--text-secondary); text-decoration: none; padding: var(--space-1) var(--space-2); }
+    .nav__link:hover { color: var(--text-primary); text-decoration: none; }
+    .nav__link.active { color: var(--accent-amber); }
+    @media (max-width: 768px) { .nav__links { display: none; } }
+
+    .stack-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-4) 0;
+    }
+
+    @media (max-width: 768px) { .stack-compare { grid-template-columns: 1fr; } }
+
+    .stack {
+      padding: var(--space-4);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+    }
+
+    .stack--day1 {
+      border-top: 4px solid var(--text-muted);
+    }
+
+    .stack--day4 {
+      border-top: 4px solid var(--accent-amber);
+      background: rgba(212, 154, 106, 0.04);
+    }
+
+    .stack__day {
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      margin-bottom: var(--space-1);
+    }
+
+    .stack--day4 .stack__day { color: var(--accent-amber); }
+
+    .stack__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .stack__metric {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .stack--day1 .stack__metric { color: var(--text-muted); }
+    .stack--day4 .stack__metric { color: var(--accent-amber); }
+
+    .stack__list {
+      list-style: none; padding: 0; margin: 0;
+      font-size: var(--fs-small); line-height: 1.8;
+    }
+
+    .stack__list li {
+      padding-left: 16px; position: relative;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .stack__list li::before {
+      content: "•"; position: absolute; left: 0;
+      color: var(--text-muted);
+    }
+
+    .stack--day4 .stack__list li::before {
+      content: "✓"; color: #4d8520;
+    }
+
+    .stack__list code {
+      background: transparent; padding: 0;
+      color: var(--accent-amber);
+      font-size: 0.875em;
+    }
+
+    .delta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-4) 0;
+      font-size: var(--fs-small);
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .delta-table th, .delta-table td {
+      padding: var(--space-2) var(--space-3);
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .delta-table th {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+    }
+
+    .delta-table td.metric {
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+
+    .delta-table td.day1 { color: var(--text-muted); }
+    .delta-table td.day4 { color: var(--accent-amber); font-weight: 600; }
+    .delta-table td.delta { color: #4d8520; font-family: var(--font-mono); font-weight: 600; }
+
+    .conclusion {
+      padding: var(--space-4);
+      background: linear-gradient(135deg, rgba(212, 154, 106, 0.1), rgba(143, 166, 140, 0.1));
+      border-left: 4px solid var(--accent-amber);
+      border-radius: var(--radius-md);
+      margin: var(--space-4) 0;
+    }
+
+    .conclusion h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: var(--space-2);
+    }
+
+    .conclusion p {
+      font-size: 1.0625rem;
+      color: var(--text-primary);
+      margin: 0;
+      max-width: none;
+    }
+
+    .hand-off { max-width: var(--container-narrow); margin: var(--space-6) auto var(--space-5); padding: var(--space-5) var(--space-4); text-align: center; border-top: 1px solid var(--border-light); }
+    .hand-off p { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-secondary); margin: 0 auto var(--space-3); max-width: 30ch; line-height: 1.4; }
+    .hand-off strong { color: var(--text-primary); font-weight: 600; }
+    .hand-off a { display: inline-block; font-family: var(--font-mono); font-size: var(--fs-small); color: var(--accent-amber); text-decoration: none; padding: var(--space-2) var(--space-3); border: 1px solid var(--accent-amber); border-radius: var(--radius-md); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+    .hand-off a:hover { background: var(--accent-amber); color: var(--text-inverse); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__brand">路特 AI 公司</a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="../index.html#intro">起源</a></li>
+      <li><a class="nav__link" href="02-selection.html">§2 选品</a></li>
+      <li><a class="nav__link" href="03-launch.html">§3 上架</a></li>
+      <li><a class="nav__link" href="04-self-evolution.html">§4 自进化</a></li>
+      <li><a class="nav__link active" href="05-image-lab.html">§5 生图</a></li>
+      <li><a class="nav__link" href="06-legal.html">§6 法规</a></li>
+      <li><a class="nav__link" href="07-roadmap.html">§7 路线图</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">§ 5 · 生图实验室 · 技术深章</div>
+  <h1>同模型 · <em style="font-style: normal; color: var(--accent-amber);">+42%</em> 质量</h1>
+  <p class="lede">同样的 Gemini 3.1 Flash Image 模型，<strong>质量为什么从 6/10 跳到 8.5/10</strong>？答案不在模型，在工程方法。</p>
+</header>
+
+<section class="section">
+  <div class="container container--medium">
+    <div class="eyebrow">§ 5.1 · 两栈对比</div>
+    <h2>Day 1 vs Day 4 技术栈</h2>
+
+    <div class="stack-compare">
+      <div class="stack stack--day1">
+        <div class="stack__day">Day 1 · 5/15</div>
+        <div class="stack__title">基础生图</div>
+        <div class="stack__metric">6/10</div>
+        <ul class="stack__list">
+          <li>模型：<code>gemini-3.1-flash-image-preview</code></li>
+          <li>via cliproxy <code>/v1/chat/completions</code></li>
+          <li>输入：<strong>纯文本 prompt</strong>（族裔 + 品牌色 HEX）</li>
+          <li>batch：6 张（3 Hero × 2 candidates）</li>
+          <li>并行：6 worker</li>
+          <li>总耗时：31 秒</li>
+          <li>选优方法：人工评估</li>
+          <li>GO 率：3/6 = 50%</li>
+          <li>后期：5/6 全需 Photoshop</li>
+        </ul>
+      </div>
+
+      <div class="stack stack--day4">
+        <div class="stack__day">Day 4 · 5/16</div>
+        <div class="stack__title">商业级生图</div>
+        <div class="stack__metric">8.5/10</div>
+        <ul class="stack__list">
+          <li>模型：<code>gemini-3.1-flash-image-preview</code> <strong>（同）</strong></li>
+          <li>输入：<strong>text + image_url</strong>（多模态）</li>
+          <li>reference 图：<strong>4 张 Momcozy 真品 PDP</strong></li>
+          <li>prompt 8 参数：85mm / f/8 / 5500K / DOF / Amazon 棚拍风</li>
+          <li>batch：56 张（14 shot × 4 candidates）</li>
+          <li>并行：8 worker</li>
+          <li>总耗时：2 分 5 秒</li>
+          <li>选优：<strong>Vision LM 4-up grid</strong></li>
+          <li>后期：5/14 微调</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: var(--space-4);">
+      <div class="eyebrow">关键 lesson</div>
+      <ul>
+        <li><code>lesson_cliproxy-image-routing-discovery</code> — opencode.json 17 模型全是 LLM，cliproxy <code>/v1/models</code> 后端却暴露 2 个图像模型</li>
+        <li><code>lesson_opencode-tool-discovery-via-api-probe</code> — 别假设 OpenCode list 出的就是全部能力</li>
+        <li><code>lesson_image-to-image-reference-must-use-for-commercial-grade</code> — 商业级 = reference 图 + lens 参数 + Vision LM 选优</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--medium">
+    <div class="eyebrow">§ 5.2 · Δ 表</div>
+    <h2>每个维度的提升</h2>
+
+    <table class="delta-table">
+      <thead>
+        <tr><th>维度</th><th>Day 1</th><th>Day 4</th><th>Δ</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="metric">模型</td><td class="day1">Gemini 3.1</td><td class="day4">Gemini 3.1</td><td class="delta">同</td></tr>
+        <tr><td class="metric">reference 图</td><td class="day1">✗</td><td class="day4">4 张 Momcozy</td><td class="delta">+</td></tr>
+        <tr><td class="metric">prompt 含 lens 参数</td><td class="day1">✗</td><td class="day4">85mm/f/8/5500K</td><td class="delta">+</td></tr>
+        <tr><td class="metric">batch 数</td><td class="day1">6</td><td class="day4">56</td><td class="delta">×9.3</td></tr>
+        <tr><td class="metric">并行 worker</td><td class="day1">1</td><td class="day4">8</td><td class="delta">×8</td></tr>
+        <tr><td class="metric">选优方法</td><td class="day1">人工</td><td class="day4">Vision LM 4-up grid</td><td class="delta">自动化</td></tr>
+        <tr><td class="metric">LM 评估次数</td><td class="day1">56 次</td><td class="day4">14 次</td><td class="delta">-75%</td></tr>
+        <tr><td class="metric">后期需求</td><td class="day1">5/6 全需</td><td class="day4">5/14 微调</td><td class="delta">-57%</td></tr>
+        <tr><td class="metric">质量分</td><td class="day1">6/10</td><td class="day4">8.5/10</td><td class="delta">+42%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="conclusion">
+      <h3>结论</h3>
+      <p><strong>不是模型限制，是工程方法限制。</strong>任何用 Gemini 3.1 Flash Image 生商品图的卖家，如果只用纯文本 prompt 不上 reference，质量必然受限。这条 lesson 对所有跨境 DTC 商品生图都有效。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <div class="eyebrow">§ 5.3 · ROI 加速器</div>
+    <h2>Vision LM 4-up grid 选优</h2>
+
+    <p>Day 4 的 ROI 关键不在生图阶段，在 <strong>选优阶段</strong>。</p>
+
+    <p><strong>Day 1 顺序跑</strong>：56 张图，逐张让 Vision LM 打分 = 56 次 LM 调用。</p>
+
+    <p><strong>Day 4 grid 选优</strong>：把 4 candidates 拼成一张 grid，一次让 LM 评估，14 grids = 14 次 LM 调用。</p>
+
+    <p style="font-family: var(--font-display); font-size: 1.25rem; color: var(--accent-amber); padding: var(--space-3); background: var(--bg-secondary); border-radius: var(--radius-md);">
+      节省 <strong>75%</strong> LM 调用 · 0 损质 · 4 候选间相对优势更易判断
+    </p>
+
+    <p>路特 AI 公司未来所有产品上架都会按 Day 4 范式跑：<strong>image-to-image reference + commercial prompt 参数化 + Vision LM grid 选优 + Photoshop 选择性后期</strong>。</p>
+  </div>
+</section>
+
+<div class="hand-off">
+  <p>生图技术解决了。<br>
+    <strong>但跨境最贵的不是产品，是合规雷区。</strong>
+  </p>
+  <a href="06-legal.html">→ §6 法规雷区</a>
+</div>
+
+</body>
+</html>

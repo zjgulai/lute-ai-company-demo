@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>§7 路线图 · NurtureLoop + SaaS 化 + 全自动化 · 路特 AI 公司</title>
+  <meta name="description" content="路特 AI 公司未来 4 个月路线图：NurtureLoop 经营分析 + 归因 Agent 立项 / SaaS 化 3 阶段 / 全自动化设想 / 工具栈致谢。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🪟%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+
+  <style>
+    .page-header { padding: var(--space-6) var(--space-4) var(--space-4); max-width: var(--container-narrow); margin: 0 auto; }
+    .page-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: var(--tracking-tight); margin-bottom: var(--space-3); }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); background: var(--bg-overlay); border-bottom: 1px solid var(--border-light); }
+    .nav__inner { max-width: var(--container-full); margin: 0 auto; padding: var(--space-2) var(--space-4); display: flex; align-items: center; justify-content: space-between; }
+    .nav__brand { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+    .nav__brand::before { content: "🪟"; margin-right: var(--space-2); }
+    .nav__links { display: flex; gap: var(--space-3); list-style: none; padding: 0; margin: 0; }
+    .nav__link { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--text-secondary); text-decoration: none; padding: var(--space-1) var(--space-2); }
+    .nav__link:hover { color: var(--text-primary); text-decoration: none; }
+    .nav__link.active { color: var(--accent-amber); }
+    @media (max-width: 768px) { .nav__links { display: none; } }
+
+    .architecture {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-4) 0;
+    }
+
+    @media (max-width: 768px) { .architecture { grid-template-columns: 1fr; } }
+
+    .arch-block {
+      padding: var(--space-3);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--accent-warm);
+    }
+
+    .arch-block h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      margin-bottom: var(--space-2);
+    }
+
+    .arch-block ul {
+      font-size: var(--fs-small);
+      padding-left: 18px;
+      color: var(--text-secondary);
+    }
+
+    .arch-block code {
+      background: transparent;
+      padding: 0;
+      color: var(--accent-amber);
+      font-size: 0.875em;
+    }
+
+    .ms-list {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: var(--space-3);
+      margin: var(--space-4) 0;
+    }
+
+    .ms-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--accent-amber);
+      letter-spacing: var(--tracking-wide);
+      font-weight: 600;
+      padding-top: 4px;
+    }
+
+    .ms-body {
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .ms-body h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      margin-bottom: var(--space-1);
+    }
+
+    .ms-body p {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      margin: 0;
+      max-width: none;
+    }
+
+    .saas-phases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-4) 0;
+      counter-reset: phase;
+    }
+
+    @media (max-width: 900px) { .saas-phases { grid-template-columns: 1fr; } }
+
+    .phase {
+      padding: var(--space-4);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      position: relative;
+      counter-increment: phase;
+    }
+
+    .phase::before {
+      content: "0" counter(phase);
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent-amber);
+      opacity: 0.2;
+      position: absolute;
+      top: -8px;
+      right: 8px;
+      line-height: 1;
+    }
+
+    .phase__label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      margin-bottom: var(--space-1);
+    }
+
+    .phase__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .phase__range {
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--accent-amber);
+      margin-bottom: var(--space-2);
+    }
+
+    .phase__body {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      line-height: var(--lh-normal);
+    }
+
+    .phase__price {
+      margin-top: var(--space-3);
+      padding-top: var(--space-2);
+      border-top: 1px dashed var(--border-light);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .decision-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-4) 0;
+    }
+
+    @media (max-width: 768px) { .decision-points { grid-template-columns: 1fr; } }
+
+    .dp {
+      padding: var(--space-3);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      border-left: 4px solid;
+    }
+
+    .dp--human { border-left-color: var(--color-human); background: rgba(208, 2, 27, 0.03); }
+    .dp--ai    { border-left-color: var(--accent-sage); background: rgba(143, 166, 140, 0.04); }
+    .dp--future { border-left-color: var(--text-muted); background: var(--bg-secondary); }
+
+    .dp__tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+      font-weight: 600;
+    }
+
+    .dp--human .dp__tag  { color: var(--color-human); }
+    .dp--ai .dp__tag     { color: #5a7757; }
+    .dp--future .dp__tag { color: var(--text-muted); }
+
+    .dp h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      margin-bottom: var(--space-2);
+    }
+
+    .dp p {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      margin: 0;
+      max-width: none;
+    }
+
+    .credits {
+      padding: var(--space-5) var(--space-4);
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-light);
+      margin-top: var(--space-5);
+    }
+
+    .credits .container { max-width: var(--container-narrow); margin: 0 auto; }
+
+    .credits h2 {
+      font-size: 2rem;
+      margin-bottom: var(--space-3);
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: var(--space-3);
+      margin: var(--space-3) 0;
+      font-size: var(--fs-small);
+    }
+
+    .credits-grid dt {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      font-size: 11px;
+      padding-top: 4px;
+    }
+
+    .credits-grid dd {
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .credits-grid code {
+      background: transparent;
+      padding: 0;
+      color: var(--accent-amber);
+      font-size: 0.875em;
+    }
+
+    .end-cta {
+      text-align: center;
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .end-cta h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: var(--space-3);
+    }
+
+    .end-cta h2 em {
+      font-style: normal;
+      color: var(--accent-amber);
+    }
+
+    .end-cta p {
+      font-size: var(--fs-lede);
+      color: var(--text-secondary);
+      margin: var(--space-3) auto;
+      max-width: 50ch;
+    }
+
+    .end-cta .btn-group {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__brand">路特 AI 公司</a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="../index.html#intro">起源</a></li>
+      <li><a class="nav__link" href="02-selection.html">§2 选品</a></li>
+      <li><a class="nav__link" href="03-launch.html">§3 上架</a></li>
+      <li><a class="nav__link" href="04-self-evolution.html">§4 自进化</a></li>
+      <li><a class="nav__link" href="05-image-lab.html">§5 生图</a></li>
+      <li><a class="nav__link" href="06-legal.html">§6 法规</a></li>
+      <li><a class="nav__link active" href="07-roadmap.html">§7 路线图</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">§ 7 · 路线图 · 未来 4 个月</div>
+  <h1>4 天结束 · <em style="font-style: normal; color: var(--accent-amber);">4 个月</em>开始</h1>
+  <p class="lede">演示完了。<strong>路特 AI 公司要去哪</strong>？三件事：NurtureLoop 立项 → SaaS 化 → 全自动化。</p>
+</header>
+
+<section class="section">
+  <div class="container container--narrow">
+    <div class="eyebrow">§ 7.1 · 第二个项目</div>
+    <h2>NurtureLoop · 经营分析 + 归因 Agent</h2>
+
+    <p style="margin-top: var(--space-3);">5 月 15 日我在跑 SOP-B 同时拍板了路特 AI 公司<strong>第二个真实业务</strong>：</p>
+
+    <div class="card" style="margin: var(--space-3) 0;">
+      <div class="eyebrow">项目立项</div>
+      <ul style="margin: 0;">
+        <li><strong>项目名</strong>：NurtureLoop（哺育闭环）</li>
+        <li><strong>定位</strong>：母婴跨境 DTC 业务经营分析 + 归因分析 Agent + 精美 Dashboard</li>
+        <li><strong>首个 dogfood 服务对象</strong>：本次演示的 Momcozy KleanPal Air</li>
+        <li><strong>memory entity</strong>：<code>project_nurtureloop</code></li>
+      </ul>
+    </div>
+
+    <p>技术架构 <strong>双前端</strong>：</p>
+
+    <div class="architecture">
+      <div class="arch-block">
+        <h4>对话 UI</h4>
+        <ul>
+          <li>OpenCode session 内交互</li>
+          <li>自然语言查询业务指标</li>
+          <li>归因分析对话式探索</li>
+          <li>策略建议生成</li>
+        </ul>
+      </div>
+
+      <div class="arch-block">
+        <h4>大屏 Dashboard</h4>
+        <ul>
+          <li>独立 Web 应用</li>
+          <li>Brand Guardian Seren 色系延续</li>
+          <li>Warm Porcelain + Sage Dust + Deep Amber + Mist Blue + Warm Charcoal</li>
+          <li>避免 UV 紫色</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>执行层 <strong>6 个 sub-agent</strong>：</p>
+
+    <ul>
+      <li><code>DataIngestionAgent</code> — 接入 Amazon Seller Central / Shopify Analytics / Meta Ads / TikTok Ads</li>
+      <li><code>AttributionAgent</code> — 多渠道归因建模</li>
+      <li><code>CostAttributionAgent</code> ⭐ — 路特 Day 1 拍板新增 · FOB + 物流 + 退货 + 平台费全套</li>
+      <li><code>InsightAgent</code> — 业务策略建议生成</li>
+      <li><code>ReportAgent</code> — 周报 / 月报自动出</li>
+      <li><code>ActionAgent</code> — 动作建议卡片流</li>
+    </ul>
+
+    <p style="margin-top: var(--space-3);">里程碑：</p>
+
+    <div class="ms-list">
+      <div class="ms-label">M1</div>
+      <div class="ms-body"><h4>PRD + 系统方案</h4><p>双前端架构定稿 · 6 sub-agent 边界定义</p></div>
+
+      <div class="ms-label">M2</div>
+      <div class="ms-body"><h4>全套成本</h4><p>FOB + 物流 + 退货 + 平台费数据源接入</p></div>
+
+      <div class="ms-label">M3</div>
+      <div class="ms-body"><h4>Dashboard v0</h4><p>静态 mockup · Brand Guardian Seren 色系</p></div>
+
+      <div class="ms-label">M5</div>
+      <div class="ms-body"><h4>Dashboard v1</h4><p>+ 动作建议卡片流 + Momcozy 数据接通</p></div>
+
+      <div class="ms-label">M8</div>
+      <div class="ms-body"><h4>SaaS 化启动</h4><p>multi-tenant · 客户白标 · 定价模型</p></div>
+    </div>
+
+    <div class="card" style="margin-top: var(--space-4);">
+      <div class="eyebrow">memory entity</div>
+      <p style="margin: 0;"><code>dec_20260515_t5-nurtureloop-launch-approved</code></p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--medium">
+    <div class="eyebrow">§ 7.2 · SaaS 化路径</div>
+    <h2 style="text-align: center;">从内部到客户白标</h2>
+    <p style="text-align: center; max-width: 60ch; margin: var(--space-3) auto;">NurtureLoop 不止内部用，路径设计为 SaaS：</p>
+
+    <div class="saas-phases">
+
+      <div class="phase">
+        <div class="phase__label">阶段 1</div>
+        <div class="phase__title">内部 dogfood</div>
+        <div class="phase__range">M3 - M5</div>
+        <div class="phase__body">
+          服务 Momcozy KleanPal Air 项目验证业务能跑通 · Sisyphus + 路特用 Dashboard 决策 · 调优 6 个 sub-agent
+        </div>
+        <div class="phase__price">不对外 · 仅内部</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase__label">阶段 2</div>
+        <div class="phase__title">客户白标</div>
+        <div class="phase__range">M6 - M7</div>
+        <div class="phase__body">
+          引入其他母婴 DTC 品牌作 alpha 客户 · 客户白标 + 数据隔离 · 定价 $499-1999/mo 按 SKU 数
+        </div>
+        <div class="phase__price">$499-1999/mo</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase__label">阶段 3</div>
+        <div class="phase__title">开放 SOP 模板</div>
+        <div class="phase__range">M8+</div>
+        <div class="phase__body">
+          SOP-A 选品 / SOP-B 上架 / SOP-C 营销 模板供其他品牌复用 · 卖家可"租"路特 AI 公司的 184 员工跑业务
+        </div>
+        <div class="phase__price">$99-499 / SOP run</div>
+      </div>
+
+    </div>
+
+    <p style="text-align: center; font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-top: var(--space-4);">
+      <strong>终态</strong>：路特 AI 公司不止跑自己的业务，<br>也成为母婴跨境 DTC 行业的 AI infrastructure。
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <div class="eyebrow">§ 7.3 · 全自动化未来</div>
+    <h2>人类决策点 → AI 决策点</h2>
+
+    <p style="margin-top: var(--space-3);">本演示的 4 天里，我作为人类介入 <strong>6 个决策点</strong>：</p>
+
+    <ol>
+      <li>GO/NO-GO 选品（§2）</li>
+      <li>SOP-B Step 1 brief approval（§3.2）</li>
+      <li>Day 2 品牌真名 PIVOT trigger（§3.3）</li>
+      <li>Day 4 路径选择 A vs B vs C（§3.3）</li>
+      <li>3 轮自进化 APPROVED（§4）</li>
+      <li>演示 GO（本次会话）</li>
+    </ol>
+
+    <p style="margin-top: var(--space-3);">下一阶段路径：</p>
+
+    <div class="decision-points">
+
+      <div class="dp dp--human">
+        <div class="dp__tag">🧑 现状</div>
+        <h4>人类决策点</h4>
+        <p>路特 = 决策点 · Sisyphus = 编排 · 184 员工 = 执行</p>
+      </div>
+
+      <div class="dp dp--ai">
+        <div class="dp__tag">⚙️ 下一步 · M6-M9</div>
+        <h4>部分决策点自动化</h4>
+        <p>Sisyphus 学习我的历史决策模式，部分决策点自动化（如 P1 文案修订、Hero shot c1/c2 选择等）</p>
+      </div>
+
+      <div class="dp dp--future" style="grid-column: 1 / -1;">
+        <div class="dp__tag">🚀 再下一步 · M10+</div>
+        <h4>从 SOP-A 开始全自动跑</h4>
+        <p>每周自动扫品类 + 选品 + 立项 + brief。<strong>人只看月度摘要拍板</strong>。技术上：cliproxy 路由（已用）+ n8n 自动化（待加）+ 决策模型微调（基于我历史 6 决策样本）</p>
+      </div>
+
+    </div>
+
+    <p style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); padding: var(--space-3); background: var(--bg-secondary); border-radius: var(--radius-md); margin-top: var(--space-4);">
+      <strong>终态</strong>：路特 AI 公司能在我离开 keyboard 的时候继续运行。
+    </p>
+  </div>
+</section>
+
+<section class="credits">
+  <div class="container">
+    <div class="eyebrow">§ 7.4 · 致谢</div>
+    <h2>工具栈 · 仓库 · credits</h2>
+
+    <p style="margin-top: var(--space-3);"><strong>工具栈</strong>：</p>
+
+    <dl class="credits-grid">
+      <dt>IDE + Runtime</dt>
+      <dd><a href="https://opencode.ai" target="_blank" rel="noopener">OpenCode</a> (Agent runtime + MCP host)</dd>
+
+      <dt>Model routing</dt>
+      <dd>cliproxy（含 image-to-image multimodal endpoint）</dd>
+
+      <dt>Memory engine</dt>
+      <dd><code>mcp-knowledge-graph@1.3.2</code> (aim-memory)</dd>
+
+      <dt>生图</dt>
+      <dd><code>gemini-3.1-flash-image-preview</code> via cliproxy</dd>
+
+      <dt>实地侦察</dt>
+      <dd><a href="https://playwright.dev" target="_blank" rel="noopener">Playwright</a> + Vision LM screenshot 分析</dd>
+
+      <dt>~~ 未用 ~~</dt>
+      <dd>Midjourney / FLUX / SDXL（cliproxy + Gemini Flash 已够）</dd>
+    </dl>
+
+    <p style="margin-top: var(--space-4);"><strong>184 员工</strong> fork 自 <a href="https://github.com/msitarzewski/agency-agents" target="_blank" rel="noopener">msitarzewski/agency-agents</a> MIT 协议。</p>
+
+    <p><strong>仓库</strong>：</p>
+
+    <dl class="credits-grid">
+      <dt>员工 prompt</dt>
+      <dd><a href="https://github.com/zjgulai/AI_Company_Person" target="_blank" rel="noopener">zjgulai/AI_Company_Person</a>（184 员工档案 · 公开）</dd>
+
+      <dt>业务工作树</dt>
+      <dd>zjgulai/Agent_agents（v0.2 项目文件 · private）</dd>
+
+      <dt>演示站</dt>
+      <dd><a href="https://github.com/zjgulai/lute-ai-company-demo" target="_blank" rel="noopener">zjgulai/lute-ai-company-demo</a>（你正在看 · 公开）</dd>
+    </dl>
+
+    <p style="margin-top: var(--space-4); color: var(--text-muted);"><strong>致谢路特</strong>：感谢路特把 4 天工时全开给路特 AI 公司 v0.2，让 Sisyphus 有素材组成这个故事。</p>
+  </div>
+</section>
+
+<section class="end-cta">
+  <h2>4 天结束 · <em>4 个月</em>开始</h2>
+  <p>这是路特 AI 公司的 4 天，也是未来 4 个月的开始。<br>代码、prompt、决策图谱全部公开。<br><strong>想问的、想深挖的、想合作的，这就是接下来 30 分钟的事。</strong></p>
+  <div class="btn-group">
+    <a href="../index.html" class="btn btn--primary">回到首页</a>
+    <a href="https://github.com/zjgulai/AI_Company_Person" class="btn btn--accent" target="_blank" rel="noopener">查看员工 prompt</a>
+    <a href="https://github.com/zjgulai/lute-ai-company-demo" class="btn" target="_blank" rel="noopener">演示站源码</a>
+  </div>
+</section>
+
+</body>
+</html>

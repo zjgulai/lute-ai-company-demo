@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>§6 法规雷区 · Legal Audit 双审 · 路特 AI 公司</title>
+  <meta name="description" content="路特 AI 公司 SOP-B Legal Audit 双审：'UV purification' FDA 安全 vs EPA 雷区 + 蒸气线措辞不能转 UV-C 的法规非传递性 + 4 P0 / 6 P1 / 5 P2 修订清单。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🪟%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+
+  <style>
+    .page-header { padding: var(--space-6) var(--space-4) var(--space-4); max-width: var(--container-narrow); margin: 0 auto; }
+    .page-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: var(--tracking-tight); margin-bottom: var(--space-3); }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); background: var(--bg-overlay); border-bottom: 1px solid var(--border-light); }
+    .nav__inner { max-width: var(--container-full); margin: 0 auto; padding: var(--space-2) var(--space-4); display: flex; align-items: center; justify-content: space-between; }
+    .nav__brand { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+    .nav__brand::before { content: "🪟"; margin-right: var(--space-2); }
+    .nav__links { display: flex; gap: var(--space-3); list-style: none; padding: 0; margin: 0; }
+    .nav__link { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--text-secondary); text-decoration: none; padding: var(--space-1) var(--space-2); }
+    .nav__link:hover { color: var(--text-primary); text-decoration: none; }
+    .nav__link.active { color: var(--accent-amber); }
+    @media (max-width: 768px) { .nav__links { display: none; } }
+
+    .audit-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-4) 0;
+    }
+
+    @media (max-width: 768px) { .audit-summary { grid-template-columns: 1fr; } }
+
+    .audit-bucket {
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-top: 4px solid;
+    }
+
+    .audit-bucket--p0 { border-top-color: var(--color-decision); }
+    .audit-bucket--p1 { border-top-color: var(--accent-amber); }
+    .audit-bucket--p2 { border-top-color: var(--color-region); }
+
+    .audit-bucket__priority {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      margin-bottom: var(--space-1);
+    }
+
+    .audit-bucket--p0 .audit-bucket__priority { color: var(--color-decision); }
+    .audit-bucket--p1 .audit-bucket__priority { color: var(--accent-amber); }
+    .audit-bucket--p2 .audit-bucket__priority { color: var(--text-muted); }
+
+    .audit-bucket__count {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      margin-bottom: var(--space-1);
+    }
+
+    .audit-bucket__label {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .audit-bucket__items {
+      list-style: none; padding: 0; margin: 0;
+      font-size: var(--fs-small);
+    }
+
+    .audit-bucket__items li {
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border-light);
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .audit-bucket__items li:last-child { border-bottom: none; }
+
+    .uv-case {
+      padding: var(--space-5) var(--space-4);
+      background: linear-gradient(135deg, rgba(208, 2, 27, 0.06), rgba(245, 166, 35, 0.06));
+      border-top: 2px solid var(--color-decision);
+      border-bottom: 2px solid var(--color-decision);
+      margin: var(--space-5) 0;
+    }
+
+    .uv-case .container { max-width: var(--container-medium); margin: 0 auto; }
+
+    .quote-large {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      line-height: 1.4;
+      color: var(--text-primary);
+      padding: var(--space-3);
+      background: var(--bg-card);
+      border-left: 4px solid var(--color-decision);
+      margin: var(--space-3) 0;
+    }
+
+    .quote-large strong {
+      color: var(--color-decision);
+    }
+
+    .reg-stack {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-3) 0;
+    }
+
+    @media (max-width: 768px) { .reg-stack { grid-template-columns: 1fr; } }
+
+    .reg-card {
+      padding: var(--space-3);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+    }
+
+    .reg-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      margin-bottom: var(--space-2);
+    }
+
+    .reg-card__type {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+    }
+
+    .reg-card ul {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      padding-left: 18px;
+    }
+
+    .reg-card code {
+      font-size: 0.875em;
+      background: transparent;
+      padding: 0;
+      color: var(--accent-amber);
+    }
+
+    .verdict-rows {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+      margin: var(--space-3) 0;
+    }
+
+    .verdict {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: var(--space-3);
+      align-items: center;
+      padding: var(--space-2);
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border-left: 3px solid;
+    }
+
+    .verdict--allow { border-left-color: #4d8520; }
+    .verdict--gray  { border-left-color: var(--accent-amber); }
+    .verdict--ban   { border-left-color: var(--color-decision); }
+
+    .verdict__tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .verdict--allow .verdict__tag { color: #4d8520; }
+    .verdict--gray  .verdict__tag { color: var(--accent-amber); }
+    .verdict--ban   .verdict__tag { color: var(--color-decision); }
+
+    .verdict__body {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+    }
+
+    .verdict__body code {
+      background: transparent;
+      padding: 0;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: var(--space-3) var(--space-4);
+      margin: var(--space-4) 0;
+    }
+
+    .roadmap__week {
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--accent-amber);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+
+    .roadmap__event {
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .roadmap__event h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-1);
+    }
+
+    .roadmap__event p {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      max-width: none;
+      margin: 0;
+    }
+
+    .hand-off { max-width: var(--container-narrow); margin: var(--space-6) auto var(--space-5); padding: var(--space-5) var(--space-4); text-align: center; border-top: 1px solid var(--border-light); }
+    .hand-off p { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-secondary); margin: 0 auto var(--space-3); max-width: 30ch; line-height: 1.4; }
+    .hand-off strong { color: var(--text-primary); font-weight: 600; }
+    .hand-off a { display: inline-block; font-family: var(--font-mono); font-size: var(--fs-small); color: var(--accent-amber); text-decoration: none; padding: var(--space-2) var(--space-3); border: 1px solid var(--accent-amber); border-radius: var(--radius-md); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+    .hand-off a:hover { background: var(--accent-amber); color: var(--text-inverse); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__brand">路特 AI 公司</a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="../index.html#intro">起源</a></li>
+      <li><a class="nav__link" href="02-selection.html">§2 选品</a></li>
+      <li><a class="nav__link" href="03-launch.html">§3 上架</a></li>
+      <li><a class="nav__link" href="04-self-evolution.html">§4 自进化</a></li>
+      <li><a class="nav__link" href="05-image-lab.html">§5 生图</a></li>
+      <li><a class="nav__link active" href="06-legal.html">§6 法规</a></li>
+      <li><a class="nav__link" href="07-roadmap.html">§7 路线图</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">§ 6 · 法规雷区 · 业务深章</div>
+  <h1>合规即<em style="font-style: normal; color: var(--accent-amber);">护城河</em></h1>
+  <p class="lede">母婴跨境最贵不是产品，是<strong>合规雷区</strong>。Legal Audit 双审揭出 15 项修订 + 2 条反直觉的法规交叉教训。</p>
+</header>
+
+<section class="section">
+  <div class="container container--medium">
+    <div class="eyebrow">§ 6.1 · Day 1 Audit v1</div>
+    <h2>4 致命 / 6 重要 / 5 优化 = 15 项修订</h2>
+    <p style="margin-top: var(--space-3);">Legal Compliance Checker 在 Day 1 末尾出 Audit v1 报告：⚠️ <strong>APPROVED WITH CONDITIONS</strong>。</p>
+
+    <div class="audit-summary">
+      <div class="audit-bucket audit-bucket--p0">
+        <div class="audit-bucket__priority">P0 致命</div>
+        <div class="audit-bucket__count">4</div>
+        <div class="audit-bucket__label">阻塞上线</div>
+        <ul class="audit-bucket__items">
+          <li>品牌承诺 'Zero worry' 触发 FTC §5</li>
+          <li><strong>ToV 'UV purification' 触发 EPA FIFRA</strong></li>
+          <li>'食品级不锈钢' 无认证体系</li>
+          <li>IEC/UL/CE 认证未取得不能谎称</li>
+        </ul>
+      </div>
+
+      <div class="audit-bucket audit-bucket--p1">
+        <div class="audit-bucket__priority">P1 重要</div>
+        <div class="audit-bucket__count">6</div>
+        <div class="audit-bucket__label">上线后修</div>
+        <ul class="audit-bucket__items">
+          <li>P1-01 Hero C-c1 紫光残留</li>
+          <li>P1-02 保修条款缺失</li>
+          <li>P1-03 品牌承诺需改</li>
+          <li>P1-04 Energy Star 声明</li>
+          <li>P1-05 品牌故事 'sterilize'</li>
+          <li>P1-06 RoHS 合规声明</li>
+        </ul>
+      </div>
+
+      <div class="audit-bucket audit-bucket--p2">
+        <div class="audit-bucket__priority">P2 优化</div>
+        <div class="audit-bucket__count">5</div>
+        <div class="audit-bucket__label">迭代改进</div>
+        <ul class="audit-bucket__items">
+          <li>alt text 缺失</li>
+          <li>FTC §255 disclosure</li>
+          <li>GDPR cookie banner</li>
+          <li>EU 14 天退货说明</li>
+          <li>可访问性 ARIA labels</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>15 项修订涉及品牌、UI、Hero shot、保修、合规声明全方面。其中 <strong>P0-02</strong> 是最讽刺的案例 ↓</p>
+  </div>
+</section>
+
+<section class="uv-case">
+  <div class="container">
+    <div class="eyebrow" style="color: var(--color-decision);">§ 6.2 · UV purification 雷区</div>
+    <h2 style="margin-bottom: var(--space-3);">看似 FDA 安全 · 实是 EPA 雷区</h2>
+
+    <p style="font-size: var(--fs-lede);">Brand Guardian Step 1 brief 推荐用 'UV purification' 替代 'UV-C sterilization'，出发点正确：</p>
+
+    <p style="margin-left: var(--space-3); padding-left: var(--space-3); border-left: 3px solid var(--text-muted);">
+      <strong>避免 FDA 21 CFR 801 医疗器械声明</strong>。一旦说 sterilize，FDA 视为医疗器械 510(k) 注册路径。
+    </p>
+
+    <p>但 Legal 二审发现：</p>
+
+    <p style="margin-left: var(--space-3); padding-left: var(--space-3); border-left: 3px solid var(--color-decision);">
+      <strong>EPA-HQ-OPP-2021-0466</strong> 明确列「UV purification」为 antimicrobial claim 触发词，触发 <strong>FIFRA §3 农药注册义务</strong>。
+    </p>
+
+    <div class="quote-large">
+      同一个词，<strong>FDA 觉得安全</strong>，<strong>EPA 觉得违规</strong>。
+    </div>
+
+    <p>根本原因：Brand Guardian 只查了一个监管机构（FDA），没交叉验证另一个监管机构（EPA）。</p>
+
+    <p>这条 lesson 即 <code>lesson_brand-tov-must-cross-validate-with-multi-regulator</code>，5 月 16 日被升格为 _PENDING_UPGRADES #2 PROPOSED → APPROVED → APPLIED。Brand Guardian prompt v1 → v2 加 Step 1.5 强制门：</p>
+
+    <div class="card" style="margin: var(--space-3) 0;">
+      <div class="eyebrow">Step 1.5 · Multi-Regulator Cross-Validation</div>
+      <p style="margin: 0;">未来 ToV 字典必须横跨 14 监管机构（FDA + EPA + FTC + CPSC + USDA + EMA + CE + GDPR + REACH + EN71 + BPR + Amazon + Meta + TikTok + Google + Shopify）<strong>交集审查</strong>。输出格式从「词汇对照表」升级为「该说 / 不该说 / 触发法规」三段式 claim record。</p>
+    </div>
+
+    <div class="card" style="margin-top: var(--space-3);">
+      <div class="eyebrow">关键 commit</div>
+      <p style="margin: 0;"><code>120e6df</code> · Round 2 Brand Guardian v1→v2 APPLIED</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--medium">
+    <div class="eyebrow">§ 6.3 · 法规非传递性</div>
+    <h2>蒸气线用了 ≠ UV-C 线可用</h2>
+
+    <p style="margin-top: var(--space-3);">Day 2 PIVOT 到 Momcozy 后，Sisyphus 错误推论：</p>
+
+    <p class="quote-large">"Momcozy 现行 KleanPal Pro 蒸气款用 'Sterilize / Kills 99% germs / Sterile Storage' 运营多年没被警告，那 KleanPal Air UV-C 也可以用。"</p>
+
+    <p>Legal Step 5 二审推翻该推论。<strong>不同技术面对的监管豁免结构完全不同</strong>：</p>
+
+    <div class="reg-stack">
+      <div class="reg-card">
+        <div class="reg-card__type">蒸气线</div>
+        <h4>FDA 21 CFR 1040 家电一般类</h4>
+        <ul>
+          <li>FDA 视为家电不是医疗器械</li>
+          <li>EPA <code>FIFRA 豁免</code>（Steam 不算 antimicrobial agent）</li>
+          <li>'Sterilize' 在内部页可保留</li>
+          <li>'Kills 99%' 灰区可走</li>
+        </ul>
+      </div>
+
+      <div class="reg-card" style="border-color: var(--color-decision);">
+        <div class="reg-card__type">UV-C 线</div>
+        <h4>FDA 21 CFR Part 1000-1004 强制 IEC 62471</h4>
+        <ul>
+          <li>FDA 强制 UV 安全标准</li>
+          <li>EPA <code>EPA-HQ-OPP-2021-0466</code> 明列严管</li>
+          <li>'UV purification' = antimicrobial 触发词</li>
+          <li>'Sterilize with UV-C' = FIFRA 注册</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Legal 二审 3 档措辞裁定：</p>
+
+    <div class="verdict-rows">
+      <div class="verdict verdict--allow">
+        <span class="verdict__tag">✓ 可沿用</span>
+        <span class="verdict__body"><code>Sterile Storage</code>（标 *略告号）· <code>18-min cycle</code> · <code>99.X% Sanitized</code></span>
+      </div>
+      <div class="verdict verdict--gray">
+        <span class="verdict__tag">⚠ 灰区</span>
+        <span class="verdict__body"><code>Kills 99% germs</code>（需 FIFRA 注册）· <code>Sterilize</code>（仅内部页）· <code>72h Sterile Storage</code>（需报告）</span>
+      </div>
+      <div class="verdict verdict--ban">
+        <span class="verdict__tag">✗ 禁用</span>
+        <span class="verdict__body"><code>UV purification</code> · <code>Sterilize with UV-C</code> · <code>Kills 99.9% 无报告</code> · <code>Zero worry</code></span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: var(--space-4);">
+      <div class="eyebrow">新 lesson</div>
+      <p style="margin: 0;"><code>lesson_regulatory-precedent-non-transferability-across-tech</code> — 同品牌跨不同技术需重新独立验证。未来所有"现有品牌 + 新技术类 SKU"任务，Brand Guardian Step 1.7 必走 Tech-Specific Regulatory Re-Audit。</p>
+      <p style="margin-top: var(--space-2);"><strong>关键 commit</strong>：<code>882402e</code> · Step 5 v2 · UV vs Steam 法规非传递</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--medium">
+    <div class="eyebrow">§ 6.4 · Reality Check + 上线路线</div>
+    <h2>A 轨 18/18 PASS · B 轨 HOLD 6-8 周</h2>
+
+    <p style="margin-top: var(--space-3);">Reality Checker 在 5 月 16 日傍晚做了最终独立审查（独立 grep 全量检索方式，<strong>不信 Sisyphus 自证</strong>）：</p>
+
+    <div class="reg-stack" style="margin: var(--space-4) 0;">
+      <div class="reg-card" style="border-color: #4d8520;">
+        <div class="reg-card__type" style="color: #4d8520;">A 轨 · 文案合规</div>
+        <h4>✅ 18/18 PASS</h4>
+        <p style="font-size: var(--fs-small); color: var(--text-secondary);">商品页文案侧已达 <strong>上线标准</strong>。从 v2.0 → v2.2 → v2.3 三轮迭代，每轮把 grep 命中违规修掉再重审。</p>
+      </div>
+
+      <div class="reg-card" style="border-color: var(--accent-amber);">
+        <div class="reg-card__type" style="color: var(--accent-amber);">B 轨 · 外部认证</div>
+        <h4>⏳ HOLD · 6-8 周</h4>
+        <p style="font-size: var(--fs-small); color: var(--text-secondary);">3 个外部认证（IEC 62471 RG1 / CPSC CPC / EU CE DoC）<strong>未取得</strong>。卡点是 CPSC CPC 检测周期。</p>
+      </div>
+    </div>
+
+    <p>5 周里程碑路线图：</p>
+
+    <div class="roadmap">
+      <div class="roadmap__week">W0</div>
+      <div class="roadmap__event">
+        <h4>路特 GO + 送检</h4>
+        <p>Intertek $6-12K (IEC + CPC 套餐) + Bureau Veritas €1.5-3K (RP + CE DoC) + USPTO 商标</p>
+      </div>
+
+      <div class="roadmap__week">W2</div>
+      <div class="roadmap__event">
+        <h4>美国 Shopify 上线</h4>
+        <p>"designed-to-meet IEC 62471 RG1 standards" 措辞 · 不谎称已认证</p>
+      </div>
+
+      <div class="roadmap__week">W3-4</div>
+      <div class="roadmap__event">
+        <h4>EU Shopify 上线</h4>
+        <p>14 天退货 · GDPR cookie · CE 申报中状态</p>
+      </div>
+
+      <div class="roadmap__week">W7-8</div>
+      <div class="roadmap__event">
+        <h4>实物认证报告到手</h4>
+        <p>IEC 62471 RG1 实测报告 + CPSC CPC + EU CE DoC 全套</p>
+      </div>
+
+      <div class="roadmap__week">W9-10</div>
+      <div class="roadmap__event">
+        <h4>全渠道激活</h4>
+        <p>Amazon · Meta · TikTok Shop · Google Shopping 全通道开 · 措辞升级到 "tested to meet"</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: var(--space-4);">
+      <div class="eyebrow">关键 commit</div>
+      <p><code>ab4d4e3</code> · Step 6 v2.3 终审 18/18 PASS · A 轨上线就绪</p>
+    </div>
+  </div>
+</section>
+
+<div class="hand-off">
+  <p>合规通过 · 实物送检 · 5 周路线图清晰。<br>
+    <strong>4 天结束 · 下一步路特 AI 公司去哪？</strong>
+  </p>
+  <a href="07-roadmap.html">→ §7 路线图</a>
+</div>
+
+</body>
+</html>

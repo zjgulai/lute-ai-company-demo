@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>§4 自进化 · 3 轮 prompt 升级 · 路特 AI 公司</title>
+  <meta name="description" content="路特 AI 公司 v0.2 自进化机制：4 天内跑通 3 轮 OMO/Brand Guardian/Sisyphus prompt 升级。memory 图谱 64 节点 + 121 关系完整 audit trail。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🪟%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+
+  <style>
+    .page-header { padding: var(--space-6) var(--space-4) var(--space-4); max-width: var(--container-narrow); margin: 0 auto; }
+    .page-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: var(--tracking-tight); margin-bottom: var(--space-3); }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); background: var(--bg-overlay); border-bottom: 1px solid var(--border-light); }
+    .nav__inner { max-width: var(--container-full); margin: 0 auto; padding: var(--space-2) var(--space-4); display: flex; align-items: center; justify-content: space-between; }
+    .nav__brand { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+    .nav__brand::before { content: "🪟"; margin-right: var(--space-2); }
+    .nav__links { display: flex; gap: var(--space-3); list-style: none; padding: 0; margin: 0; }
+    .nav__link { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--text-secondary); text-decoration: none; padding: var(--space-1) var(--space-2); }
+    .nav__link:hover { color: var(--text-primary); text-decoration: none; }
+    .nav__link.active { color: var(--accent-amber); }
+    @media (max-width: 768px) { .nav__links { display: none; } }
+
+    .rounds {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin: var(--space-5) 0;
+    }
+
+    @media (max-width: 900px) {
+      .rounds { grid-template-columns: 1fr; }
+    }
+
+    .round {
+      padding: var(--space-4);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .round::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--accent-warm), var(--accent-amber));
+    }
+
+    .round--applied::before {
+      background: linear-gradient(90deg, #4d8520, #7ed321);
+    }
+
+    .round--proposed::before {
+      background: linear-gradient(90deg, #f5a623, var(--accent-amber));
+      animation: pulse 2s var(--ease-in-out) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.5; }
+    }
+
+    .round__id {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      margin-bottom: var(--space-2);
+    }
+
+    .round__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .round__date {
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--accent-amber);
+      margin-bottom: var(--space-3);
+    }
+
+    .round__states {
+      display: flex; align-items: center; gap: var(--space-2);
+      margin-bottom: var(--space-3); flex-wrap: wrap;
+    }
+
+    .state {
+      display: inline-flex; align-items: center; gap: var(--space-1);
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+    }
+
+    .state--active {
+      background: rgba(126, 211, 33, 0.15);
+      color: #4d8520;
+      font-weight: 600;
+    }
+
+    .state--current {
+      background: rgba(245, 166, 35, 0.15);
+      color: var(--accent-amber);
+      font-weight: 600;
+      animation: pulse 2s var(--ease-in-out) infinite;
+    }
+
+    .arrow { color: var(--text-muted); }
+
+    .round__body {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      line-height: var(--lh-normal);
+      margin-bottom: var(--space-3);
+    }
+
+    .round__meta {
+      padding-top: var(--space-3);
+      border-top: 1px dashed var(--border-light);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .round__meta code {
+      background: transparent;
+      padding: 0;
+      color: var(--accent-amber);
+    }
+
+    .graph-wrap {
+      position: relative;
+      width: 100%;
+      height: 700px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: var(--space-4) 0;
+    }
+
+    #memory-graph { width: 100%; height: 100%; }
+
+    .graph-instruction {
+      position: absolute; top: 12px; right: 12px; z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 10px 12px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      max-width: 240px;
+      line-height: 1.5;
+    }
+
+    .breakthrough-rules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-3);
+      margin: var(--space-4) 0;
+    }
+
+    .rule {
+      padding: var(--space-3);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--accent-amber);
+      border-radius: var(--radius-md);
+    }
+
+    .rule__num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-amber);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      margin-bottom: var(--space-1);
+    }
+
+    .rule h4 {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      margin-bottom: var(--space-2);
+    }
+
+    .rule p {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      margin: 0;
+      max-width: none;
+    }
+
+    .hand-off { max-width: var(--container-narrow); margin: var(--space-6) auto var(--space-5); padding: var(--space-5) var(--space-4); text-align: center; border-top: 1px solid var(--border-light); }
+    .hand-off p { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-secondary); margin: 0 auto var(--space-3); max-width: 30ch; line-height: 1.4; }
+    .hand-off strong { color: var(--text-primary); font-weight: 600; }
+    .hand-off a { display: inline-block; font-family: var(--font-mono); font-size: var(--fs-small); color: var(--accent-amber); text-decoration: none; padding: var(--space-2) var(--space-3); border: 1px solid var(--accent-amber); border-radius: var(--radius-md); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+    .hand-off a:hover { background: var(--accent-amber); color: var(--text-inverse); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__brand">路特 AI 公司</a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="../index.html#intro">起源</a></li>
+      <li><a class="nav__link" href="02-selection.html">§2 选品</a></li>
+      <li><a class="nav__link" href="03-launch.html">§3 上架</a></li>
+      <li><a class="nav__link active" href="04-self-evolution.html">§4 自进化</a></li>
+      <li><a class="nav__link" href="05-image-lab.html">§5 生图</a></li>
+      <li><a class="nav__link" href="06-legal.html">§6 法规</a></li>
+      <li><a class="nav__link" href="07-roadmap.html">§7 路线图</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">§ 4 · 自进化 · Day 1-Day 4</div>
+  <h1>4 天 · <em style="font-style: normal; color: var(--accent-amber);">3 轮</em> prompt 升级</h1>
+  <p class="lede">路特 AI 公司 v0.2 不仅在跑业务，<strong>自己也在升级自己</strong>。4 天内完整跑通 3 轮 PROPOSED → APPROVED → APPLIED 状态机。</p>
+</header>
+
+<section class="section">
+  <div class="container container--full">
+    <div class="container container--narrow" style="padding-bottom: 0;">
+      <div class="eyebrow">§ 4.1 · 交互亮点 #6</div>
+      <h2>3 轮自进化状态机</h2>
+      <p style="margin-top: var(--space-3);">每一轮都从一个失败 / 雷区出发，沉淀 lesson，升级目标 agent prompt。状态机：<code>PROPOSED → APPROVED → APPLIED</code>。</p>
+    </div>
+
+    <div class="container container--wide">
+      <div class="rounds">
+
+        <div class="round round--applied">
+          <div class="round__id">Round 1 · 2026-05-15</div>
+          <div class="round__title">OMO model chain broken</div>
+          <div class="round__date">v0 → v1</div>
+          <div class="round__states">
+            <span class="state state--active">PROPOSED</span>
+            <span class="arrow">→</span>
+            <span class="state state--active">APPROVED</span>
+            <span class="arrow">→</span>
+            <span class="state state--active">APPLIED</span>
+          </div>
+          <div class="round__body">
+            SOP-A 跑选品时发现 4 个 librarian agent 全失败 —— 配置文件 18 处 model id 失效（<code>opencode/gpt-5-nano</code> 不存在）。Sisyphus 诊断 → 路特 APPROVED 全用 <code>cliproxy/claude-sonnet-4.6</code> → Sisyphus 改 18 处 → 重跑验证 10 秒过 → APPLIED。<strong>首次跑通破例升格状态机。</strong>
+          </div>
+          <div class="round__meta">
+            commit <code>f6f9016</code><br>
+            <code>dec_20260515_omo-config-fix</code><br>
+            <code>lesson_librarian-model-chain-broken</code>
+          </div>
+        </div>
+
+        <div class="round round--applied">
+          <div class="round__id">Round 2 · 2026-05-16</div>
+          <div class="round__title">Brand Guardian Multi-Regulator</div>
+          <div class="round__date">v1 → v2</div>
+          <div class="round__states">
+            <span class="state state--active">PROPOSED</span>
+            <span class="arrow">→</span>
+            <span class="state state--active">APPROVED</span>
+            <span class="arrow">→</span>
+            <span class="state state--active">APPLIED</span>
+          </div>
+          <div class="round__body">
+            Day 1 Brand Guardian 推荐 'UV purification' 看似 FDA 安全，但 Legal 二审发现 EPA-HQ-OPP-2021-0466 明列该词为 antimicrobial claim 触发词 —— 触发 FIFRA §3 注册义务。<strong>两个监管机构同一个词、相反方向。</strong>Brand Guardian prompt v1 → v2，加 Step 1.5 强制门：未来所有 ToV 字典必经 Legal Multi-Regulator Cross-Validation（<strong>14 个监管机构</strong>横向交集审查）。
+          </div>
+          <div class="round__meta">
+            commit <code>120e6df</code><br>
+            <code>dec_20260516_brand-guardian-multi-regulator-cross-validation</code><br>
+            <code>lesson_brand-tov-must-cross-validate-with-multi-regulator</code>
+          </div>
+        </div>
+
+        <div class="round round--proposed">
+          <div class="round__id">Round 3 · 2026-05-16</div>
+          <div class="round__title">Sisyphus actual-state check</div>
+          <div class="round__date">PROPOSED · 进行中</div>
+          <div class="round__states">
+            <span class="state state--current">PROPOSED</span>
+            <span class="arrow">→</span>
+            <span class="state">APPROVED</span>
+            <span class="arrow">→</span>
+            <span class="state">APPLIED</span>
+          </div>
+          <div class="round__body">
+            本次 demo 准备时我让 Sisyphus 续做之前会话的任务。Sisyphus 第一时间检查 git log 发现：上一会话之后<strong>有人偷偷跑了 X3 重命名一半</strong>（commit <code>77a3d1a</code>）。如果 Sisyphus 没检查就闷头干，会跑出 184 文件错乱命名。<strong>它停下来报告冲突让我重拍板。</strong>这个能力升级正在 PROPOSED 区等下次会话决议。
+          </div>
+          <div class="round__meta">
+            commit <code>f2f29c5</code><br>
+            <code>lesson_check-actual-state-before-replanning</code><br>
+            状态：等路特 APPROVED
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--full">
+    <div class="container container--narrow" style="padding-bottom: 0;">
+      <div class="eyebrow">§ 4.2 · 交互亮点 #2</div>
+      <h2>memory 知识图谱 · 64 实体 · 121 关系</h2>
+      <p style="margin-top: var(--space-3);">路特 AI 公司用 <code>mcp-knowledge-graph</code> 作为集体记忆引擎。每个决策 / 教训 / 项目 / SKU / region / agent 都是一个 entity，关系用受限词表（supersedes / produced / improved_by / depended_on 等）表达。<strong>完整 audit trail。</strong></p>
+    </div>
+
+    <div class="container container--full" style="padding: 0 var(--space-3);">
+      <div class="graph-wrap">
+        <div id="memory-graph" data-src="../data/memory.json"></div>
+        <div class="graph-instruction">
+          <strong>试一下</strong><br>
+          ▸ <strong>hover</strong> 节点看 observations<br>
+          ▸ <strong>点</strong>节点高亮邻域<br>
+          ▸ <strong>滚轮</strong>缩放 · <strong>拖</strong>布局
+        </div>
+      </div>
+    </div>
+
+    <div class="container container--narrow">
+      <p>到 Day 4 末尾，memory 累积 <strong>64 个 entity + 121 条 relation</strong>：</p>
+      <ul>
+        <li>~19 个 decision（5 个 v0.2 设计决策 + 14 个 SOP-B 决策）</li>
+        <li>~17 个 lesson（4 个选品 + 6 个 SOP-B + 5 个 v0.2 元 + 2 个跨技术）</li>
+        <li>~9 个 engagement（每天 1-2 个）</li>
+        <li>~6 个 agent（含 Brand Guardian v1/v2 supersedes 关系）</li>
+        <li>4 个 project / sku / region 等业务实体</li>
+      </ul>
+
+      <p><strong>建议路径</strong>：试点 <code>lesson_brand-recon-before-design-existing-vs-greenfield</code> 这个绿色节点，看亮起的 4 条关系（被 3 个 engagement 引用 + 1 条 improved_by）；或点中心 <code>agent_sisyphus</code> 蓝节点看辐射的 5+ 条 assigned_to / produced 关系。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <div class="eyebrow">§ 4.3 · 破例规则</div>
+    <h2>≥10 影响面 = 破例升格</h2>
+
+    <p style="margin-top: var(--space-3);"><code>_PENDING_UPGRADES.md</code> 默认升级阈值是 <strong>≥3 engagement</strong> 复现同一 lesson 才能进 PROPOSED 区。但 v0.2.1 §0 加了破例规则：</p>
+
+    <div class="breakthrough-rules">
+      <div class="rule">
+        <div class="rule__num">破例条件 #1</div>
+        <h4>影响面爆炸</h4>
+        <p>单条 lesson 可追溯到 <strong>≥10 个 downstream entity</strong>（agent / project / SKU / SOP 等）受其影响</p>
+      </div>
+
+      <div class="rule">
+        <div class="rule__num">破例条件 #2</div>
+        <h4>P0/P1 事故</h4>
+        <p>lesson 是 SOP-F <strong>重大事故</strong>的根因或同根因</p>
+      </div>
+
+      <div class="rule">
+        <div class="rule__num">破例条件 #3</div>
+        <h4>阻塞主 SOP</h4>
+        <p>lesson 直接<strong>阻塞 SOP-A/B/C/D/E</strong> 任一全链路</p>
+      </div>
+    </div>
+
+    <p>本演示 3 轮自进化<strong>全是破例升格</strong>：</p>
+
+    <ul>
+      <li><strong>Round 1</strong>：1 个 engagement + 影响 10 个 subagent + 4 个 SOP background → <strong>条件 1+3 命中</strong></li>
+      <li><strong>Round 2</strong>：1 个 engagement + 影响未来所有母婴/UV/健康/IoT/食品接触 SKU → <strong>条件 1 命中</strong></li>
+      <li><strong>Round 3</strong>：1 个 engagement + 影响所有跨会话续做 + 等用户决策 gate + 共享仓库工作流 → <strong>条件 1 命中</strong></li>
+    </ul>
+
+    <p>破例规则避免了"等 3 次才修一个明显大爆点"的延迟问题。</p>
+
+    <div class="card" style="margin-top: var(--space-4);">
+      <div class="eyebrow">破例规则的 lesson 本身</div>
+      <p><code>lesson_blast-radius-bypass-3-engagement-threshold</code> · 第一次破例触发 → 自身升级到 v0.2.1 §0 文件头部说明区</p>
+    </div>
+  </div>
+</section>
+
+<div class="hand-off">
+  <p>系统自己升级自己。<br>
+    <strong>那同样的模型，质量为什么从 6/10 跳到 8.5/10？</strong>
+  </p>
+  <a href="05-image-lab.html">→ §5 生图实验室</a>
+</div>
+
+<script src="../assets/js/lib/cytoscape.min.js"></script>
+<script type="module" src="../assets/js/memory-graph.js"></script>
+
+</body>
+</html>
