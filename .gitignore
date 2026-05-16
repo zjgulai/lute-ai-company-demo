@@ -13,3 +13,6 @@ build/
 # Local
 .env
 .env.local
+
+# Local review screenshots (not deployed)
+.review/

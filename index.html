@@ -3,59 +3,571 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>路特 AI 公司 · 4 天 · 184 员工 · 1 SKU 演示站</title>
-  <meta name="description" content="从 idea 到合规通过的真实 SKU 商品页，全程 184 个 AI 员工自主完成的 4 天工作记录。母婴跨境 DTC 演示站。">
+  <title>路特 AI 公司 · 4 天 · 184 员工 · 1 SKU</title>
+  <meta name="description" content="从 idea 到合规通过的真实 SKU 商品页，全程 184 个 AI 员工分 14 个部门自主完成的 4 天工作记录。母婴跨境 DTC 演示站。">
+  <meta property="og:title" content="路特 AI 公司 v0.2 · 母婴跨境 DTC 演示站">
+  <meta property="og:description" content="4 天 · 184 员工 · 1 个 UV-C 消毒柜 · 从 idea 到合规上架的 AI 工作室全记录">
+  <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🪟%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+
   <style>
-    body { font-family: system-ui, sans-serif; background: #fafaf8; color: #1a1a1a; padding: 4rem 2rem; max-width: 720px; margin: 0 auto; line-height: 1.7; }
-    h1 { font-family: Georgia, serif; font-weight: 700; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; }
-    .lede { font-size: 1.25rem; color: #5c5c5c; margin-bottom: 3rem; }
-    .status { background: #fff; border: 1px solid #e8e3dc; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; }
-    .status h2 { font-family: Georgia, serif; font-size: 1.5rem; margin-bottom: 1rem; }
-    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 500; }
-    .badge.m1 { background: #c8e6c9; color: #1b5e20; }
-    .badge.pending { background: #f4f1ec; color: #8b8b8b; }
-    code { font-family: Menlo, monospace; font-size: 0.875em; background: #f4f1ec; padding: 0.125em 0.375em; border-radius: 4px; }
-    a { color: #b97a3f; }
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(12px); background: var(--bg-overlay);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur-normal) var(--ease-out);
+    }
+    .nav.scrolled { border-bottom-color: var(--border-light); }
+    .nav__inner {
+      max-width: var(--container-full); margin: 0 auto;
+      padding: var(--space-2) var(--space-4);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav__brand {
+      font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+      color: var(--text-primary); text-decoration: none;
+      letter-spacing: var(--tracking-tight);
+    }
+    .nav__brand::before {
+      content: "🪟"; margin-right: var(--space-2); font-size: 1.2em;
+    }
+    .nav__links {
+      display: flex; gap: var(--space-3); list-style: none; padding: 0; margin: 0;
+    }
+    .nav__link {
+      font-family: var(--font-mono); font-size: var(--fs-small);
+      color: var(--text-secondary); text-decoration: none;
+      padding: var(--space-1) var(--space-2);
+      transition: color var(--dur-fast) var(--ease-out);
+    }
+    .nav__link:hover { color: var(--text-primary); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--space-5);
+      padding: var(--space-6) var(--space-4) var(--space-5);
+      max-width: var(--container-full);
+      margin: 0 auto;
+    }
+
+    .hero__left { padding-right: var(--space-4); }
+
+    .hero__eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .hero__eyebrow::before {
+      content: ""; display: inline-block;
+      width: 32px; height: 1px; background: var(--text-muted);
+    }
+
+    .hero__title {
+      font-size: var(--fs-h1);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+    .hero__title em {
+      font-style: normal;
+      color: var(--accent-amber);
+      font-weight: 800;
+    }
+
+    .hero__sub {
+      font-size: var(--fs-lede);
+      line-height: var(--lh-relaxed);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-5);
+      max-width: 50ch;
+    }
+
+    .hero__meta {
+      display: flex; flex-wrap: wrap; gap: var(--space-3);
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      margin-bottom: var(--space-5);
+    }
+    .hero__meta span:not(:last-child)::after {
+      content: "·"; margin-left: var(--space-3); color: var(--border-medium);
+    }
+
+    .hero__cta {
+      display: flex; gap: var(--space-3); flex-wrap: wrap;
+      margin-bottom: var(--space-5);
+    }
+
+    .hero__right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      max-width: 480px;
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      animation: floatGentle 6s var(--ease-in-out) infinite;
+    }
+
+    .hero__image-wrap::before {
+      content: "";
+      position: absolute; inset: -2px;
+      background: linear-gradient(135deg, var(--accent-warm), var(--accent-sage));
+      border-radius: var(--radius-lg);
+      z-index: -1; opacity: 0.3;
+      filter: blur(20px);
+    }
+
+    .hero__image {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+
+    .hero__image-caption {
+      position: absolute; bottom: var(--space-3); left: var(--space-3);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    .hero__scroll {
+      position: absolute; bottom: var(--space-4);
+      left: 50%; transform: translateX(-50%);
+    }
+
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; padding-top: var(--space-5); gap: var(--space-4); min-height: auto; }
+      .hero__left { padding-right: 0; }
+      .hero__right { order: -1; }
+      .hero__image-wrap { max-width: 360px; }
+    }
+
+    .intro {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-4);
+      text-align: left;
+    }
+
+    .intro__eyebrow {
+      margin-bottom: var(--space-3);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+
+    .stat {
+      padding: var(--space-3) 0;
+      border-top: 1px solid var(--border-light);
+    }
+    .stat__num {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+    .stat__num em {
+      font-style: normal;
+      color: var(--accent-amber);
+    }
+    .stat__label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-3) var(--space-4);
+      margin: var(--space-5) 0;
+    }
+
+    .timeline__day {
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--accent-amber);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      padding-top: 2px;
+      font-weight: 500;
+    }
+
+    .timeline__event {
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .timeline__event h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-1);
+    }
+    .timeline__event p {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-1);
+    }
+    .timeline__event .commit-hash {
+      font-size: 11px;
+      background: transparent;
+      padding: 0;
+      color: var(--text-muted);
+    }
+
+    .hand-off {
+      max-width: var(--container-narrow);
+      margin: var(--space-6) auto;
+      padding: var(--space-5) var(--space-4);
+      text-align: center;
+      border-top: 1px solid var(--border-light);
+    }
+    .hand-off p {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      margin: 0 auto var(--space-3);
+      max-width: 30ch;
+      line-height: 1.4;
+    }
+    .hand-off strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .hand-off a {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: var(--fs-small);
+      color: var(--accent-amber);
+      text-decoration: none;
+      padding: var(--space-2) var(--space-3);
+      border: 1px solid var(--accent-amber);
+      border-radius: var(--radius-md);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      transition: all var(--dur-normal) var(--ease-out);
+    }
+    .hand-off a:hover {
+      background: var(--accent-amber);
+      color: var(--text-inverse);
+    }
+
+    .footer {
+      padding: var(--space-5) var(--space-4);
+      border-top: 1px solid var(--border-light);
+      background: var(--bg-secondary);
+      text-align: center;
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+    }
+    .footer p { margin: 0 auto; max-width: 70ch; }
+    .footer a { color: var(--text-secondary); }
   </style>
 </head>
 <body>
-  <h1>路特 AI 公司 v0.2</h1>
-  <p class="lede">4 天 · 184 员工 · 1 个 UV-C 消毒柜<br>
-    从 idea 到合规通过的真实 SKU 商品页，全程 AI 工作室自主完成。</p>
 
-  <div class="status">
-    <h2>🚧 演示站建设中</h2>
-    <p>本站点目前处于 M1（数据导出与仓初始化）已完成阶段。完整 7 章 + 6 大交互预计 2026-05-19 前上线。</p>
-    <p style="margin-top: 1rem;">
-      <span class="badge m1">M1 ✅ 数据导出 + 仓初始化</span>
-      <span class="badge pending">M2 ⏳ 设计系统 + §1</span>
-      <span class="badge pending">M3 ⏳ §2-§3</span>
-      <span class="badge pending">M4 ⏳ §4-§6</span>
-      <span class="badge pending">M5 ⏳ §7 + 部署</span>
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__brand">路特 AI 公司</a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="#intro">起源</a></li>
+      <li><a class="nav__link" href="pages/02-selection.html">§2 选品</a></li>
+      <li><a class="nav__link" href="pages/03-launch.html">§3 上架</a></li>
+      <li><a class="nav__link" href="pages/04-self-evolution.html">§4 自进化</a></li>
+      <li><a class="nav__link" href="pages/05-image-lab.html">§5 生图</a></li>
+      <li><a class="nav__link" href="pages/06-legal.html">§6 法规</a></li>
+      <li><a class="nav__link" href="pages/07-roadmap.html">§7 路线图</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero__left">
+    <div class="hero__eyebrow fade-in">路特 AI 公司 v0.2 · 母婴跨境 DTC</div>
+    <h1 class="hero__title fade-in fade-in--delay-1">
+      4 天 · <em>184</em> 员工<br>
+      <em>1</em> 个 UV-C 消毒柜
+    </h1>
+    <p class="hero__sub fade-in fade-in--delay-2">
+      从一个还没动手的 idea，到一个已经合规通过的真实 SKU 商品页，4 天。<br>
+      所有决策、所有产出、所有 commit hash，可审计。
+    </p>
+    <div class="hero__meta fade-in fade-in--delay-2">
+      <span>14 部门</span>
+      <span>6 SOP</span>
+      <span>3 轮自进化</span>
+      <span>64 entity / 121 relation</span>
+    </div>
+    <div class="hero__cta fade-in fade-in--delay-3">
+      <a href="#intro" class="btn btn--primary">开始 4 天的故事</a>
+      <a href="https://github.com/zjgulai/AI_Company_Person" class="btn" target="_blank" rel="noopener">查看员工 prompt</a>
+    </div>
+  </div>
+
+  <div class="hero__right">
+    <div class="hero__image-wrap">
+      <picture>
+        <source
+          srcset="assets/images/shots-webp/P-01-hero-main-WINNER.webp 1024w,
+                  assets/images/shots-webp/P-01-hero-main-WINNER-800w.webp 800w,
+                  assets/images/shots-webp/P-01-hero-main-WINNER-400w.webp 400w"
+          sizes="(max-width: 960px) 360px, 480px"
+          type="image/webp">
+        <img class="hero__image"
+             src="assets/images/shots/P-01-hero-main-WINNER.jpeg"
+             alt="Momcozy KleanPal Air UV-C Baby Bottle Care Cabinet · Day 4 商业级商品主图"
+             loading="eager"
+             decoding="async">
+      </picture>
+      <div class="hero__image-caption">
+        <strong>P-01</strong> · Day 4 商业级生图<br>
+        image-to-image reference · Vision LM 选优 · 8.5/10
+      </div>
+    </div>
+  </div>
+
+  <a href="#intro" class="scroll-indicator hero__scroll fade-in fade-in--delay-3">滑动 · 开始 4 天的故事</a>
+</section>
+
+<section class="intro" id="intro">
+  <div class="eyebrow intro__eyebrow">§ 0 · 这不是 demo</div>
+  <h2>这是一个真实跑业务的 AI 工作室。</h2>
+
+  <p class="lede" style="margin-top: var(--space-4);">
+    2026 年 5 月 14 日，我把 <strong>184 个 AI 员工</strong>部署到 OpenCode，按母婴跨境 DTC 业务三轴重排成 14 个部门。<br>
+    我自己是 CEO，叫 <strong>Sisyphus</strong> 的 AI 是 COO。
+  </p>
+
+  <p style="margin-top: var(--space-4);">
+    接下来的 4 天，是这 184 员工第一次跑真实业务的全过程：选品 → 品牌 → 多族裔 hero → 商业级商品图 → Shopify 上架 → 法规终审 → Reality Check 18/18 PASS。
+  </p>
+
+  <p>
+    中间一次戏剧性 PIVOT（品牌真名突然从 Seren 变成 Momcozy），三轮 AI 系统自己升级自己的 prompt。
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat__num"><em>184</em></div>
+      <div class="stat__label">AI 员工</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num"><em>14</em></div>
+      <div class="stat__label">部门</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num"><em>6</em></div>
+      <div class="stat__label">人类决策点</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num"><em>3</em></div>
+      <div class="stat__label">自进化轮</div>
+    </div>
+  </div>
+</section>
+
+<section class="container container--narrow">
+  <div class="eyebrow">§ 1 · 4 天时间线</div>
+  <h2 style="margin-bottom: var(--space-4);">4 天，184 员工做了什么</h2>
+
+  <div class="timeline">
+    <div class="timeline__day">Day 1<br>5 月 15 日</div>
+    <div class="timeline__event">
+      <h4>SOP-A 选品 + SOP-B 启动</h4>
+      <p>Trend Researcher 跑全品类扫描 30 分钟 · 推荐 UV-C 真空带机会 #1 · 路特 GO · Brand Guardian 出 Seren 品牌 brief · Inclusive Visuals 出 3 张多族裔 hero prompts · Image Prompt Engineer 跑 6 张 hero shots</p>
+      <span class="commit-hash">a50db9c · 72afa53</span>
+    </div>
+
+    <div class="timeline__day">Day 2<br>5 月 16 日</div>
+    <div class="timeline__event">
+      <h4>🎭 戏剧性 PIVOT</h4>
+      <p>路特 透露品牌真名 = Momcozy（不是新建 Seren）· Sisyphus 用 Playwright 实地侦察 momcozy.com 三页 · 发现 Day 1 ToV 与 Momcozy 现行措辞冲突 · 重写 brief v1 → v3 启动 A 路径完全对齐</p>
+      <span class="commit-hash">df058c8</span>
+    </div>
+
+    <div class="timeline__day">Day 3<br>5 月 16 日</div>
+    <div class="timeline__event">
+      <h4>商业级生图 + Legal 二审</h4>
+      <p>Image Prompt Engineer 跑 image-to-image reference + 8 worker 并行 + Vision LM 4-up grid 选优 · 56 张选 14 张 WINNER · Vision LM 评分 8.5/10 (+42% vs Day 1) · Legal 二审 UV vs Steam 法规非传递</p>
+      <span class="commit-hash">f7f2533 · 882402e</span>
+    </div>
+
+    <div class="timeline__day">Day 4<br>5 月 16 日</div>
+    <div class="timeline__event">
+      <h4>Mockup v2.2 + Reality Check 18/18 PASS</h4>
+      <p>UI Designer 修 18 处 Legal v3.1 违规 · Reality Checker 终审 A 轨 18/18 PASS（B 轨外部认证 HOLD 6-8 周）· 文案合规已达上线标准 · 同日跑通 3 轮自进化（OMO/Brand/Sisyphus）</p>
+      <span class="commit-hash">77248fa · ab4d4e3 · 120e6df</span>
+    </div>
+  </div>
+</section>
+
+<div class="hand-off">
+  <p>184 员工已就位。<br>
+    <strong>下面我们一个个见。</strong>
+  </p>
+  <a href="#origin">↓ §1 起源 · 路特 AI 公司是什么</a>
+</div>
+
+<section class="section section--alt" id="origin">
+  <div class="container container--narrow">
+    <div class="eyebrow">§ 1.1 · 卷首</div>
+    <h2>路特 AI 公司</h2>
+
+    <p class="lede" style="margin-top: var(--space-4);">
+      这不是一个 demo，是一个真实跑业务的 AI 工作室。
+    </p>
+
+    <p>
+      2026 年 5 月 14 日，我把 184 个 AI 员工部署到 OpenCode，按母婴跨境 DTC 业务三轴重排成 14 个部门 —— 内容营销 30 人 · 付费投放 7 人 · 跨境专业 41 人 · 支持 6 人，再加上设计 8 人 / 工程 29 人 / 测试 8 人等等。
+    </p>
+
+    <p>
+      我自己是 CEO，叫 Sisyphus 的 AI 是 COO。v0.2 的核心机制有四个：<strong>守门式 memory ACL</strong> · <strong>Sisyphus 主动复盘建议</strong> · <strong>agents 仓 git 化到私有远端</strong> · <strong>业务三轴 KPI</strong>。
+    </p>
+
+    <p>
+      下面 4 天的故事，就是这 184 员工第一次跑真实业务的全过程。
+    </p>
+
+    <div class="card" style="margin-top: var(--space-4);">
+      <div class="eyebrow">关键 commit</div>
+      <p><code>af00c10</code> · v0.2 业务工作树孤儿分支创建</p>
+      <div class="eyebrow" style="margin-top: var(--space-3);">关联 memory entity</div>
+      <ul>
+        <li><code>dec_20260514_org-12-dept-rerank-for-baby-dtc</code></li>
+        <li><code>dec_20260514_memory-acl-gated-by-namespace</code></li>
+        <li><code>dec_20260514_sisyphus-active-retro-suggestion</code></li>
+        <li><code>dec_20260514_agents-git-to-private-remote</code></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--wide">
+    <div class="eyebrow">§ 1.2 · Sankey 占位</div>
+    <h2>184 员工 · 14 部门 · 演示用到 21 人</h2>
+    <p class="lede" style="margin: var(--space-4) 0;">
+      Sankey 图左 = 14 部门 · 中 = SOP-B 7 步 · 右 = 19 个交付文件 + 24 张图。
+    </p>
+    <div class="card" style="aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); border-style: dashed; min-height: 480px;">
+      <div style="text-align: center; padding: var(--space-4);">
+        <div class="eyebrow">M4 交付 · 暂位</div>
+        <p style="font-family: var(--font-display); font-size: 1.5rem; color: var(--text-muted); margin: 0;">
+          Sankey 流图<br>
+          <span style="font-family: var(--font-mono); font-size: var(--fs-small); color: var(--text-muted);">
+            14 dept × 7 SOP step × 19 deliverable
+          </span>
+        </p>
+      </div>
+    </div>
+    <p class="caption">本图将在 M4 用 D3 Sankey + data/agents.json + data/sop-b-flow.json 渲染。</p>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--narrow">
+    <div class="eyebrow">§ 1.3 · 治理</div>
+    <h2>5 层治理 + memory 守门</h2>
+
+    <p style="margin-top: var(--space-4);">
+      路特 AI 公司 v0.2 的治理结构是 5 层：
+    </p>
+
+    <div class="card" style="margin: var(--space-4) 0;">
+      <ol>
+        <li><strong>路特</strong> —— CEO · <span class="badge badge--human">人类</span> · 唯一人类 · 6 个决策点出现</li>
+        <li><strong>Sisyphus</strong> —— COO · <span class="badge badge--ai">AI</span> · OpenCode 主编排 · memory 全权</li>
+        <li><strong>Orchestrator / Studio Producer / Senior PM</strong> —— 项目层 · memory 全权</li>
+        <li><strong>14 部门负责人</strong> —— 战略代言 · memory 写不能删</li>
+        <li><strong>184 员工</strong> —— 执行层 · 只能写自己 namespace</li>
+      </ol>
+    </div>
+
+    <p>
+      memory 守门规则不是 OpenCode 自带，是 <a href="https://github.com/zjgulai/AI_Company_Person/blob/main/AGENTS.md" target="_blank" rel="noopener">AGENTS.md §3.4</a> 软强制。普通员工如需写跨部门 lesson/decision，必须改用 <code>[CROSS-DEPT-LESSON-CANDIDATE]</code> 标记塞进 engagement observations，由 Sisyphus 下次 /retro 升格。
+    </p>
+
+    <p>
+      这避免了 184 员工互相污染对方记忆的失控。
     </p>
   </div>
+</section>
 
-  <div class="status">
-    <h2>📂 已就绪资源</h2>
-    <ul>
-      <li>📊 <code>data/memory.json</code> · 64 实体 + 121 关系</li>
-      <li>👥 <code>data/agents.json</code> · 184 员工 + 14 部门 + 21 demo 高亮</li>
-      <li>📜 <code>data/commits-*.json</code> · 双仓 commit 时间轴</li>
-      <li>🔄 <code>data/sop-b-flow.json</code> · SOP-B 7 步 + 流向</li>
-      <li>🖼️ <code>assets/images/shots/</code> · 14 张商业级商品图</li>
-      <li>🛍️ <code>pages/mockup-product.html</code> · Shopify 商品页 mockup (1404 行)</li>
-    </ul>
-  </div>
+<div class="hand-off">
+  <p>184 员工已就位。<br>
+    但要先选一个真实业务跑起来。<br>
+    <strong>第一个被选中的项目是……</strong>
+  </p>
+  <a href="pages/02-selection.html" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">→ §2 选品（M3 待生产）</a>
+</div>
 
-  <div class="status">
-    <h2>🔗 相关仓库</h2>
-    <ul>
-      <li><a href="https://github.com/zjgulai/AI_Company_Person">zjgulai/AI_Company_Person</a> · 184 员工 prompt 档案</li>
-      <li>zjgulai/Agent_agents · 业务工作树（private）</li>
-    </ul>
-  </div>
+<footer class="footer">
+  <p>
+    路特 AI 公司 v0.2 · 演示站 M2 阶段（首页 + §1 完成）<br>
+    M3-M5 持续建设中 · 预计 2026-05-19 前全站上线<br>
+    起草人 Sisyphus（COO）· 2026-05-16
+  </p>
+</footer>
 
-  <p style="color: #8b8b8b; margin-top: 3rem; font-size: 0.875rem;">起草人 Sisyphus（COO） · 2026-05-16</p>
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
 </body>
 </html>
