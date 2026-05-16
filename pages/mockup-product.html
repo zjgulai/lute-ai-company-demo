@@ -145,6 +145,95 @@
       aspect-ratio: 4/5;
       object-fit: cover;
       background: var(--bg-gray);
+      cursor: zoom-in;
+      transition: transform 250ms ease;
+    }
+    .hero__main-img:hover { transform: scale(1.01); }
+
+    /* Lightbox · zero-dependency · keyboard + touch + counter */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(15, 15, 15, 0.94);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      animation: lbFadeIn 200ms ease;
+    }
+    .lightbox.is-open { display: flex; }
+    @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lightbox__img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      border-radius: 4px;
+      animation: lbZoomIn 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes lbZoomIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .lightbox__close,
+    .lightbox__nav {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      cursor: pointer;
+      transition: background 180ms ease, transform 180ms ease;
+      font-family: 'Montserrat', sans-serif;
+      backdrop-filter: blur(4px);
+    }
+    .lightbox__close:hover,
+    .lightbox__nav:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+    }
+
+    .lightbox__close {
+      top: 24px; right: 24px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .lightbox__nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      font-size: 32px;
+      line-height: 1;
+    }
+    .lightbox__nav:hover { transform: translateY(-50%) scale(1.05); }
+    .lightbox__nav--prev { left: 24px; }
+    .lightbox__nav--next { right: 24px; }
+
+    .lightbox__counter {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.85);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 999px;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox__close { top: 16px; right: 16px; width: 38px; height: 38px; font-size: 20px; }
+      .lightbox__nav { width: 44px; height: 44px; font-size: 24px; }
+      .lightbox__nav--prev { left: 12px; }
+      .lightbox__nav--next { right: 12px; }
+    }
+
+      background: var(--bg-gray);
     }
     .hero__thumbnails {
       display: flex;
@@ -865,32 +954,32 @@
             class="hero__thumb active"
             srcset="../assets/images/shots-webp/P-01-hero-main-WINNER-400w.webp 400w, ../assets/images/shots-webp/P-01-hero-main-WINNER-800w.webp 800w, ../assets/images/shots-webp/P-01-hero-main-WINNER.webp 1024w" sizes="(max-width: 600px) 100vw, 800px" src="../assets/images/shots-webp/P-01-hero-main-WINNER.webp"
             alt="KleanPal Air hero"
-            onclick="swapHero(this,'images/P-01-hero-main.jpeg','Momcozy KleanPal Air UV-C baby bottle care cabinet — front hero')" loading="lazy" decoding="async" width="1024" height="1024">
+            onclick="swapHero(this)" data-alt="Momcozy KleanPal Air UV-C baby bottle care cabinet — front hero" loading="lazy" decoding="async" width="1024" height="1024">
           <img
             class="hero__thumb"
             srcset="../assets/images/shots-webp/P-02-front-view-WINNER-400w.webp 400w, ../assets/images/shots-webp/P-02-front-view-WINNER-800w.webp 800w, ../assets/images/shots-webp/P-02-front-view-WINNER.webp 1024w" sizes="(max-width: 600px) 100vw, 800px" src="../assets/images/shots-webp/P-02-front-view-WINNER.webp"
             alt="KleanPal Air front view"
-            onclick="swapHero(this,'images/P-02-front-view.jpeg','Momcozy KleanPal Air — front view with control panel')" loading="lazy" decoding="async" width="1024" height="1024">
+            onclick="swapHero(this)" data-alt="Momcozy KleanPal Air — front view with control panel" loading="lazy" decoding="async" width="1024" height="1024">
           <img
             class="hero__thumb"
             srcset="../assets/images/shots-webp/P-03-side-view-WINNER-400w.webp 400w, ../assets/images/shots-webp/P-03-side-view-WINNER-800w.webp 800w, ../assets/images/shots-webp/P-03-side-view-WINNER.webp 1024w" sizes="(max-width: 600px) 100vw, 800px" src="../assets/images/shots-webp/P-03-side-view-WINNER.webp"
             alt="KleanPal Air side view"
-            onclick="swapHero(this,'images/P-03-side-view.jpeg','Momcozy KleanPal Air — slim side profile')" loading="lazy" decoding="async" width="1024" height="1024">
+            onclick="swapHero(this)" data-alt="Momcozy KleanPal Air — slim side profile" loading="lazy" decoding="async" width="1024" height="1024">
           <img
             class="hero__thumb"
             srcset="../assets/images/shots-webp/P-04-top-down-WINNER-400w.webp 400w, ../assets/images/shots-webp/P-04-top-down-WINNER-800w.webp 800w, ../assets/images/shots-webp/P-04-top-down-WINNER.webp 1024w" sizes="(max-width: 600px) 100vw, 800px" src="../assets/images/shots-webp/P-04-top-down-WINNER.webp"
             alt="KleanPal Air top-down chamber view"
-            onclick="swapHero(this,'images/P-04-top-down.jpeg','Momcozy KleanPal Air — top-down view of chamber with glass bottles')" loading="lazy" decoding="async" width="1024" height="1024">
+            onclick="swapHero(this)" data-alt="Momcozy KleanPal Air — top-down view of chamber with glass bottles" loading="lazy" decoding="async" width="1024" height="1024">
           <img
             class="hero__thumb"
             srcset="../assets/images/shots-webp/P-05-door-open-bottle-WINNER-400w.webp 400w, ../assets/images/shots-webp/P-05-door-open-bottle-WINNER-800w.webp 800w, ../assets/images/shots-webp/P-05-door-open-bottle-WINNER.webp 1024w" sizes="(max-width: 600px) 100vw, 800px" src="../assets/images/shots-webp/P-05-door-open-bottle-WINNER.webp"
             alt="KleanPal Air door open"
-            onclick="swapHero(this,'images/P-05-door-open-bottle.jpeg','Momcozy KleanPal Air — door open after completed UV-C cycle')" loading="lazy" decoding="async" width="1024" height="1024">
+            onclick="swapHero(this)" data-alt="Momcozy KleanPal Air — door open after completed UV-C cycle" loading="lazy" decoding="async" width="1024" height="1024">
           <img
             class="hero__thumb"
             srcset="../assets/images/shots-webp/L-01-mexican-mom-kitchen-WINNER-400w.webp 400w, ../assets/images/shots-webp/L-01-mexican-mom-kitchen-WINNER-800w.webp 800w, ../assets/images/shots-webp/L-01-mexican-mom-kitchen-WINNER.webp 1024w" sizes="(max-width: 600px) 100vw, 800px" src="../assets/images/shots-webp/L-01-mexican-mom-kitchen-WINNER.webp"
             alt="KleanPal Air in family kitchen"
-            onclick="swapHero(this,'images/L-01-mexican-mom-kitchen.jpeg','Momcozy KleanPal Air in a real family morning routine')" loading="lazy" decoding="async" width="1024" height="1024">
+            onclick="swapHero(this)" data-alt="Momcozy KleanPal Air in a real family morning routine" loading="lazy" decoding="async" width="1024" height="1024">
         </div>
       </div>
 
@@ -1392,12 +1481,80 @@
 
 <!-- ─── Gallery Swap Script ────────────────────────────────────────────── -->
 <script>
-  function swapHero(el, src, alt) {
-    document.getElementById('hero-main').src = src;
-    document.getElementById('hero-main').alt = alt;
+  function swapHero(el) {
+    const main = document.getElementById('hero-main');
+    main.src = el.src;
+    if (el.srcset) main.srcset = el.srcset;
+    if (el.sizes) main.sizes = el.sizes;
+    main.alt = el.dataset.alt || el.alt;
     document.querySelectorAll('.hero__thumb').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
   }
+
+  (function initLightbox() {
+    const main = document.getElementById('hero-main');
+    if (!main) return;
+    const thumbs = Array.from(document.querySelectorAll('.hero__thumb'));
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox';
+    overlay.innerHTML = `
+      <button class="lightbox__close" aria-label="关闭">×</button>
+      <button class="lightbox__nav lightbox__nav--prev" aria-label="上一张">‹</button>
+      <img class="lightbox__img" alt="">
+      <button class="lightbox__nav lightbox__nav--next" aria-label="下一张">›</button>
+      <div class="lightbox__counter"></div>
+    `;
+    document.body.appendChild(overlay);
+
+    const lbImg = overlay.querySelector('.lightbox__img');
+    const counter = overlay.querySelector('.lightbox__counter');
+    let currentIdx = 0;
+
+    function open(idx) {
+      currentIdx = idx;
+      const t = thumbs[idx];
+      lbImg.src = t.src;
+      if (t.srcset) lbImg.srcset = t.srcset;
+      if (t.sizes) lbImg.sizes = t.sizes;
+      lbImg.alt = t.dataset.alt || t.alt;
+      counter.textContent = `${idx + 1} / ${thumbs.length}`;
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    function next() { open((currentIdx + 1) % thumbs.length); }
+    function prev() { open((currentIdx - 1 + thumbs.length) % thumbs.length); }
+
+    main.style.cursor = 'zoom-in';
+    main.addEventListener('click', () => {
+      const activeIdx = thumbs.findIndex(t => t.classList.contains('active'));
+      open(activeIdx >= 0 ? activeIdx : 0);
+    });
+
+    overlay.querySelector('.lightbox__close').addEventListener('click', close);
+    overlay.querySelector('.lightbox__nav--next').addEventListener('click', next);
+    overlay.querySelector('.lightbox__nav--prev').addEventListener('click', prev);
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+
+    document.addEventListener('keydown', e => {
+      if (!overlay.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+    });
+
+    let touchStartX = 0;
+    overlay.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    overlay.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(dx) > 50) (dx < 0 ? next : prev)();
+    }, { passive: true });
+  })();
 </script>
 
 </body>
