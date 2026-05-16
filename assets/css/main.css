@@ -307,6 +307,19 @@ img, picture, video {
   border-color: var(--accent-amber);
 }
 
+.btn--accent {
+  color: var(--accent-amber);
+  border-color: var(--accent-amber);
+  border-width: 1.5px;
+  background: transparent;
+}
+
+.btn--accent:hover {
+  background: var(--accent-amber);
+  color: var(--text-inverse);
+  border-color: var(--accent-amber);
+}
+
 .divider {
   height: 1px;
   background: var(--border-light);
