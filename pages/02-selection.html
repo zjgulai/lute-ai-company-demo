@@ -39,9 +39,7 @@
       color: var(--text-primary); text-decoration: none;
     }
     .nav__brand::before { content: "🪟"; margin-right: var(--space-2); }
-    .nav__links {
-      display: flex; gap: var(--space-3); list-style: none; padding: 0; margin: 0;
-    }
+    .nav__links { display: flex; gap: var(--space-2); list-style: none; padding: 0; margin: 0; flex-wrap: nowrap; white-space: nowrap; }
     .nav__link {
       font-family: var(--font-mono); font-size: var(--fs-small);
       color: var(--text-secondary); text-decoration: none;
@@ -49,7 +47,7 @@
     }
     .nav__link:hover { color: var(--text-primary); text-decoration: none; }
     .nav__link.active { color: var(--accent-amber); }
-    @media (max-width: 768px) { .nav__links { display: none; } }
+    @media (max-width: 960px) { .nav__links { display: none; } }
 
     .pipeline {
       display: flex; flex-direction: column; gap: var(--space-3);

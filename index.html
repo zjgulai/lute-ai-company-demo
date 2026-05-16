@@ -38,17 +38,19 @@
       content: "🪟"; margin-right: var(--space-2); font-size: 1.2em;
     }
     .nav__links {
-      display: flex; gap: var(--space-3); list-style: none; padding: 0; margin: 0;
+      display: flex; gap: var(--space-2); list-style: none; padding: 0; margin: 0;
+      flex-wrap: nowrap; white-space: nowrap;
     }
     .nav__link {
       font-family: var(--font-mono); font-size: var(--fs-small);
       color: var(--text-secondary); text-decoration: none;
       padding: var(--space-1) var(--space-2);
       transition: color var(--dur-fast) var(--ease-out);
+      white-space: nowrap;
     }
     .nav__link:hover { color: var(--text-primary); text-decoration: none; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 960px) {
       .nav__links { display: none; }
     }
 
