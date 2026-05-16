@@ -189,7 +189,7 @@
     }
 
     .dp--human .dp__tag  { color: var(--color-human); }
-    .dp--ai .dp__tag     { color: #5a7757; }
+    .dp--ai .dp__tag     { color: var(--accent-sage); }
     .dp--future .dp__tag { color: var(--text-muted); }
 
     .dp h4 {
@@ -281,7 +281,7 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav__inner">
     <a href="../index.html" class="nav__brand">路特 AI 公司</a>
     <ul class="nav__links">
@@ -527,6 +527,15 @@
     <a href="https://github.com/zjgulai/lute-ai-company-demo" class="btn" target="_blank" rel="noopener">演示站源码</a>
   </div>
 </section>
+
+<script src="../assets/js/lib/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof pangu !== 'undefined') {
+      pangu.spacingPage();
+    }
+  });
+</script>
 
 </body>
 </html>

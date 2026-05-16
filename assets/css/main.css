@@ -111,7 +111,8 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: var(--lh-normal);
-  font-feature-settings: "ss01", "cv01", "cv11";
+  font-feature-settings: "ss01", "cv01", "cv11", "tnum";
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -161,6 +162,7 @@ code, .mono, .timestamp, .commit-hash {
   border-radius: var(--radius-sm);
   color: var(--text-primary);
   letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 pre {
@@ -272,7 +274,7 @@ img, picture, video {
 
 .badge--human    { background: rgba(208, 2, 27, 0.1);  color: var(--color-human); }
 .badge--ai       { background: rgba(139, 139, 139, 0.15); color: var(--text-secondary); }
-.badge--success  { background: rgba(126, 211, 33, 0.15); color: #4d8520; }
+.badge--success  { background: var(--color-success-soft); color: var(--color-success); }
 .badge--pending  { background: rgba(245, 166, 35, 0.15); color: #b97a3f; }
 
 .btn {

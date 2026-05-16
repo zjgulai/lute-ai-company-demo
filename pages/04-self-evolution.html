@@ -44,7 +44,7 @@
     }
 
     .round--applied::before {
-      background: linear-gradient(90deg, #4d8520, #7ed321);
+      background: linear-gradient(90deg, var(--color-success), var(--color-lesson));
     }
 
     .round--proposed::before {
@@ -99,7 +99,7 @@
 
     .state--active {
       background: rgba(126, 211, 33, 0.15);
-      color: #4d8520;
+      color: var(--color-success);
       font-weight: 600;
     }
 
@@ -201,7 +201,7 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav__inner">
     <a href="../index.html" class="nav__brand">路特 AI 公司</a>
     <ul class="nav__links">
@@ -389,6 +389,15 @@
 
 <script src="../assets/js/lib/cytoscape.min.js"></script>
 <script type="module" src="../assets/js/memory-graph.js"></script>
+
+<script src="../assets/js/lib/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof pangu !== 'undefined') {
+      pangu.spacingPage();
+    }
+  });
+</script>
 
 </body>
 </html>

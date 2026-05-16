@@ -168,7 +168,7 @@
       border-left: 3px solid;
     }
 
-    .verdict--allow { border-left-color: #4d8520; }
+    .verdict--allow { border-left-color: var(--color-success); }
     .verdict--gray  { border-left-color: var(--accent-amber); }
     .verdict--ban   { border-left-color: var(--color-decision); }
 
@@ -180,7 +180,7 @@
       letter-spacing: var(--tracking-wide);
     }
 
-    .verdict--allow .verdict__tag { color: #4d8520; }
+    .verdict--allow .verdict__tag { color: var(--color-success); }
     .verdict--gray  .verdict__tag { color: var(--accent-amber); }
     .verdict--ban   .verdict__tag { color: var(--color-decision); }
 
@@ -235,7 +235,7 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav__inner">
     <a href="../index.html" class="nav__brand">路特 AI 公司</a>
     <ul class="nav__links">
@@ -412,8 +412,8 @@
     <p style="margin-top: var(--space-3);">Reality Checker 在 5 月 16 日傍晚做了最终独立审查（独立 grep 全量检索方式，<strong>不信 Sisyphus 自证</strong>）：</p>
 
     <div class="reg-stack" style="margin: var(--space-4) 0;">
-      <div class="reg-card" style="border-color: #4d8520;">
-        <div class="reg-card__type" style="color: #4d8520;">A 轨 · 文案合规</div>
+      <div class="reg-card" style="border-color: var(--color-success);">
+        <div class="reg-card__type" style="color: var(--color-success);">A 轨 · 文案合规</div>
         <h4>✅ 18/18 PASS</h4>
         <p style="font-size: var(--fs-small); color: var(--text-secondary);">商品页文案侧已达 <strong>上线标准</strong>。从 v2.0 → v2.2 → v2.3 三轮迭代，每轮把 grep 命中违规修掉再重审。</p>
       </div>
@@ -472,6 +472,15 @@
   </p>
   <a href="07-roadmap.html">→ §7 路线图</a>
 </div>
+
+<script src="../assets/js/lib/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof pangu !== 'undefined') {
+      pangu.spacingPage();
+    }
+  });
+</script>
 
 </body>
 </html>

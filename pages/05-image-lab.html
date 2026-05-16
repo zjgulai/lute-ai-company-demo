@@ -91,7 +91,7 @@
     }
 
     .stack--day4 .stack__list li::before {
-      content: "✓"; color: #4d8520;
+      content: "✓"; color: var(--color-success);
     }
 
     .stack__list code {
@@ -133,7 +133,7 @@
 
     .delta-table td.day1 { color: var(--text-muted); }
     .delta-table td.day4 { color: var(--accent-amber); font-weight: 600; }
-    .delta-table td.delta { color: #4d8520; font-family: var(--font-mono); font-weight: 600; }
+    .delta-table td.delta { color: var(--color-success); font-family: var(--font-mono); font-weight: 600; }
 
     .conclusion {
       padding: var(--space-4);
@@ -160,7 +160,7 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav__inner">
     <a href="../index.html" class="nav__brand">路特 AI 公司</a>
     <ul class="nav__links">
@@ -287,6 +287,15 @@
   </p>
   <a href="06-legal.html">→ §6 法规雷区</a>
 </div>
+
+<script src="../assets/js/lib/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof pangu !== 'undefined') {
+      pangu.spacingPage();
+    }
+  });
+</script>
 
 </body>
 </html>

@@ -157,7 +157,7 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav__inner">
     <a href="../index.html" class="nav__brand">路特 AI 公司</a>
     <ul class="nav__links">
@@ -395,6 +395,15 @@
 </div>
 
 <script src="../assets/js/lib/img-comparison-slider.js" type="module"></script>
+
+<script src="../assets/js/lib/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof pangu !== 'undefined') {
+      pangu.spacingPage();
+    }
+  });
+</script>
 
 </body>
 </html>

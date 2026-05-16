@@ -86,7 +86,7 @@
       transition: all var(--dur-normal) var(--ease-out);
     }
     .candidate--go {
-      border-color: #4d8520;
+      border-color: var(--color-success);
       background: rgba(126, 211, 33, 0.05);
     }
     .candidate--nogo {
@@ -101,7 +101,7 @@
       letter-spacing: var(--tracking-wide);
       margin-bottom: var(--space-2);
     }
-    .candidate--go .candidate__decision    { color: #4d8520; }
+    .candidate--go .candidate__decision    { color: var(--color-success); }
     .candidate--nogo .candidate__decision  { color: var(--color-decision); }
     .candidate h4 {
       font-family: var(--font-display);
@@ -144,7 +144,7 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav__inner">
     <a href="../index.html" class="nav__brand">路特 AI 公司</a>
     <ul class="nav__links">
@@ -314,6 +314,15 @@
   </p>
   <a href="03-launch.html">→ §3 上架</a>
 </div>
+
+<script src="../assets/js/lib/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof pangu !== 'undefined') {
+      pangu.spacingPage();
+    }
+  });
+</script>
 
 </body>
 </html>
