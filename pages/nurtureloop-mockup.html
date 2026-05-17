@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NurtureLoop · 母婴跨境经营分析与归因 · 路特 AI 公司</title>
+  <meta name="description" content="路特 AI 公司 v0.2 NurtureLoop M1 Dashboard mockup · 5 维 GROUP BY + 3 归因可切 + L1 Action 卡片 · dogfood Momcozy KleanPal Air">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍼%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+
+  <style>
+    /* NurtureLoop Dashboard · Brand Guardian Seren 色系延续 */
+    :root {
+      --nl-bg:        #fafaf8;
+      --nl-card:      #ffffff;
+      --nl-border:    #e8e3dc;
+      --nl-warm:      #d49a6a;     /* Warm Amber */
+      --nl-sage:      #8fa68c;     /* Sage Dust 主 accent */
+      --nl-amber:     #b97a3f;     /* Deep Amber */
+      --nl-mist:      #aec0c8;     /* Mist Blue */
+      --nl-charcoal:  #4a4f48;
+      --nl-success:   #4d8520;
+      --nl-warning:   #b97a3f;
+      --nl-danger:    #c44a3f;
+    }
+
+    body {
+      background: var(--nl-bg);
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--nl-charcoal);
+      margin: 0;
+      font-feature-settings: "tnum";
+      font-variant-numeric: tabular-nums;
+    }
+
+    .nl-nav {
+      background: var(--nl-card);
+      border-bottom: 1px solid var(--nl-border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+
+    .nl-nav__brand {
+      font-family: 'Source Serif 4', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--nl-charcoal);
+      text-decoration: none;
+    }
+    .nl-nav__brand::before {
+      content: "🍼"; margin-right: 8px;
+    }
+
+    .nl-nav__back {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--nl-amber);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nl-nav__back:hover { text-decoration: underline; }
+
+    .nl-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .nl-header {
+      margin-bottom: 32px;
+    }
+
+    .nl-header h1 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+      color: var(--nl-charcoal);
+    }
+
+    .nl-header__subtitle {
+      font-size: 14px;
+      color: #6b6b6b;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    .nl-header__pill {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(143, 166, 140, 0.15);
+      color: var(--nl-sage);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      border-radius: 999px;
+      margin-right: 8px;
+    }
+
+    /* Action Card · 顶部今日建议 */
+    .nl-action-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .nl-action {
+      background: var(--nl-card);
+      border: 1px solid var(--nl-border);
+      border-left: 4px solid var(--nl-amber);
+      border-radius: 8px;
+      padding: 16px 20px;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .nl-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+    .nl-action--p0 { border-left-color: var(--nl-danger); }
+    .nl-action--p1 { border-left-color: var(--nl-amber); }
+    .nl-action--p2 { border-left-color: var(--nl-sage); }
+
+    .nl-action__priority {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .nl-action--p0 .nl-action__priority { color: var(--nl-danger); }
+    .nl-action--p1 .nl-action__priority { color: var(--nl-amber); }
+    .nl-action--p2 .nl-action__priority { color: var(--nl-sage); }
+
+    .nl-action__title {
+      font-family: 'Source Serif 4', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--nl-charcoal);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .nl-action__reasoning {
+      font-size: 13px;
+      color: #5c5c5c;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .nl-action__impact {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--nl-success);
+      font-weight: 600;
+      background: rgba(77, 133, 32, 0.08);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .nl-action__buttons {
+      display: flex; gap: 6px;
+    }
+
+    .nl-action__btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      padding: 6px 12px;
+      border: 1px solid var(--nl-border);
+      background: var(--nl-bg);
+      color: var(--nl-charcoal);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 150ms;
+    }
+    .nl-action__btn:hover {
+      background: var(--nl-charcoal);
+      color: #fff;
+      border-color: var(--nl-charcoal);
+    }
+    .nl-action__btn--primary {
+      background: var(--nl-amber);
+      color: #fff;
+      border-color: var(--nl-amber);
+      font-weight: 500;
+    }
+    .nl-action__btn--primary:hover {
+      background: var(--nl-charcoal);
+      border-color: var(--nl-charcoal);
+    }
+
+    /* KPI 卡片 */
+    .nl-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .nl-kpi {
+      background: var(--nl-card);
+      border: 1px solid var(--nl-border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .nl-kpi__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a8a8a;
+      margin-bottom: 6px;
+    }
+
+    .nl-kpi__value {
+      font-family: 'Source Serif 4', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--nl-charcoal);
+      line-height: 1.1;
+    }
+
+    .nl-kpi__sub {
+      font-size: 11px;
+      color: #6b6b6b;
+      margin-top: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .nl-kpi__sub--green { color: var(--nl-success); }
+    .nl-kpi__sub--red { color: var(--nl-danger); }
+
+    /* 控制条 */
+    .nl-controls {
+      background: var(--nl-card);
+      border: 1px solid var(--nl-border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .nl-controls__title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8a8a8a;
+      margin-bottom: 10px;
+    }
+
+    .nl-attr-switcher {
+      display: flex; gap: 8px; margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nl-attr-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 8px 14px;
+      border: 1px solid var(--nl-border);
+      background: var(--nl-bg);
+      color: var(--nl-charcoal);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 150ms;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.3;
+    }
+    .nl-attr-btn:hover:not(:disabled) {
+      border-color: var(--nl-amber);
+    }
+    .nl-attr-btn--active {
+      background: var(--nl-amber);
+      color: #fff;
+      border-color: var(--nl-amber);
+    }
+    .nl-attr-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .nl-attr-btn__sub {
+      font-size: 9px; opacity: 0.7;
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    .nl-filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .nl-filter label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a8a8a;
+      margin-bottom: 4px;
+    }
+
+    .nl-filter select {
+      width: 100%;
+      padding: 7px 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      border: 1px solid var(--nl-border);
+      border-radius: 5px;
+      background: var(--nl-bg);
+      color: var(--nl-charcoal);
+      cursor: pointer;
+    }
+    .nl-filter select:focus {
+      outline: none;
+      border-color: var(--nl-amber);
+    }
+
+    /* 内容区 grid */
+    .nl-content {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 1100px) {
+      .nl-content { grid-template-columns: 1fr; }
+    }
+
+    .nl-panel {
+      background: var(--nl-card);
+      border: 1px solid var(--nl-border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .nl-panel h3 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px;
+      color: var(--nl-charcoal);
+    }
+
+    /* 表格 */
+    .nl-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .nl-table th {
+      text-align: left;
+      padding: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a8a8a;
+      border-bottom: 1px solid var(--nl-border);
+      background: var(--nl-bg);
+    }
+    .nl-table td {
+      padding: 8px;
+      border-bottom: 1px solid var(--nl-border);
+      color: var(--nl-charcoal);
+    }
+    .nl-table tr:hover td { background: var(--nl-bg); }
+    .nl-table .num { text-align: right; font-family: 'JetBrains Mono', monospace; }
+    .nl-table .pos { color: var(--nl-success); }
+    .nl-table .neg { color: var(--nl-danger); }
+
+    /* Sankey */
+    #nl-sankey {
+      width: 100%;
+      height: 320px;
+    }
+
+    /* Chart canvas */
+    #nl-chart-timeseries {
+      max-height: 280px;
+    }
+
+    /* Footer */
+    .nl-footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--nl-border);
+      font-size: 12px;
+      color: #8a8a8a;
+      line-height: 1.6;
+    }
+    .nl-footer code {
+      background: var(--nl-bg);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .nl-status-banner {
+      background: rgba(212, 154, 106, 0.08);
+      border: 1px solid rgba(212, 154, 106, 0.3);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--nl-amber);
+      margin-bottom: 24px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nl-nav" aria-label="主导航">
+  <a class="nl-nav__brand" href="../index.html">NurtureLoop</a>
+  <a class="nl-nav__back" href="../index.html">← 返回演示站</a>
+</nav>
+
+<main class="nl-container">
+  <header class="nl-header">
+    <span class="nl-header__pill">M1 · MOCKUP</span>
+    <span class="nl-header__pill" style="background: rgba(212, 154, 106, 0.12); color: var(--nl-amber);">DOGFOOD: project_baby-sterilizer</span>
+    <h1>哺育闭环 · 经营分析 + 归因</h1>
+    <p class="nl-header__subtitle">
+      母婴跨境 DTC 第一个「业务-数据-归因-动作」全闭环 AI Agent。把"目标达成率"反向翻译成"今天该执行什么动作"。<br>
+      <strong>M1 Mockup</strong> · 静态 CSV mock 数据驱动 · 不接真 API · 6 sub-agent + Dashboard 双前端。
+    </p>
+  </header>
+
+  <div class="nl-status-banner">
+    📊 <strong>数据来源</strong>：本月（2026-05-01 ~ 05-15）30 笔订单 · 4 SKU · 美/欧 · 5 个广告组 · 静态 CSV sample
+  </div>
+
+  <section class="nl-action-bar" aria-label="今日 Action 建议">
+    <article class="nl-action nl-action--p0">
+      <div class="nl-action__priority">P0 · 立即执行</div>
+      <h4 class="nl-action__title">停 Meta 二级广告组 'spark-ads-momma-grp-3'</h4>
+      <p class="nl-action__reasoning">ROAS 看似 3.2，但 cogs+物流+退货+平台费占 71%，单笔毛利 -$4.20，亏损中。该组 spend $1500 中有 $620 来自该广告组。</p>
+      <span class="nl-action__impact">+$3K/月 · 释放 $1500 spend</span>
+      <div class="nl-action__buttons">
+        <button class="nl-action__btn nl-action__btn--primary">我已执行</button>
+        <button class="nl-action__btn">推迟</button>
+        <button class="nl-action__btn">拒绝</button>
+      </div>
+    </article>
+
+    <article class="nl-action nl-action--p1">
+      <div class="nl-action__priority">P1 · 本周内</div>
+      <h4 class="nl-action__title">TikTok 上新创意 'morning-routine-vid-y'</h4>
+      <p class="nl-action__reasoning">现行 TikTok 创意已 14 天未更新 · 转化率从 1.4% 跌至 0.8%。建议拍 1-2 条新 spark ads · 主打"清晨喂奶仪式"场景。</p>
+      <span class="nl-action__impact">+$5K/月 · 创意成本 ~$200</span>
+      <div class="nl-action__buttons">
+        <button class="nl-action__btn nl-action__btn--primary">我已执行</button>
+        <button class="nl-action__btn">推迟</button>
+        <button class="nl-action__btn">拒绝</button>
+      </div>
+    </article>
+
+    <article class="nl-action nl-action--p2">
+      <div class="nl-action__priority">P2 · 月内</div>
+      <h4 class="nl-action__title">UV-C 消毒柜确认订单页加捆绑</h4>
+      <p class="nl-action__reasoning">购买 UV-C 消毒柜的客户 47% 在 30 天内复购奶瓶刷。建议在确认页加 "+$15 配套奶瓶刷 -20%" 捆绑选项。</p>
+      <span class="nl-action__impact">+$2K/月 · 季度 +$8K</span>
+      <div class="nl-action__buttons">
+        <button class="nl-action__btn nl-action__btn--primary">我已执行</button>
+        <button class="nl-action__btn">推迟</button>
+        <button class="nl-action__btn">拒绝</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="nl-kpi-grid" aria-label="KPI 卡片">
+    <div class="nl-kpi">
+      <div class="nl-kpi__label">本期 GMV</div>
+      <div class="nl-kpi__value" id="kpi-gmv">$ —</div>
+      <div class="nl-kpi__sub" id="kpi-gmv-sub">—</div>
+    </div>
+    <div class="nl-kpi">
+      <div class="nl-kpi__label">本期净毛利</div>
+      <div class="nl-kpi__value" id="kpi-profit">$ —</div>
+      <div class="nl-kpi__sub" id="kpi-profit-sub">—</div>
+    </div>
+    <div class="nl-kpi">
+      <div class="nl-kpi__label">月度目标达成</div>
+      <div class="nl-kpi__value" id="kpi-achievement">—</div>
+      <div class="nl-kpi__sub" id="kpi-achievement-sub">目标 $50K</div>
+    </div>
+    <div class="nl-kpi">
+      <div class="nl-kpi__label">总 Spend</div>
+      <div class="nl-kpi__value" id="kpi-spend">$ —</div>
+      <div class="nl-kpi__sub" id="kpi-spend-sub">—</div>
+    </div>
+    <div class="nl-kpi">
+      <div class="nl-kpi__label">ROAS</div>
+      <div class="nl-kpi__value" id="kpi-roas">—</div>
+      <div class="nl-kpi__sub" id="kpi-roas-sub">行业基线 2.8x</div>
+    </div>
+  </section>
+
+  <section class="nl-controls" aria-label="过滤与归因控制">
+    <div class="nl-controls__title">归因模型 · 实时切换</div>
+    <div class="nl-attr-switcher">
+      <button class="nl-attr-btn" data-model="last-touch">
+        Last-touch
+        <span class="nl-attr-btn__sub">1ms · 任意数据量</span>
+      </button>
+      <button class="nl-attr-btn nl-attr-btn--active" data-model="multi-touch">
+        Multi-touch
+        <span class="nl-attr-btn__sub">推荐 · ≥1 周数据</span>
+      </button>
+      <button class="nl-attr-btn" data-model="markov" disabled>
+        Markov chain
+        <span class="nl-attr-btn__sub">需 ≥8 周数据 · 2026-07-10 启</span>
+      </button>
+    </div>
+
+    <div class="nl-controls__title">5 维 GROUP BY · 拽即时刷</div>
+    <div class="nl-filters">
+      <div class="nl-filter">
+        <label for="f-region">区域</label>
+        <select id="f-region"><option value="">全部</option></select>
+      </div>
+      <div class="nl-filter">
+        <label for="f-platform">平台</label>
+        <select id="f-platform"><option value="">全部</option></select>
+      </div>
+      <div class="nl-filter">
+        <label for="f-product_line">品线</label>
+        <select id="f-product_line"><option value="">全部</option></select>
+      </div>
+      <div class="nl-filter">
+        <label for="f-user_segment">用户</label>
+        <select id="f-user_segment"><option value="">全部</option></select>
+      </div>
+      <div class="nl-filter">
+        <label for="f-gmv_band">GMV</label>
+        <select id="f-gmv_band"><option value="">全部</option></select>
+      </div>
+    </div>
+  </section>
+
+  <section class="nl-content">
+    <div class="nl-panel">
+      <h3>渠道归因桑基</h3>
+      <div id="nl-sankey"></div>
+    </div>
+
+    <div class="nl-panel">
+      <h3>每日 GMV vs Spend</h3>
+      <canvas id="nl-chart-timeseries"></canvas>
+    </div>
+  </section>
+
+  <section class="nl-panel" style="margin-bottom: 24px;">
+    <h3>5 维 GROUP BY 表（按净毛利排序）</h3>
+    <table class="nl-table" id="nl-table">
+      <thead>
+        <tr>
+          <th>区域</th><th>平台</th><th>品线</th><th>用户</th><th>GMV档</th>
+          <th class="num">订单数</th><th class="num">GMV</th>
+          <th class="num">净毛利</th><th class="num">Spend</th><th class="num">ROAS</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <footer class="nl-footer">
+    <p>
+      <strong>NurtureLoop M1</strong> · 2026-05-16 起草 · Sisyphus（COO）<br>
+      技术栈：纯 HTML + CSS + JS · D3.js v7 + d3-sankey · Chart.js 4.4 · Papa Parse 5.5 · 0 后端依赖<br>
+      数据：<code>data/orders.csv</code> · <code>data/meta_spend.csv</code> · <code>data/tiktok_spend.csv</code> · <code>data/attribution_paths.csv</code>
+    </p>
+    <p>
+      M2 路线：接 Shopify Admin GraphQL + Meta Ads API + TikTok Ads API · 真 LLM InsightAgent prompt · 1 周交付
+    </p>
+  </footer>
+</main>
+
+<script src="../assets/js/lib/papaparse.min.js"></script>
+<script src="../assets/js/lib/chart.umd.min.js"></script>
+<script src="../assets/js/lib/d3.min.js"></script>
+<script src="../assets/js/lib/d3-sankey.min.js"></script>
+<script src="../assets/js/lib/pangu.min.js"></script>
+
+<script>
+  const NL = {
+    state: {
+      orders: [],
+      meta: [],
+      tiktok: [],
+      paths: [],
+      filters: { region: '', platform: '', product_line: '', user_segment: '', gmv_band: '' },
+      attributionModel: 'multi-touch',
+    },
+
+    async init() {
+      const [orders, meta, tiktok, paths] = await Promise.all([
+        this.loadCSV('../data/orders.csv'),
+        this.loadCSV('../data/meta_spend.csv'),
+        this.loadCSV('../data/tiktok_spend.csv'),
+        this.loadCSV('../data/attribution_paths.csv'),
+      ]);
+      this.state.orders = orders;
+      this.state.meta = meta;
+      this.state.tiktok = tiktok;
+      this.state.paths = paths;
+
+      this.populateFilters();
+      this.bindEvents();
+      this.refresh();
+    },
+
+    loadCSV(path) {
+      return new Promise((resolve, reject) => {
+        Papa.parse(path, {
+          download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
+          complete: r => resolve(r.data), error: reject,
+        });
+      });
+    },
+
+    populateFilters() {
+      const dims = ['region', 'platform', 'product_line', 'user_segment', 'gmv_band'];
+      dims.forEach(dim => {
+        const sel = document.getElementById(`f-${dim}`);
+        const values = [...new Set(this.state.orders.map(o => o[dim]).filter(Boolean))].sort();
+        values.forEach(v => {
+          const opt = document.createElement('option');
+          opt.value = v; opt.textContent = v;
+          sel.appendChild(opt);
+        });
+      });
+    },
+
+    bindEvents() {
+      document.querySelectorAll('.nl-filter select').forEach(sel => {
+        sel.addEventListener('change', e => {
+          const dim = e.target.id.replace('f-', '');
+          this.state.filters[dim] = e.target.value;
+          this.refresh();
+        });
+      });
+
+      document.querySelectorAll('.nl-attr-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.disabled) return;
+          this.state.attributionModel = btn.dataset.model;
+          document.querySelectorAll('.nl-attr-btn').forEach(b => b.classList.remove('nl-attr-btn--active'));
+          btn.classList.add('nl-attr-btn--active');
+          this.refresh();
+        });
+      });
+    },
+
+    filteredOrders() {
+      const f = this.state.filters;
+      return this.state.orders.filter(o =>
+        (!f.region || o.region === f.region) &&
+        (!f.platform || o.platform === f.platform) &&
+        (!f.product_line || o.product_line === f.product_line) &&
+        (!f.user_segment || o.user_segment === f.user_segment) &&
+        (!f.gmv_band || o.gmv_band === f.gmv_band)
+      );
+    },
+
+    filteredSpend() {
+      const f = this.state.filters;
+      const all = [...this.state.meta, ...this.state.tiktok];
+      return all.filter(s =>
+        (!f.region || s.region === f.region) &&
+        (!f.platform || s.platform === f.platform)
+      );
+    },
+
+    refresh() {
+      const orders = this.filteredOrders();
+      const spend = this.filteredSpend();
+
+      this.renderKPIs(orders, spend);
+      this.renderTable(orders, spend);
+      this.renderSankey(orders);
+      this.renderTimeseries(orders, spend);
+    },
+
+    renderKPIs(orders, spend) {
+      const gmv = orders.reduce((s, o) => s + Number(o.gross_revenue || 0), 0);
+      const profit = orders.reduce((s, o) => s + Number(o.net_profit || 0), 0);
+      const totalSpend = spend.reduce((s, r) => s + Number(r.spend_usd || 0), 0);
+      const target = 50000;
+      const achievementPct = (profit / target * 100);
+      const roas = totalSpend > 0 ? gmv / totalSpend : 0;
+
+      document.getElementById('kpi-gmv').textContent = '$' + gmv.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+      document.getElementById('kpi-gmv-sub').textContent = orders.length + ' 笔订单';
+
+      document.getElementById('kpi-profit').textContent = '$' + profit.toLocaleString('en-US', {maximumFractionDigits: 0});
+      const margin = gmv > 0 ? (profit / gmv * 100).toFixed(1) : 0;
+      document.getElementById('kpi-profit-sub').textContent = '毛利率 ' + margin + '%';
+
+      document.getElementById('kpi-achievement').textContent = achievementPct.toFixed(1) + '%';
+      const gap = target - profit;
+      document.getElementById('kpi-achievement-sub').textContent = '差 $' + Math.max(0, gap).toLocaleString('en-US', {maximumFractionDigits: 0});
+
+      document.getElementById('kpi-spend').textContent = '$' + totalSpend.toLocaleString('en-US', {maximumFractionDigits: 0});
+      document.getElementById('kpi-spend-sub').textContent = spend.length + ' 条广告记录';
+
+      document.getElementById('kpi-roas').textContent = roas.toFixed(2) + 'x';
+      const roasSub = document.getElementById('kpi-roas-sub');
+      if (roas >= 2.8) {
+        roasSub.textContent = '✓ 高于行业基线 2.8x';
+        roasSub.className = 'nl-kpi__sub nl-kpi__sub--green';
+      } else {
+        roasSub.textContent = '✗ 低于行业基线 2.8x';
+        roasSub.className = 'nl-kpi__sub nl-kpi__sub--red';
+      }
+    },
+
+    attributeOrder(order, model) {
+      const path = String(order.touchpoint_ids || '').split(';').filter(Boolean);
+      const value = Number(order.gross_revenue || 0);
+      if (path.length === 0) return [];
+
+      if (model === 'last-touch') {
+        return [{ touchpoint: path[path.length - 1], weight: value }];
+      } else if (model === 'multi-touch') {
+        const w = value / path.length;
+        return path.map(tp => ({ touchpoint: tp, weight: w }));
+      } else if (model === 'markov') {
+        // M1 mock：用 multi-touch 作为 fallback
+        const w = value / path.length;
+        return path.map(tp => ({ touchpoint: tp, weight: w }));
+      }
+      return [];
+    },
+
+    renderTable(orders, spend) {
+      const groups = {};
+      orders.forEach(o => {
+        const key = [o.region, o.platform, o.product_line, o.user_segment, o.gmv_band].join('|');
+        if (!groups[key]) {
+          groups[key] = {
+            region: o.region, platform: o.platform, product_line: o.product_line,
+            user_segment: o.user_segment, gmv_band: o.gmv_band,
+            count: 0, gmv: 0, profit: 0, spend: 0,
+          };
+        }
+        groups[key].count++;
+        groups[key].gmv += Number(o.gross_revenue || 0);
+        groups[key].profit += Number(o.net_profit || 0);
+      });
+
+      // 简化：spend 不按 5 维分（M1 mock，只按 platform 分）
+      const spendByPlatform = {};
+      spend.forEach(s => {
+        spendByPlatform[s.platform] = (spendByPlatform[s.platform] || 0) + Number(s.spend_usd || 0);
+      });
+      Object.values(groups).forEach(g => {
+        g.spend = spendByPlatform[g.platform] || 0;
+        g.roas = g.spend > 0 ? g.gmv / g.spend : 0;
+      });
+
+      const sorted = Object.values(groups).sort((a, b) => b.profit - a.profit);
+      const tbody = document.querySelector('#nl-table tbody');
+      tbody.innerHTML = sorted.map(g => `
+        <tr>
+          <td>${g.region}</td><td>${g.platform}</td><td>${g.product_line}</td>
+          <td>${g.user_segment}</td><td>${g.gmv_band}</td>
+          <td class="num">${g.count}</td>
+          <td class="num">$${g.gmv.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
+          <td class="num ${g.profit >= 0 ? 'pos' : 'neg'}">$${g.profit.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
+          <td class="num">$${g.spend.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
+          <td class="num ${g.roas >= 2.8 ? 'pos' : 'neg'}">${g.roas.toFixed(2)}x</td>
+        </tr>
+      `).join('');
+    },
+
+    renderSankey(orders) {
+      const svg = d3.select('#nl-sankey').html('').append('svg').attr('viewBox', '0 0 800 320').attr('width', '100%').attr('height', 320);
+
+      // 渠道 → product_line 流向
+      const links = {};
+      orders.forEach(o => {
+        const tpStr = String(o.touchpoint_ids || '');
+        const channel = tpStr.split(';').find(t => t.startsWith('impression:')) || 'direct';
+        const channelName = channel.split(':')[1] || 'direct';
+        const target = o.product_line;
+        const key = channelName + '|' + target;
+        if (!links[key]) links[key] = { source: channelName, target, value: 0 };
+
+        const attribution = this.attributeOrder(o, this.state.attributionModel);
+        let weight = Number(o.net_profit || 0);
+        if (attribution.length > 0) {
+          weight = attribution.reduce((s, a) => s + a.weight, 0) * (Number(o.net_profit || 0) / Math.max(1, Number(o.gross_revenue || 1)));
+        }
+        links[key].value += weight;
+      });
+
+      const nodeNames = [...new Set(Object.values(links).flatMap(l => [l.source, l.target]))];
+      const nodes = nodeNames.map(name => ({ name }));
+      const linksArr = Object.values(links).filter(l => l.value > 0).map(l => ({
+        source: nodeNames.indexOf(l.source),
+        target: nodeNames.indexOf(l.target),
+        value: l.value,
+      }));
+
+      if (linksArr.length === 0) {
+        svg.append('text').attr('x', 400).attr('y', 160).attr('text-anchor', 'middle').attr('fill', '#999').text('无可视化数据 · 请放宽筛选条件');
+        return;
+      }
+
+      const sankey = d3.sankey().nodeWidth(15).nodePadding(12).extent([[10, 20], [790, 300]]);
+      const graph = sankey({
+        nodes: nodes.map(d => ({ ...d })),
+        links: linksArr.map(d => ({ ...d })),
+      });
+
+      const colorMap = {
+        meta_ads: '#d49a6a', tiktok_ads: '#aec0c8', direct: '#8fa68c',
+        uvc_cabinet: '#b97a3f', steam_warmer: '#8fa68c',
+        bottle_brush: '#aec0c8', wipes_natural: '#d49a6a',
+      };
+
+      svg.append('g').attr('fill', 'none').selectAll('path').data(graph.links).join('path')
+        .attr('d', d3.sankeyLinkHorizontal())
+        .attr('stroke', d => colorMap[d.source.name] || '#ccc')
+        .attr('stroke-width', d => Math.max(1, d.width))
+        .attr('opacity', 0.5);
+
+      const node = svg.append('g').selectAll('g').data(graph.nodes).join('g');
+      node.append('rect').attr('x', d => d.x0).attr('y', d => d.y0)
+        .attr('height', d => d.y1 - d.y0).attr('width', d => d.x1 - d.x0)
+        .attr('fill', d => colorMap[d.name] || '#888');
+      node.append('text').attr('x', d => d.x0 < 400 ? d.x1 + 6 : d.x0 - 6).attr('y', d => (d.y1 + d.y0) / 2)
+        .attr('dy', '0.35em').attr('text-anchor', d => d.x0 < 400 ? 'start' : 'end')
+        .attr('font-family', 'JetBrains Mono, monospace').attr('font-size', '11px')
+        .text(d => d.name);
+    },
+
+    chartInstance: null,
+    renderTimeseries(orders, spend) {
+      const days = {};
+      orders.forEach(o => {
+        const ts = o.timestamp;
+        const day = ts ? String(ts).slice(0, 10) : null;
+        if (!day) return;
+        if (!days[day]) days[day] = { gmv: 0, spend: 0 };
+        days[day].gmv += Number(o.gross_revenue || 0);
+      });
+      spend.forEach(s => {
+        const day = s.date ? String(s.date).slice(0, 10) : null;
+        if (!day) return;
+        if (!days[day]) days[day] = { gmv: 0, spend: 0 };
+        days[day].spend += Number(s.spend_usd || 0);
+      });
+
+      const labels = Object.keys(days).sort();
+      const gmvData = labels.map(d => days[d].gmv);
+      const spendData = labels.map(d => days[d].spend);
+
+      const ctx = document.getElementById('nl-chart-timeseries');
+      if (this.chartInstance) this.chartInstance.destroy();
+
+      this.chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            { label: 'GMV', data: gmvData, borderColor: '#8fa68c', backgroundColor: 'rgba(143,166,140,0.1)', tension: 0.3, fill: true },
+            { label: 'Spend', data: spendData, borderColor: '#d49a6a', backgroundColor: 'rgba(212,154,106,0.1)', tension: 0.3, fill: true },
+          ],
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom' } },
+          scales: { y: { ticks: { callback: v => '$' + v } } },
+        },
+      });
+    },
+  };
+
+  document.addEventListener('DOMContentLoaded', () => NL.init());
+</script>
+
+</body>
+</html>
